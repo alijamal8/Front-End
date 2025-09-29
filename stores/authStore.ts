@@ -1,23 +1,43 @@
 import { create } from "zustand";
-import { RegisterForm } from "@/types/auth";
-import { RegisterStore } from "@/types/auth";
+import { RegisterForm, LoginForm } from "@/types/auth";
 
-const initialState = {
+const registerInitial: RegisterForm = {
   name: "",
   phone: "",
   email: "",
   password: "",
 };
 
-export const useRegisterStore = create<RegisterStore>((set) => ({
-  form: { ...initialState },
-  setForm: (field, value) =>
+const loginInitial: LoginForm = {
+  email: "",
+  password: "",
+};
+
+interface AuthStore {
+  registerForm: RegisterForm;
+  loginForm: LoginForm;
+
+  setRegisterForm: (field: keyof RegisterForm, value: string) => void;
+  setLoginForm: (field: keyof LoginForm, value: string) => void;
+
+  resetRegisterForm: () => void;
+  resetLoginForm: () => void;
+}
+
+export const useAuthStore = create<AuthStore>((set) => ({
+  registerForm: { ...registerInitial },
+  loginForm: { ...loginInitial },
+
+  setRegisterForm: (field, value) =>
     set((state) => ({
-      form: {
-        ...state.form,
-        [field]: value,
-      },
+      registerForm: { ...state.registerForm, [field]: value },
     })),
 
-  resetForm: () => set({ form: { ...initialState } }),
+  setLoginForm: (field, value) =>
+    set((state) => ({
+      loginForm: { ...state.loginForm, [field]: value },
+    })),
+
+  resetRegisterForm: () => set({ registerForm: { ...registerInitial } }),
+  resetLoginForm: () => set({ loginForm: { ...loginInitial } }),
 }));

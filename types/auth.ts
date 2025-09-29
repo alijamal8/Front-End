@@ -11,7 +11,12 @@ export interface RegisterStore {
   resetForm: () => void;
 }
 
-export interface ClientErroprops{
-    type  : "success" | "error";
-    message : string
+export interface ClientErroprops {
+  type: "success" | "error";
+  message: string;
+}
+
+export interface LoginForm {
+  email: string;
+  password: string;
 }

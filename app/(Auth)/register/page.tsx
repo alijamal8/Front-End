@@ -15,24 +15,24 @@ import {
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Separator } from "@/components/ui/separator";
-import { useRegisterStore } from "@/stores/authStore";
+import {useAuthStore } from "@/stores/authStore";
 import { RegisterSchema } from "@/validations/auth";
 import { useState } from "react";
 import VaildationError from "@/components/auth/validationError";
 import { authService } from "@/services/auth/authApi";
 
 export default function RegisterPage() {
-  const { form, setForm, resetForm } = useRegisterStore();
+  const { registerForm, setRegisterForm, resetRegisterForm } = useAuthStore();
   const [clientError, setClientError] = useState("");
 
   async function hanleForm(e: React.FormEvent) {
     e.preventDefault();
-    const validation = RegisterSchema.safeParse(form);
+    const validation = RegisterSchema.safeParse(registerForm);
 
     if (validation.success) {
-      authService.register(form)
-      
-      resetForm();
+      authService.register(registerForm);
+
+      resetRegisterForm();
       setClientError("");
     } else {
       setClientError(() => validation.error.issues[0].message);
@@ -43,7 +43,7 @@ export default function RegisterPage() {
     <>
       <Card className="w-full max-w-lg mx-auto mt-8 max-sm:max-w-sm max-sm:my-25 max-lg:mt-35 2xl:mt-25">
         <CardHeader>
-          <CardTitle className="sm:text-4xl font-bold max-sm:text-3xl">
+          <CardTitle className="text-4xl font-bold max-sm:text-3xl">
             Sing up
           </CardTitle>
           <CardDescription className="text-sm text-black my-2 dark:text-white max-sm:text-xs">
@@ -63,8 +63,8 @@ export default function RegisterPage() {
                   type="name"
                   placeholder="Enter Your Name"
                   required
-                  value={form.name}
-                  onChange={(e) => setForm("name", e.target.value)}
+                  value={registerForm.name}
+                  onChange={(e) => setRegisterForm("name", e.target.value)}
                 />
               </div>
 
@@ -75,8 +75,8 @@ export default function RegisterPage() {
                   type="phone number"
                   placeholder="Enter Your Phone Number"
                   required
-                  value={form.phone}
-                  onChange={(e) => setForm("phone", e.target.value)}
+                  value={registerForm.phone}
+                  onChange={(e) => setRegisterForm("phone", e.target.value)}
                 />
               </div>
 
@@ -89,19 +89,13 @@ export default function RegisterPage() {
                   placeholder="m@example.com"
                   required
                   autoComplete="off"
-                  value={form.email}
-                  onChange={(e) => setForm("email", e.target.value)}
+                  value={registerForm.email}
+                  onChange={(e) => setRegisterForm("email", e.target.value)}
                 />
               </div>
               <div className="grid gap-2">
                 <div className="flex items-center">
                   <Label htmlFor="password">Password</Label>
-                  <a
-                    href="#"
-                    className="ml-auto inline-block text-sm underline-offset-4 hover:underline"
-                  >
-                    Forgot your password?
-                  </a>
                 </div>
                 <Input
                   id="new-password"
@@ -109,15 +103,14 @@ export default function RegisterPage() {
                   type="password"
                   required
                   autoComplete="off"
-                  value={form.password}
-                  onChange={(e) => setForm("password", e.target.value)}
+                  value={registerForm.password}
+                  onChange={(e) => setRegisterForm("password", e.target.value)}
                 />
               </div>
-
-              {clientError && (
-                <VaildationError type="error" message={clientError} />
-              )}
             </div>
+            {clientError && (
+              <VaildationError type="error" message={clientError} />
+            )}
           </form>
         </CardContent>
 
@@ -130,7 +123,7 @@ export default function RegisterPage() {
             Sing up
           </Button>
           <Button variant="outline" className="w-full">
-            Login with Google <FaGoogle />
+            Continue with Google <FaGoogle />
           </Button>
 
           <CardDescription className="text-sm text-black my-2 dark:text-white">
@@ -144,7 +137,7 @@ export default function RegisterPage() {
           </CardDescription>
         </CardFooter>
       </Card>
-      <Separator className="mt-10 max-w-7xl mx-auto max-sm:max-w-sm max-lg:max-w-xl" />
+      <Separator className="mt-5 max-w-7xl mx-auto max-sm:max-w-sm max-lg:max-w-xl" />
       <Footer />
     </>
   );

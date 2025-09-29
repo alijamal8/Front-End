@@ -24,12 +24,14 @@ export const RegisterSchema = z.object({
   password: z
     .string()
     .min(8, { message: "Password must be at least 8 characters long." })
-    .max(128, { message: "Password is too long." })
-    .regex(/[0-9]/, { message: "Password must include at least one number." })
-    .regex(/[a-z]/, {
-      message: "Password must include at least one lowercase letter.",
-    })
-    .regex(/[A-Z]/, {
-      message: "Password must include at least one uppercase letter.",
-    }),
+    .max(128, { message: "Password is too long." }),
+});
+
+
+export const loginSchema = z.object({
+  email: z
+    .string()
+    .min(1, "Email is required")
+    .email("Invalid email format"),
+  password: z.string().min(1, "Password is required"),
 });
