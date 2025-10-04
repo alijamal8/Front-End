@@ -11,7 +11,7 @@ function Navbar() {
   const [isSearchActive, setIsSearchActive] = useState(false);
 
   return (
-    <div className="flex border-b-2 items-center p-4 justify-between px-10 max-sm:px-4">
+    <div className="flex border-b-2 items-center p-4 justify-between px-10 max-sm:px-4 max-lg:px-5">
       {!isSearchActive ? (
         <>
           <Logo />

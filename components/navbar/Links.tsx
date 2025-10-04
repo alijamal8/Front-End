@@ -13,10 +13,10 @@ export default function Links() {
   const brands = ["Phones", "Tablets", "Wearables", "Audio", "Accessories"];
   return (
     <>
-      <div className="flex gap-8 max-sm:hidden">
+      <div className="flex gap-8 max-sm:hidden max-lg:gap-4">
         {brands.map((brand) => (
           <Link key={brand} href={"/"}>
-            <h2>{brand}</h2>
+            <h1 className="font-semibold">{brand}</h1>
           </Link>
         ))}
       </div>

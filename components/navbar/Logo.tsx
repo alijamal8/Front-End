@@ -5,7 +5,7 @@ function Logo() {
   return (
     <div>
       <Link href={"/"}>
-        <h1 className="text-2xl font-semibold tracking-wider">ESTORE</h1>
+        <h1 className="text-2xl font-bold tracking-wider">ESTORE</h1>
       </Link>
     </div>
   );

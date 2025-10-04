@@ -19,7 +19,7 @@ function Account() {
           <MenubarTrigger>
             <User className="hover:cursor-pointer border-0" />
           </MenubarTrigger>
-          <MenubarContent className=" mr-20">
+          <MenubarContent className="mr-20 max-sm:mr-10">
             <MenubarItem>My Account</MenubarItem>
 
             <MenubarSeparator />

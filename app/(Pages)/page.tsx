@@ -1,12 +1,16 @@
-import Navbar from '@/components/navbar/Navbar'
-import React from 'react'
+import Category from "@/components/category/Category";
+import Navbar from "@/components/navbar/Navbar";
+import Slider from "@/components/slider/Slider";
+import React from "react";
 
 function HomePage() {
   return (
     <>
-    <Navbar/>
+      <Navbar />
+      <Slider />
+      <Category />
     </>
-  )
+  );
 }
 
-export default HomePage
+export default HomePage;
