@@ -5,24 +5,28 @@ import Image from "next/image";
 import React, { useEffect } from "react";
 const category = [
   {
-    id: 1,
-    image: "/pad-9-cyan-pc.webp",
-    title: "Tablets",
-  },
-  {
     id: 2,
-    image: "/honor-earbuds-open-pc.avif",
-    title: "Audio",
+    image: "/category/pad-9-cyan-pc.webp",
+    title: "Tablets",
+    color: "black",
   },
   {
     id: 3,
-    image: "/product_se__cbhd710p3auq_large.png",
-    title: "Wearables",
+    image: "/category/honor-earbuds-open-pc.avif",
+    title: "Audio",
+    color: "black",
   },
   {
     id: 4,
-    image: "/MGF64_FV401.png",
+    image: "/category/product_se__cbhd710p3auq_large.png",
+    title: "Wearables",
+    color: "black",
+  },
+  {
+    id: 5,
+    image: "/category/MGF64_FV401.png",
     title: "Accessories",
+    color: "black",
   },
 ];
 
@@ -44,7 +48,7 @@ function CategoryGrid() {
             >
               <div className="relative w-[500px] h-[677px] overflow-hidden">
                 <Image
-                  src="/innovation__ce13717o3vhy_large_2x.jpg"
+                  src="/category/innovation__ce13717o3vhy_large_2x.jpg"
                   fill
                   alt="HONOR Magic V5"
                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
@@ -55,7 +59,6 @@ function CategoryGrid() {
                 </div>
               </div>
             </div>
-
             {/* Grid of 4 Products */}
             <div
               data-aos="fade-up"
@@ -77,7 +80,11 @@ function CategoryGrid() {
                       className="w-full h-full object-cover transition-all duration-500 ease-in-out group-hover:scale-110 group-hover:opacity-70"
                     />
                     <div className="text-white absolute bottom-[-30] left-4 group-hover:bottom-2 transition-all duration-500 max-sm:bottom-2">
-                      <h1 className="text-2xl text-black font-semibold">
+                      <h1
+                        className={`${
+                          card.color === "black" ? "text-black" : "text-white"
+                        } text-2xl font-semibold`}
+                      >
                         {card.title}
                       </h1>
                     </div>

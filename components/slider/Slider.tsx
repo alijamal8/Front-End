@@ -16,48 +16,40 @@ const sliders = [
   {
     id: 1,
     title: "Xiaomi 15T Pro",
-    descriotion:
-      "Masterpieces far closer , Leica 5x Pro telephone Spotlight Photography , Leoca Summilux optical lens",
-    image_url: "/43ae224614d1cd4bd3d99d187ef0feca.webp",
-    postion: 1,
-    typr: "slider",
-    class_name:
-      "text-black left-50 bottom-80 max-sm:left-5 max-sm:bottom-20  max-lg:left-5 max-lg:bottom-50",
+    descriotion:"Masterpieces far closer, Leica 5x Pro telephone Spotlight Photography, Leoca Summilux optical lens",
+    image_url:"/slider/43ae224614d1cd4bd3d99d187ef0feca.webp",
+    postion: "left",
+    type: "slider",
+    color: "black",
   },
   {
     id: 2,
-    title: "Galaxy Watch8 Classic",
-    descriotion:
-      "Built to perform. Designed to impress.,Your every command. right on your wrist,Unlock the secrets to better sleep",
-    image_url: "/SCOMB7Q7-376_Watch8-Classic-Lifestyle-PCD-KV-DT-1440x640.webp",
-    postion: 2,
+    title: "Galaxy Watch 8 Classic",
+    descriotion:"Built to perform. Designed to impress.,Your every command, right on your wrist,Unlock the secrets to better sleep",
+    image_url:"/slider/SCOMB7Q7-376_Watch8-Classic-Lifestyle-PCD-KV-DT-1440x640.webp",
+    postion: "right",
+    color: "white",
     typr: "slider",
-    class_name:
-      "text-white right-40 bottom-80 max-sm:right-4 max-sm:bottom-25 max-lg:right-5 max-lg:bottom-50",
   },
 
   {
     id: 3,
     title: "HONOR 400 Series",
-    descriotion:
-      "Al 200MP Ultra-Clear Al Camera ,Super Zoom Further See Clearer.",
-    image_url: "/400-gold-400-pro-grey-pc.avif",
-    postion: 3,
+    descriotion:"Al 200MP Ultra-Clear Al Camera ,Super Zoom Further See Clearer.",
+    image_url: "/slider/400-gold-400-pro-grey-pc.avif",
+    postion: "left",
     typr: "slider",
-    class_name:
-      "text-black left-20 bottom-80 max-sm:bottom-5 max-lg:right-5 max-lg:bottom-10",
+    color: "black",
   },
 
   {
     id: 4,
     title: "HONOR Magic 7 RSR",
-    descriotion:
-      "Snapdragon® 8 Elite Mobile Platform ,Unrivaled Performance Unmatched Speed.",
-    image_url: "/honor-magic7-rsr-pc.avif",
-    postion: 4,
+    descriotion:"Snapdragon® 8 Elite Mobile Platform ,Unrivaled Performance Unmatched Speed.",
+    image_url: "/slider/honor-magic7-rsr-pc.avif",
+    postion: "right",
     typr: "slider",
-    class_name:
-      "text-white right-50 bottom-90 max-sm:right-5 max-sm:bottom-20   max-lg:right-5 max-lg:bottom-50",
+    color: "white",
   },
 ];
 
@@ -81,8 +73,21 @@ function Slider() {
                         quality={100}
                       />
                     </Link>
-
-                    <div className={` absolute ${item.class_name}`}>
+                    <div
+                      className={` absolute ${
+                        item.postion === "left"
+                          ? `${
+                              item.color === "black"
+                                ? "text-black"
+                                : "text-white"
+                            } left-30 bottom-80 max-sm:bottom-15 max-sm:left-5 max-lg:right-5 max-lg:bottom-10`
+                          : `${
+                              item.color === "black"
+                                ? "text-black"
+                                : "text-white"
+                            } right-50 bottom-80 max-sm:right-5 max-sm:bottom-20 max-lg:right-5 max-lg:bottom-50`
+                      }`}
+                    >
                       <h1 className="text-5xl font-semibold max-sm:text-2xl">
                         {item.title}
                       </h1>
