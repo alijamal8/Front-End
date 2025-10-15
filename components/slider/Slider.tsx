@@ -1,5 +1,3 @@
-"use client";
-import React, { useEffect, useState } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import {
   Carousel,
@@ -11,54 +9,62 @@ import {
 import Image from "next/image";
 import { Button } from "../ui/button";
 import Link from "next/link";
+import { getSliders } from "@/services/api/slider";
 
-const sliders = [
+const sliders2 = [
   {
     id: 1,
     title: "Xiaomi 15T Pro",
-    descriotion:"Masterpieces far closer, Leica 5x Pro telephone Spotlight Photography, Leoca Summilux optical lens",
-    image_url:"/slider/43ae224614d1cd4bd3d99d187ef0feca.webp",
-    postion: "left",
-    type: "slider",
-    color: "black",
+    description:
+      "Masterpieces far closer, Leica 5x Pro telephone Spotlight Photography, Leoca Summilux optical lens",
+    image_url: "/slider/43ae224614d1cd4bd3d99d187ef0feca.webp",
+    position: "left",
+    text_color: "black",
+    button_label: "Learn More",
   },
   {
     id: 2,
     title: "Galaxy Watch 8 Classic",
-    descriotion:"Built to perform. Designed to impress.,Your every command, right on your wrist,Unlock the secrets to better sleep",
-    image_url:"/slider/SCOMB7Q7-376_Watch8-Classic-Lifestyle-PCD-KV-DT-1440x640.webp",
-    postion: "right",
-    color: "white",
-    typr: "slider",
+    description:
+      "Built to perform. Designed to impress.,Your every command, right on your wrist,Unlock the secrets to better sleep",
+    image_url:
+      "/slider/SCOMB7Q7-376_Watch8-Classic-Lifestyle-PCD-KV-DT-1440x640.webp",
+    position: "right",
+    text_color: "white",
+    button_label: "Learn More",
   },
 
   {
     id: 3,
     title: "HONOR 400 Series",
-    descriotion:"Al 200MP Ultra-Clear Al Camera ,Super Zoom Further See Clearer.",
+    description:
+      "Al 200MP Ultra-Clear Al Camera ,Super Zoom Further See Clearer.",
     image_url: "/slider/400-gold-400-pro-grey-pc.avif",
-    postion: "left",
-    typr: "slider",
-    color: "black",
+    position: "left",
+    text_color: "black",
+    button_label: "Learn More",
   },
 
   {
     id: 4,
     title: "HONOR Magic 7 RSR",
-    descriotion:"Snapdragon® 8 Elite Mobile Platform ,Unrivaled Performance Unmatched Speed.",
+    description:
+      "Snapdragon® 8 Elite Mobile Platform ,Unrivaled Performance Unmatched Speed.",
     image_url: "/slider/honor-magic7-rsr-pc.avif",
-    postion: "right",
-    typr: "slider",
-    color: "white",
+    position: "right",
+    text_color: "white",
+    button_label: "Learn More",
   },
 ];
 
-function Slider() {
+async function Slider() {
+  const sliders = await getSliders();
+
   return (
     <div>
       <Carousel>
         <CarouselContent>
-          {sliders.map((item, index) => (
+          {sliders2.map((item, index) => (
             <CarouselItem key={index}>
               <div>
                 <Card className="p-0">
@@ -75,14 +81,14 @@ function Slider() {
                     </Link>
                     <div
                       className={` absolute ${
-                        item.postion === "left"
+                        item.position === "left"
                           ? `${
-                              item.color === "black"
+                              item.text_color === "black"
                                 ? "text-black"
                                 : "text-white"
                             } left-30 bottom-80 max-sm:bottom-15 max-sm:left-5 max-lg:right-5 max-lg:bottom-10`
                           : `${
-                              item.color === "black"
+                              item.text_color === "black"
                                 ? "text-black"
                                 : "text-white"
                             } right-50 bottom-80 max-sm:right-5 max-sm:bottom-20 max-lg:right-5 max-lg:bottom-50`
@@ -93,10 +99,10 @@ function Slider() {
                       </h1>
 
                       <p className="text-sm  py-4 ">
-                        {item.descriotion.split(",").map((line, index) => (
+                        {item.description.split(",").map((line, index) => (
                           <span
                             key={index}
-                            className="block text-2xl font-semibold max-sm:text-sm"
+                            className="block text-2xl max-sm:text-sm"
                           >
                             {line}
                           </span>
@@ -108,7 +114,7 @@ function Slider() {
                         variant={"secondary"}
                         className="mt-4 px-8 cursor-pointer max-sm:px-4"
                       >
-                        Learn More
+                        {item.button_label}
                       </Button>
                     </div>
                   </CardContent>

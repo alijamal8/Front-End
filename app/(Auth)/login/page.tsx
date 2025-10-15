@@ -20,7 +20,7 @@ import { useAuthStore } from "@/stores/authStore";
 import { loginSchema, RegisterSchema } from "@/validations/auth";
 import { useState } from "react";
 import VaildationError from "@/components/auth/validationError";
-import { authService } from "@/services/auth/authApi";
+import { authService } from "@/services/api/auth";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 

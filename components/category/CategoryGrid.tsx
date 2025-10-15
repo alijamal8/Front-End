@@ -4,6 +4,13 @@ import "aos/dist/aos.css";
 import Image from "next/image";
 import React, { useEffect } from "react";
 const category = [
+{
+    id: 2,
+    image: "/category/innovation__ce13717o3vhy_large_2x.jpg",
+    title: "Phones",
+    color: "black",
+  },
+
   {
     id: 2,
     image: "/category/pad-9-cyan-pc.webp",
@@ -35,39 +42,48 @@ function CategoryGrid() {
     AOS.init({ duration: 2000 });
   }, []);
 
-  return (
+ return (
     <div className="mt-14">
       <main className="min-h-screen p-4 md:p-8 lg:p-12">
         <div className="mx-auto max-w-6xl max-sm:max-w-md">
           <div className="grid grid-cols-1 lg:grid-cols-[2fr_3fr] gap-6">
-            {/* Hero Product - HONOR Magic V5 */}
-            <div
-              data-aos="fade-down"
-              data-aos-duration="3000"
-              className="bg-white rounded-3xl overflow-hidden shadow-sm group cursor-pointer"
-            >
-              <div className="relative w-[500px] h-[677px] overflow-hidden">
-                <Image
-                  src="/category/innovation__ce13717o3vhy_large_2x.jpg"
-                  fill
-                  alt="HONOR Magic V5"
-                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                  className="w-full h-full object-cover transition-all duration-500 ease-in-out group-hover:scale-110 group-hover:opacity-70"
-                />
-                <div className="text-white absolute bottom-[-35] left-12 group-hover:bottom-4 transition-all duration-500 max-sm:bottom-2">
-                  <h1 className="text-4xl  text-black font-semibold">Phones</h1>
+            {/* Hero Product - أول منتج */}
+            {category.length > 0 && (
+              <div
+                data-aos="fade-down"
+                data-aos-duration="3000"
+                className="bg-white rounded-3xl overflow-hidden shadow-sm group cursor-pointer"
+              >
+                <div className="relative w-[500px] h-[677px] overflow-hidden">
+                  <Image
+                    src={category[0].image}
+                    fill
+                    alt={category[0].title}
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                    className="w-full h-full object-cover transition-all duration-500 ease-in-out group-hover:scale-110 group-hover:opacity-70"
+                  />
+                  <div className="text-white absolute bottom-[-35] left-12 group-hover:bottom-4 transition-all duration-500 max-sm:bottom-2">
+                    <h1
+                      className={`text-4xl font-semibold ${
+                        category[0].color === "black"
+                          ? "text-black"
+                          : "text-white"
+                      }`}
+                    >
+                      {category[0].title}
+                    </h1>
+                  </div>
                 </div>
               </div>
-            </div>
-            {/* Grid of 4 Products */}
+            )}
+
+            {/* باقي المنتجات */}
             <div
               data-aos="fade-up"
               data-aos-duration="3000"
               className="grid grid-cols-1 sm:grid-cols-2 gap-6"
             >
-              {/* HONOR X9d */}
-
-              {category.map((card, index) => (
+              {category.slice(1).map((card, index) => (
                 <div
                   key={index}
                   className="bg-white rounded-3xl overflow-hidden shadow-sm group cursor-pointer"
@@ -97,6 +113,7 @@ function CategoryGrid() {
       </main>
     </div>
   );
+  
 }
 
 export default CategoryGrid;
