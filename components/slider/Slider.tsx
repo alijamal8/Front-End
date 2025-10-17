@@ -9,7 +9,9 @@ import {
 import Image from "next/image";
 import { Button } from "../ui/button";
 import Link from "next/link";
-import { getSliders } from "@/services/api/slider";
+
+import { Sliders } from "@/types/homePage";
+import { sliserService } from "@/services/api/slider";
 
 const sliders2 = [
   {
@@ -58,7 +60,7 @@ const sliders2 = [
 ];
 
 async function Slider() {
-  const sliders = await getSliders();
+  const sliders: Sliders[] = await sliserService.getSliders()
 
   return (
     <div>

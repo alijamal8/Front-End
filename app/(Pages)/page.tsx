@@ -5,13 +5,11 @@ import { getSliders } from "@/services/api/slider";
 import React from "react";
 
 async function HomePage() {
-  
   return (
     <>
       <Navbar />
       <Slider />
       <Category />
-
     </>
   );
 }
