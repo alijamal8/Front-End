@@ -61,7 +61,7 @@ function CategoryGrid() {
   // if (isError) return <SkeletonCard />;
 
   return (
-    <div className="mt-14">
+    <div className="mt-14 ">
       <main className="min-h-screen p-4 md:p-8 lg:p-12">
         <div className="mx-auto max-w-6xl max-sm:max-w-md">
           <div className="grid grid-cols-1 lg:grid-cols-[2fr_3fr] gap-6">

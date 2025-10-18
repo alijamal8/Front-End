@@ -1,5 +1,5 @@
 import React from "react";
-import Title from "./Title";
+import Title from "../global/Title";
 import CategoryGrid from "./CategoryGrid";
 
 
@@ -8,7 +8,7 @@ import CategoryGrid from "./CategoryGrid";
 function Category() {
   return (
     <>
-    <div className="mx-auto text-center mt-24  pb-20 ">
+    <div className="mx-auto text-center mt-34 ">
       <Title title="Explore Top Products By Category" />
       <CategoryGrid/>
     </div>

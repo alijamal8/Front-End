@@ -1,7 +1,7 @@
 import Category from "@/components/category/Category";
 import Navbar from "@/components/navbar/Navbar";
+import ProductSection from "@/components/productSection/FeaturedProducts";
 import Slider from "@/components/slider/Slider";
-import { getSliders } from "@/services/api/slider";
 import React from "react";
 
 async function HomePage() {
@@ -10,6 +10,7 @@ async function HomePage() {
       <Navbar />
       <Slider />
       <Category />
+      <ProductSection/>
     </>
   );
 }
