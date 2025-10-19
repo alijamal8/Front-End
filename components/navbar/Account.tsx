@@ -10,6 +10,7 @@ import {
   MenubarTrigger,
 } from "@/components/ui/menubar";
 import { Button } from "../ui/button";
+import Link from "next/link";
 
 function Account() {
   return (
@@ -23,7 +24,9 @@ function Account() {
             <MenubarItem>My Account</MenubarItem>
 
             <MenubarSeparator />
-            <MenubarItem>Login / Register</MenubarItem>
+            <Link href={"/register"}>
+              <MenubarItem>Login / Register</MenubarItem>
+            </Link>
           </MenubarContent>
         </MenubarMenu>
       </Menubar>

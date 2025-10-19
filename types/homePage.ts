@@ -20,3 +20,10 @@ export interface Sliders{
   is_active:boolean
   display_order:number
 }
+export interface Product{
+  id:number,
+  title:string,
+  image_url:string
+  rating:number
+  price:number
+}
