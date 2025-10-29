@@ -82,7 +82,7 @@ function CategoryGrid() {
                   />
                   <div className="text-white absolute bottom-[-35] left-12 group-hover:bottom-4 transition-all duration-500 max-sm:bottom-2">
                     <h1
-                      className={`text-4xl font-semibold ${
+                      className={`text-4xl font-bold ${
                         category2[0].text_color === "black"
                           ? "text-black"
                           : "text-white"
@@ -120,7 +120,7 @@ function CategoryGrid() {
                             card.text_color === "black"
                               ? "text-black"
                               : "text-white"
-                          } text-2xl font-semibold`}
+                          } text-2xl font-bold`}
                         >
                           {card.title}
                         </h1>

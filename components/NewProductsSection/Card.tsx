@@ -2,7 +2,7 @@
 import React from "react";
 import { Button } from "../ui/button";
 import Image from "next/image";
-import { FaLessThanEqual, FaRegHeart } from "react-icons/fa";
+import {FaRegHeart } from "react-icons/fa";
 import Rating from "./Rating";
 import { FaHeart } from "react-icons/fa";
 import { Product } from "@/types/homePage";

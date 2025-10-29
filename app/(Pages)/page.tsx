@@ -7,7 +7,6 @@ import React from "react";
 async function HomePage() {
   return (
     <>
-      <Navbar />
       <Slider />
       <Category />
       <ProductSection/>

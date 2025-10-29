@@ -60,7 +60,7 @@ const sliders2 = [
 ];
 
 async function Slider() {
-  const sliders: Sliders[] = await sliserService.getSliders()
+  const sliders: Sliders[] = await sliserService.getSliders();
 
   return (
     <div>
@@ -93,10 +93,10 @@ async function Slider() {
                               item.text_color === "black"
                                 ? "text-black"
                                 : "text-white"
-                            } right-50 bottom-80 max-sm:right-5 max-sm:bottom-20 max-lg:right-5 max-lg:bottom-50`
+                            } right-40 bottom-80 max-sm:right-5 max-sm:bottom-20 max-lg:right-5 max-lg:bottom-50`
                       }`}
                     >
-                      <h1 className="text-5xl font-semibold max-sm:text-2xl">
+                      <h1 className="text-5xl font-bold max-sm:text-2xl">
                         {item.title}
                       </h1>
 

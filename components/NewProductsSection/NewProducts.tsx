@@ -1,21 +1,12 @@
 import React from "react";
 import Title from "../global/Title";
-
 import { Button } from "../ui/button";
 import { MdNavigateNext } from "react-icons/md";
 import { Separator } from "@/components/ui/separator";
 import Card from "./Card";
 import Link from "next/link";
 
-const product = [
-  {
-    id: 2,
-    title: "Galaxy S25 Ultra",
-    price: 1200,
-    image_url: "/241cb672af49e117a2cb9060ce88df5f-removebg-preview.png",
-    rating: 5,
-  },
-
+export const product = [
   {
     id: 7,
     title: "Power Banks",
@@ -67,20 +58,7 @@ const product = [
     image_url: "/3797f60300b41b50afb49f7e169b74a2.jpg",
     rating: 5,
   },
-  {
-    id: 16,
-    title: "Honor X9C",
-    price: 270,
-    image_url: "/92b3f6d1676ef39f3200850c5c6342ca-removebg-preview.png",
-    rating: 5,
-  },
-  {
-    id: 17,
-    title: "IPhone 17 Pro",
-    price: 1270,
-    image_url: "/acb774e31141bb3c84be7d4eabc43993-removebg-preview.png",
-    rating: 3,
-  },
+
   {
     id: 18,
     title: "IPhone 17",
@@ -88,12 +66,61 @@ const product = [
     image_url: "/b2be274626cf2ff05b07d406687c0334-removebg-preview.png",
     rating: 4,
   },
-  {
-    id: 44,
-    title: "Galaxy S25 Ultra",
-    price: 1200,
-    image_url: "/241cb672af49e117a2cb9060ce88df5f-removebg-preview.png",
-    rating: 5,
+   {
+    id: 20,
+    title: "IPhone 17",
+    price: 1100,
+    image_url: "/b2be274626cf2ff05b07d406687c0334-removebg-preview.png",
+    rating: 4,
+  },
+   {
+    id: 21,
+    title: "IPhone 17",
+    price: 1100,
+    image_url: "/b2be274626cf2ff05b07d406687c0334-removebg-preview.png",
+    rating: 4,
+  },
+   {
+    id: 23,
+    title: "IPhone 17",
+    price: 1100,
+    image_url: "/b2be274626cf2ff05b07d406687c0334-removebg-preview.png",
+    rating: 4,
+  },
+   {
+    id: 24,
+    title: "IPhone 17",
+    price: 1100,
+    image_url: "/b2be274626cf2ff05b07d406687c0334-removebg-preview.png",
+    rating: 4,
+  },
+   {
+    id: 25,
+    title: "IPhone 17",
+    price: 1100,
+    image_url: "/b2be274626cf2ff05b07d406687c0334-removebg-preview.png",
+    rating: 4,
+  },
+   {
+    id: 26,
+    title: "IPhone 17",
+    price: 1100,
+    image_url: "/b2be274626cf2ff05b07d406687c0334-removebg-preview.png",
+    rating: 4,
+  },
+   {
+    id: 27,
+    title: "IPhone 17",
+    price: 1100,
+    image_url: "/b2be274626cf2ff05b07d406687c0334-removebg-preview.png",
+    rating: 4,
+  },
+   {
+    id: 28,
+    title: "IPhone 17",
+    price: 1100,
+    image_url: "/b2be274626cf2ff05b07d406687c0334-removebg-preview.png",
+    rating: 4,
   },
 ];
 
@@ -105,11 +132,11 @@ function ProductSection() {
 
         <div className="cursor-pointer group max-w-md mx-auto">
           {/* title div  */}
-          <Title title={"What's New"} />
+          <Title title={"New Arrivals"} />
           <Separator className="max-w-[50px] mx-auto mt-5 cursor-pointer transition-all duration-500 bg-purple-600 group-hover:max-w-[120px]" />
         </div>
 
-        <div id="cards" className="flex flex-wrap p-4 pl-25 mt-24 gap-7 ">
+        <div id="cards" className="flex flex-wrap  p-4 pl-25 mt-24 gap-7">
           {/* cards div  */}
           <Card product={product} />
         </div>

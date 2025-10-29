@@ -10,13 +10,13 @@ import {
 import Link from "next/link";
 
 export default function Links() {
-  const brands = ["Phones", "Tablets", "Wearables", "Audio", "Accessories"];
+   const categories = ["Phones", "Tablets", "Wearables", "Audio", "Accessories"];
   return (
     <>
       <div className="flex gap-8 max-sm:hidden max-lg:gap-4">
-        {brands.map((brand) => (
-          <Link key={brand} href={"/"}>
-            <h1 className="font-semibold">{brand}</h1>
+        {categories.map((category) => (
+          <Link key={category} href={"/"}>
+            <h1 className="font-semibold">{category}</h1>
           </Link>
         ))}
       </div>
