@@ -1,18 +1,13 @@
-import LeftSide from "@/components/NewProductPage/LeftSide";
-import RightSide from "@/components/NewProductPage/RightSide";
-import { Road } from "@/components/NewProductPage/Road";
+import NewProductPage from "@/components/NewProductPage/NewProductPage";
+import { NewProductService } from "@/services/api/newproduct";
 import React from "react";
 
-function page() {
+
+async function page() {
+  const data = await NewProductService.getNewProduct();
+  console.log(data)
   return (
-    <div className="px-10 grid grid-cols-[22%_78%] mt-10 space-x-10 max-sm:grid-cols-1 max-sm:px-0 max-sm:mt-0">
-      <div id="left">
-        <LeftSide />
-      </div>
-      <div id="right">
-        <RightSide />
-      </div>
-    </div>
+    <NewProductPage initialProducts={data}/>
   );
 }
 

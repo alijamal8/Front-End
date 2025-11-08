@@ -5,8 +5,9 @@ import { MdNavigateNext } from "react-icons/md";
 import { Separator } from "@/components/ui/separator";
 import Card from "./Card";
 import Link from "next/link";
+import { NewProductService } from "@/services/api/newproduct";
 
-export const product = [
+export const product2 = [
   {
     id: 7,
     title: "Power Banks",
@@ -66,57 +67,29 @@ export const product = [
     image_url: "/b2be274626cf2ff05b07d406687c0334-removebg-preview.png",
     rating: 4,
   },
-   {
+  {
     id: 20,
     title: "IPhone 17",
     price: 1100,
     image_url: "/b2be274626cf2ff05b07d406687c0334-removebg-preview.png",
     rating: 4,
   },
-   {
+  {
     id: 21,
     title: "IPhone 17",
     price: 1100,
     image_url: "/b2be274626cf2ff05b07d406687c0334-removebg-preview.png",
     rating: 4,
   },
-   {
+  {
     id: 23,
     title: "IPhone 17",
     price: 1100,
     image_url: "/b2be274626cf2ff05b07d406687c0334-removebg-preview.png",
     rating: 4,
   },
-   {
+  {
     id: 24,
-    title: "IPhone 17",
-    price: 1100,
-    image_url: "/b2be274626cf2ff05b07d406687c0334-removebg-preview.png",
-    rating: 4,
-  },
-   {
-    id: 25,
-    title: "IPhone 17",
-    price: 1100,
-    image_url: "/b2be274626cf2ff05b07d406687c0334-removebg-preview.png",
-    rating: 4,
-  },
-   {
-    id: 26,
-    title: "IPhone 17",
-    price: 1100,
-    image_url: "/b2be274626cf2ff05b07d406687c0334-removebg-preview.png",
-    rating: 4,
-  },
-   {
-    id: 27,
-    title: "IPhone 17",
-    price: 1100,
-    image_url: "/b2be274626cf2ff05b07d406687c0334-removebg-preview.png",
-    rating: 4,
-  },
-   {
-    id: 28,
     title: "IPhone 17",
     price: 1100,
     image_url: "/b2be274626cf2ff05b07d406687c0334-removebg-preview.png",
@@ -124,7 +97,10 @@ export const product = [
   },
 ];
 
-function ProductSection() {
+async function ProductSection() {
+  const data = await NewProductService.getNewProduct();
+  const product = data.slice(0,12)
+
   return (
     <>
       <div className="mx-auto text-center pb-50 mt-34 pt-5 ">

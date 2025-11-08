@@ -22,8 +22,14 @@ export interface Sliders{
 }
 export interface Product{
   id:number,
-  title:string,
+  name:string,
   image_url:string
   rating:number
   price:number
+  category: { name: string };
+  brand: { name: string };
 }
+
+export interface  LeftSideProps  {
+  onFilterChange: (categories: string[], brands: string[]) => void;
+};

@@ -12,19 +12,47 @@ import {
 import { Label } from "../ui/label";
 import { Checkbox } from "@/components/ui/checkbox";
 import { FaFilter } from "react-icons/fa";
+import { LeftSideProps } from "@/types/homePage";
+import { useState } from "react";
 
-const categories = ["Phones", "Tablets", "Wearables", "Audio", "Accessories"];
-const brands = [
-  "Apple",
-  "Samsung",
-  "Huawei",
-  "Honor",
-  "Xiaomi",
-  "Anker",
-  "Havit",
-  "Mcdodo",
-];
-export default function SlidFilter() {
+export default function SlidFilter({ onFilterChange }: LeftSideProps) {
+  const categories = [
+    "Mobiles",
+    "Tablets",
+    "Wearables",
+    "Audio",
+    "Accessories",
+  ];
+  const brands = [
+    "Apple",
+    "Samsung",
+    "Huawei",
+    "Honor",
+    "Xiaomi",
+    "Anker",
+    "Oramio",
+    "Mcdodo",
+  ];
+
+  const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
+  const [selectedBrands, setSelectedBrands] = useState<string[]>([]);
+
+  const handleCategoryChange = (category: string) => {
+    const updated = selectedCategories.includes(category)
+      ? selectedCategories.filter((c) => c !== category)
+      : [...selectedCategories, category];
+    setSelectedCategories(updated);
+    onFilterChange(updated, selectedBrands);
+  };
+
+  const handleBrandChange = (brand: string) => {
+    const updated = selectedBrands.includes(brand)
+      ? selectedBrands.filter((b) => b !== brand)
+      : [...selectedBrands, brand];
+    setSelectedBrands(updated);
+    onFilterChange(selectedCategories, updated);
+  };
+
   const [open, setOpen] = React.useState(false);
 
   const toggleDrawer = (newOpen: boolean) => () => {
@@ -40,7 +68,11 @@ export default function SlidFilter() {
           <AccordionContent className="flex flex-col gap-4 text-balance">
             {categories.map((category) => (
               <div key={category} className="flex gap-3">
-                <Checkbox id="terms" />
+                <Checkbox
+                  id={`category-${category}`}
+                  checked={selectedCategories.includes(category)}
+                  onCheckedChange={() => handleCategoryChange(category)}
+                />
                 <Label className="text-md" htmlFor="terms">
                   {category}
                 </Label>
@@ -56,7 +88,11 @@ export default function SlidFilter() {
           <AccordionContent className="flex flex-col gap-4 text-balance">
             {brands.map((brand) => (
               <div key={brand} className="flex gap-3">
-                <Checkbox id="terms" />
+                <Checkbox
+                  id={`brand-${brand}`}
+                  checked={selectedBrands.includes(brand)}
+                  onCheckedChange={() => handleBrandChange(brand)}
+                />
                 <Label className="text-md" htmlFor="terms">
                   {brand}
                 </Label>
@@ -74,7 +110,7 @@ export default function SlidFilter() {
         <Button
           variant={"secondary"}
           onClick={toggleDrawer(true)}
-          className="right-0 -top-8 absolute"
+          className="right-4 top-15 absolute"
         >
           <FaFilter />
         </Button>

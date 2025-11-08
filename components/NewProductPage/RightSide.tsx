@@ -1,6 +1,5 @@
 "use client";
 import React, { useState, useEffect } from "react";
-import { product } from "../NewProductsSection/NewProducts";
 import Card from "../NewProductsSection/Card";
 import { Separator } from "../ui/separator";
 import SlidFilter from "./SlidFilter";
@@ -12,14 +11,18 @@ import {
   PaginationNext,
   PaginationPrevious,
 } from "@/components/ui/pagination";
+import { Product } from "@/types/homePage";
 
-function RightSide() {
+function RightSide({ filteredProducts }: { filteredProducts: Product[] }) {
   const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 6; // عدد المنتجات في الصفحة
+  const itemsPerPage = 6;
 
-  const totalPages = Math.ceil(product.length / itemsPerPage);
+  const totalPages = Math.ceil(filteredProducts.length / itemsPerPage);
   const startIndex = (currentPage - 1) * itemsPerPage;
-  const currentProducts = product.slice(startIndex, startIndex + itemsPerPage);
+  const currentProducts = filteredProducts.slice(
+    startIndex,
+    startIndex + itemsPerPage
+  );
 
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: "smooth" });
@@ -44,18 +47,21 @@ function RightSide() {
           <h1 className="text-3xl font-bold mb-4 max-sm:text-xl">
             New Arrivals Products
           </h1>
-          <p>{product.length} products</p>
-
-          <SlidFilter />
+          <p>{filteredProducts.length} products</p>
         </div>
 
         <Separator className="mb-8" />
 
         <div id="cards" className="flex flex-wrap justify-center gap-12">
+          {filteredProducts.length === 0 ? (
+            <h1 className="text-xl">
+              No items found for the selected filters.
+            </h1>
+          ) : (
+            ""
+          )}
           <Card product={currentProducts} />
         </div>
-
-        <SlidFilter />
 
         <Separator className="mt-8" />
         <Pagination className="mt-4 flex justify-center">

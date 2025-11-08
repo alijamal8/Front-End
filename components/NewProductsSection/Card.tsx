@@ -22,7 +22,7 @@ function Card({ product }: { product: Product[] }) {
               quality={100}
               sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
               className="w-full h-full object-contain max-h-[290px] transition-all duration-500 ease-in-out group-hover:scale-110 group-hover:opacity-80"
-              src={item.image_url}
+              src={item.image_url || "/all-pura80-pro-removebg-preview.png"}
             />
 
             <div className="absolute right-4 top-4">
@@ -40,7 +40,7 @@ function Card({ product }: { product: Product[] }) {
           </div>
 
           <div className="flex justify-between pt-4 pb-2">
-            <h1 className="font-bold text-xl">{item.title}</h1>
+            <h1 className="font-bold text-xl">{item.name}</h1>
             <p className="font-bold text-xl">{item.price}$</p>
           </div>
           <div className="max-w-[400px] items-start flex flex-col gap-4">
