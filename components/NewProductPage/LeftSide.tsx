@@ -1,6 +1,6 @@
 "use client";
-import { useState } from "react";
-import { Road } from "./Road";
+
+import { Road } from "../global/Road";
 import { Checkbox } from "@/components/ui/checkbox";
 import {
   Accordion,
@@ -9,27 +9,15 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { Label } from "../ui/label";
-import { LeftSideProps } from "@/types/homePage";
 import { useProductFilterStore } from "@/stores/filterStore";
-
-
-function LeftSide({ onFilterChange }: LeftSideProps) {
-
-const {
-  selectedCategories,
-  selectedBrands,
-  handleCategoryChange,
-  handleBrandChange
-} = useProductFilterStore();
-
-  const categories = [
+  export const categories = [
     "Mobiles",
     "Tablets",
     "Wearables",
     "Audio",
     "Accessories",
   ];
-  const brands = [
+   export const brands = [
     "Apple",
     "Samsung",
     "Huawei",
@@ -40,24 +28,18 @@ const {
     "Mcdodo",
   ];
 
-  // const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
-  // const [selectedBrands, setSelectedBrands] = useState<string[]>([]);
 
-  // const handleCategoryChange = (category: string) => {
-  //   const updated = selectedCategories.includes(category)
-  //     ? selectedCategories.filter((c) => c !== category)
-  //     : [...selectedCategories, category];
-  //   setSelectedCategories(updated);
-  //   onFilterChange(updated, selectedBrands);
-  // };
 
-  // const handleBrandChange = (brand: string) => {
-  //   const updated = selectedBrands.includes(brand)
-  //     ? selectedBrands.filter((b) => b !== brand)
-  //     : [...selectedBrands, brand];
-  //   setSelectedBrands(updated);
-  //   onFilterChange(selectedCategories, updated);
-  // };
+
+function LeftSide() {
+  const {
+    selectedCategories,
+    selectedBrands,
+    handleCategoryChange,
+    handleBrandChange,
+  } = useProductFilterStore();
+
+
 
   return (
     <>

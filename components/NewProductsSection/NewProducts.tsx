@@ -15,6 +15,11 @@ export const product2 = [
     image_url:
       "/A110AH11_Richimage_TD01_US_V1_41ed3782-6e72-4335-8e1b-41b2fa7b7d35_3838x.webp",
     rating: 5,
+    display: 6.5,
+    battery: 5500,
+    camera: 108,
+    storage: 256,
+    ram: 8,
   },
 
   {
@@ -23,6 +28,11 @@ export const product2 = [
     price: 1300,
     image_url: "/114eaa3c703c5b5cd9ae491b74204914.webp",
     rating: 5,
+    display: 6.5,
+    battery: 5500,
+    camera: 108,
+    storage: 256,
+    ram: 8,
   },
   {
     id: 10,
@@ -30,6 +40,11 @@ export const product2 = [
     price: 700,
     image_url: "/all-pura80-pro-removebg-preview.png",
     rating: 3,
+    display: 6.5,
+    battery: 5500,
+    camera: 108,
+    storage: 256,
+    ram: 8,
   },
   {
     id: 11,
@@ -37,6 +52,11 @@ export const product2 = [
     price: 1700,
     image_url: "/iphone_17pro__0s6piftg70ym_large-removebg-preview.png",
     rating: 4,
+    display: 6.5,
+    battery: 5500,
+    camera: 108,
+    storage: 256,
+    ram: 8,
   },
   {
     id: 12,
@@ -44,6 +64,11 @@ export const product2 = [
     price: 70,
     image_url: "/H655BTPROBlack4-removebg-preview.png",
     rating: 5,
+    display: 6.5,
+    battery: 5500,
+    camera: 108,
+    storage: 256,
+    ram: 8,
   },
   {
     id: 13,
@@ -51,6 +76,11 @@ export const product2 = [
     price: 50,
     image_url: "/20250701175457-removebg-preview.png",
     rating: 5,
+    display: 6.5,
+    battery: 5500,
+    camera: 108,
+    storage: 256,
+    ram: 8,
   },
   {
     id: 15,
@@ -58,6 +88,11 @@ export const product2 = [
     price: 680,
     image_url: "/3797f60300b41b50afb49f7e169b74a2.jpg",
     rating: 5,
+    display: 6.5,
+    battery: 5500,
+    camera: 108,
+    storage: 256,
+    ram: 8,
   },
 
   {
@@ -66,6 +101,11 @@ export const product2 = [
     price: 1100,
     image_url: "/b2be274626cf2ff05b07d406687c0334-removebg-preview.png",
     rating: 4,
+    display: 6.5,
+    battery: 5500,
+    camera: 108,
+    storage: 256,
+    ram: 8,
   },
   {
     id: 20,
@@ -99,7 +139,7 @@ export const product2 = [
 
 async function ProductSection() {
   const data = await NewProductService.getNewProduct();
-  const product = data.slice(0,12)
+  const product = data.slice(0, 12);
 
   return (
     <>

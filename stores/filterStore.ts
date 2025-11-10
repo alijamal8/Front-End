@@ -1,5 +1,5 @@
 import { create } from "zustand";
-import { Product } from "../types/homePage"; // استبدل بالمسار الصحيح
+import { Product } from "../types/homePage";
 
 interface ProductFilterState {
   products: Product[];

@@ -11,11 +11,15 @@ import {
   PaginationNext,
   PaginationPrevious,
 } from "@/components/ui/pagination";
-import { Product } from "@/types/homePage";
 
-function RightSide({ filteredProducts }: { filteredProducts: Product[] }) {
+import { useProductFilterStore } from "@/stores/filterStore";
+import NoResult from "../global/NoResult";
+
+function RightSide() {
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 6;
+  const filteredProducts =useProductFilterStore((state) => state.filteredProducts);
+  
 
   const totalPages = Math.ceil(filteredProducts.length / itemsPerPage);
   const startIndex = (currentPage - 1) * itemsPerPage;
@@ -54,9 +58,7 @@ function RightSide({ filteredProducts }: { filteredProducts: Product[] }) {
 
         <div id="cards" className="flex flex-wrap justify-center gap-12">
           {filteredProducts.length === 0 ? (
-            <h1 className="text-xl">
-              No items found for the selected filters.
-            </h1>
+           <NoResult/>
           ) : (
             ""
           )}

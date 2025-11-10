@@ -13,6 +13,8 @@ function NewProductPage({ initialProducts }: { initialProducts: Product[] }) {
 
   const setProducts = useProductFilterStore((state) => state.setProducts);
 
+
+  
   useEffect(() => {
     setProducts(initialProducts);
   }, [initialProducts, setProducts]);
@@ -21,12 +23,12 @@ function NewProductPage({ initialProducts }: { initialProducts: Product[] }) {
     <>
       <div className="px-10 grid grid-cols-[22%_78%] mt-10 space-x-10 max-sm:grid-cols-1 max-sm:px-0 max-sm:mt-0">
         <div id="left">
-          <LeftSide onFilterChange={handleFilterChange} />
+          <LeftSide  />
         </div>
         <div id="right">
-          <SlidFilter onFilterChange={handleFilterChange} />
+          <SlidFilter />
 
-          <RightSide filteredProducts={filteredProducts} />
+          <RightSide  />
         </div>
       </div>
     </>

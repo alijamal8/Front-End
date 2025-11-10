@@ -12,7 +12,6 @@ function Category() {
       <Title title="Explore Top Products By Category" />
       <CategoryGrid/>
     </div>
-    
     </>
   );
 }
