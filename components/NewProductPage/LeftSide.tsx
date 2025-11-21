@@ -10,26 +10,23 @@ import {
 } from "@/components/ui/accordion";
 import { Label } from "../ui/label";
 import { useProductFilterStore } from "@/stores/filterStore";
-  export const categories = [
-    "Mobiles",
-    "Tablets",
-    "Wearables",
-    "Audio",
-    "Accessories",
-  ];
-   export const brands = [
-    "Apple",
-    "Samsung",
-    "Huawei",
-    "Honor",
-    "Xiaomi",
-    "Anker",
-    "Oramio",
-    "Mcdodo",
-  ];
-
-
-
+export const categories = [
+  "Mobiles",
+  "Tablets",
+  "Wearables",
+  "Audio",
+  "Accessories",
+];
+export const brands = [
+  "Apple",
+  "Samsung",
+  "Huawei",
+  "Honor",
+  "Xiaomi",
+  "Anker",
+  "Oramio",
+  "Mcdodo",
+];
 
 function LeftSide() {
   const {
@@ -38,8 +35,6 @@ function LeftSide() {
     handleCategoryChange,
     handleBrandChange,
   } = useProductFilterStore();
-
-
 
   return (
     <>

@@ -1,10 +1,9 @@
-"use client"
+"use client";
 import { useState } from "react";
 import { FaStar } from "react-icons/fa";
 
-export default function Rating({rate}:{rate:number}) {
+export default function Rating({ rate }: { rate: number }) {
   const [rating, setRating] = useState<number>(rate);
-  
 
   return (
     <div className="flex space-x-1">
@@ -13,13 +12,12 @@ export default function Rating({rate}:{rate:number}) {
         return (
           <FaStar
             key={index}
-            size={13}
+            size={15}
             className={
-              starValue <= (rating)
+              starValue <= rating
                 ? "text-purple-600 cursor-pointer"
                 : "text-gray-400 cursor-pointer"
             }
-            
           />
         );
       })}

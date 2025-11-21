@@ -62,7 +62,9 @@ function RightSide() {
           ) : (
             ""
           )}
-          <Card product={currentProducts} />
+          <Card product={currentProducts}
+          from="new-products"
+           />
         </div>
 
         <Separator className="mt-8" />

@@ -13,51 +13,51 @@ import Link from "next/link";
 import { Sliders } from "@/types/homePage";
 import { sliserService } from "@/services/api/slider";
 
-// const sliders2 = [
-//   {
-//     id: 1,
-//     title: "Xiaomi 15T Pro",
-//     description:
-//       "Masterpieces far closer, Leica 5x Pro telephone Spotlight Photography, Leoca Summilux optical lens",
-//     image_url: "/slider/43ae224614d1cd4bd3d99d187ef0feca.webp",
-//     position: "left",
-//     text_color: "black",
-//     button_label: "Learn More",
-//   },
-//   {
-//     id: 2,
-//     title: "Galaxy Watch 8 Classic",
-//     description:
-//       "Built to perform. Designed to impress.,Your every command, right on your wrist,Unlock the secrets to better sleep",
-//     image_url:
-//       "/slider/SCOMB7Q7-376_Watch8-Classic-Lifestyle-PCD-KV-DT-1440x640.webp",
-//     position: "right",
-//     text_color: "white",
-//     button_label: "Learn More",
-//   },
+const sliders2 = [
+  {
+    id: 1,
+    title: "Xiaomi 15T Pro",
+    description:
+      "Masterpieces far closer, Leica 5x Pro telephone Spotlight Photography, Leoca Summilux optical lens",
+    image_url: "/slider/43ae224614d1cd4bd3d99d187ef0feca.webp",
+    position: "left",
+    text_color: "black",
+    button_label: "Learn More",
+  },
+  {
+    id: 2,
+    title: "Galaxy Watch 8 Classic",
+    description:
+      "Built to perform. Designed to impress.,Your every command, right on your wrist,Unlock the secrets to better sleep",
+    image_url:
+      "/slider/SCOMB7Q7-376_Watch8-Classic-Lifestyle-PCD-KV-DT-1440x640.webp",
+    position: "right",
+    text_color: "white",
+    button_label: "Learn More",
+  },
 
-//   {
-//     id: 3,
-//     title: "HONOR 400 Series",
-//     description:
-//       "Al 200MP Ultra-Clear Al Camera ,Super Zoom Further See Clearer.",
-//     image_url: "/slider/400-gold-400-pro-grey-pc.avif",
-//     position: "left",
-//     text_color: "black",
-//     button_label: "Learn More",
-//   },
+  {
+    id: 3,
+    title: "HONOR 400 Series",
+    description:
+      "Al 200MP Ultra-Clear Al Camera ,Super Zoom Further See Clearer.",
+    image_url: "/slider/400-gold-400-pro-grey-pc.avif",
+    position: "left",
+    text_color: "black",
+    button_label: "Learn More",
+  },
 
-//   {
-//     id: 4,
-//     title: "HONOR Magic 7 RSR",
-//     description:
-//       "Snapdragon® 8 Elite Mobile Platform ,Unrivaled Performance Unmatched Speed.",
-//     image_url: "/slider/honor-magic7-rsr-pc.avif",
-//     position: "right",
-//     text_color: "white",
-//     button_label: "Learn More",
-//   },
-// ];
+  {
+    id: 4,
+    title: "HONOR Magic 7 RSR",
+    description:
+      "Snapdragon® 8 Elite Mobile Platform ,Unrivaled Performance Unmatched Speed.",
+    image_url: "/slider/honor-magic7-rsr-pc.avif",
+    position: "right",
+    text_color: "white",
+    button_label: "Learn More",
+  },
+];
 
 async function Slider() {
   const sliders: Sliders[] = await sliserService.getSliders();
@@ -66,7 +66,7 @@ async function Slider() {
     <div>
       <Carousel>
         <CarouselContent>
-          {sliders.map((item, index) => (
+          {sliders2.map((item, index) => (
             <CarouselItem key={index}>
               <div>
                 <Card className="p-0">
@@ -80,6 +80,7 @@ async function Slider() {
                         priority={index === 0}
                         quality={100}
                       />
+                      {/* src={`http://localhost:8000/${item.image_url.replace(/^\/+/, '')}`} */}
                     </Link>
                     <div
                       className={` absolute ${

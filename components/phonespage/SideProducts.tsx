@@ -56,7 +56,9 @@ function SideProducts() {
         ) : (
           ""
         )}
-        <Card product={currentProducts} />
+        <Card product={currentProducts} 
+        from="mobiles"
+        />
       </div>
 
       <Separator className="mt-8" />

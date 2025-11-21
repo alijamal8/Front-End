@@ -13,9 +13,9 @@ const category2 = [
   {
     id: 2,
     image_url: "/category/innovation__ce13717o3vhy_large_2x.jpg",
-    title: "Phones",
+    title: "Mobiles",
     text_color: "black",
-    link: "phones",
+    link: "mobiles",
   },
 
   {

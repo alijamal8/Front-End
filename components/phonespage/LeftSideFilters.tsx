@@ -36,7 +36,7 @@ function LeftSideFilters() {
         <Road
           items={[
             { label: "Home", href: "/" },
-            { label: "Phones", href: "/phones" },
+            { label: "Mobils", href: "/Mobils" },
           ]}
         />
 

@@ -5,7 +5,7 @@ import { MdNavigateNext } from "react-icons/md";
 import { Separator } from "@/components/ui/separator";
 import Card from "./Card";
 import Link from "next/link";
-import { NewProductService } from "@/services/api/newproduct";
+import { ProductsService } from "@/services/api/product";
 
 export const product2 = [
   {
@@ -138,7 +138,7 @@ export const product2 = [
 ];
 
 async function ProductSection() {
-  const data = await NewProductService.getNewProduct();
+  const data = await ProductsService.getNewProduct();
   const product = data.slice(0, 12);
 
   return (
@@ -154,7 +154,9 @@ async function ProductSection() {
 
         <div id="cards" className="flex flex-wrap  p-4 pl-25 mt-24 gap-7">
           {/* cards div  */}
-          <Card product={product} />
+          <Card product={product} 
+          from="new-products"
+          />
         </div>
 
         <Link href={"/newproduct"}>

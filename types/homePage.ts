@@ -1,30 +1,31 @@
-
 export interface MyTitleProps {
   title: string;
-};
-export interface Category{
-  id:number,
-  title:string,
-  image_url:string
-  text_color:string
 }
-export interface Sliders{
-  id:number,
-  title:string,
-  product_id:string
-  description:string
-  position:string
-  text_color:string
-  image_url:string
-  button_label:string
-  is_active:boolean
-  display_order:number
+export interface Category {
+  id: number;
+  title: string;
+  image_url: string;
+  text_color: string;
 }
-type Image = {
+export interface Sliders {
+  id: number;
+  title: string;
+  product_id: string;
+  description: string;
+  position: string;
+  text_color: string;
+  image_url: string;
+  button_label: string;
+  is_active: boolean;
+  display_order: number;
+}
+type Images = {
   id: number;
   product_id: number;
   image_url: string;
   is_main: number;
+  color_name:string;
+  color_hex : string
 };
 
 type Brand = {
@@ -35,6 +36,22 @@ type Brand = {
 type Category2 = {
   id: number;
   name: string;
+};
+type variants = {
+  id: number;
+  product_id: number;
+  storage: number;
+  price: number;
+  is_main: number;
+};
+
+
+type Specifications= {
+  id: number;
+  product_id: number;
+  name:string;
+  value: string;
+  is_main: number;
 };
 
 export type Product = {
@@ -47,10 +64,16 @@ export type Product = {
   brand_id: number;
   category: Category2;
   category_id: number;
-  images: Image[];
+  images: Images[];
+  variants: variants[];
+  specifications : Specifications[]
 };
 
-
-export interface  LeftSideProps  {
+export interface CardProps
+{
+  product: Product[];
+  from:string
+}
+export interface LeftSideProps {
   onFilterChange: (categories: string[], brands: string[]) => void;
-};
+}
