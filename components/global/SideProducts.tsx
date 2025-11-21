@@ -1,7 +1,7 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import { Separator } from "../ui/separator";
-import Card from "../NewProductsSection/Card";
+
 import {
   Pagination,
   PaginationContent,
@@ -12,12 +12,11 @@ import {
 } from "@/components/ui/pagination";
 
 
-import { usePhonesFilters } from "@/stores/usePhoneFilterStore";
-import NoResult from "../global/NoResult";
+import NoResult from "./NoResult";
+import Card from "./Card";
+import { Product } from "@/types/homePage";
 
-function SideProducts() {
-  const filtered = usePhonesFilters((state) => state.filtered);
-
+function SideProducts({ filtered }: { filtered: Product[] }) {
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 6;
 
@@ -51,14 +50,8 @@ function SideProducts() {
       <Separator className="mb-8" />
 
       <div id="cards" className="flex flex-wrap justify-center gap-12">
-        {filtered.length === 0 ? (
-          <NoResult/>
-        ) : (
-          ""
-        )}
-        <Card product={currentProducts} 
-        from="mobiles"
-        />
+        {filtered.length === 0 ? <NoResult /> : ""}
+        <Card product={currentProducts} from="mobiles" />
       </div>
 
       <Separator className="mt-8" />

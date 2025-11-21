@@ -1,5 +1,5 @@
 
-import PhonesPage from "@/components/phonespage/PhonesPage";
+import PhonesPage from "@/components/phonesPage/PhonesPage";
 import { ProductsService } from "@/services/api/product";
 import React from "react";
 

@@ -3,10 +3,12 @@ import React from "react";
 import { Button } from "../ui/button";
 import Image from "next/image";
 import { FaRegHeart } from "react-icons/fa";
-import Rating from "./Rating";
+
 import { FaHeart } from "react-icons/fa";
 import { CardProps, Product } from "@/types/homePage";
 import Link from "next/link";
+import Rating from "./Rating";
+
 
 const a = false;
 

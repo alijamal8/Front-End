@@ -5,16 +5,14 @@ import LeftSide from "./LeftSide";
 import { Product } from "@/types/homePage";
 import SlidFilter from "./SlidFilter";
 import { useProductFilterStore } from "@/stores/filterStore";
+import SideProducts from "../global/SideProducts";
 
 function NewProductPage({ initialProducts }: { initialProducts: Product[] }) {
-
-
-  const { filteredProducts, handleFilterChange } = useProductFilterStore();
-
+  const filteredProducts = useProductFilterStore(
+    (state) => state.filteredProducts
+  );
   const setProducts = useProductFilterStore((state) => state.setProducts);
 
-
-  
   useEffect(() => {
     setProducts(initialProducts);
   }, [initialProducts, setProducts]);
@@ -23,12 +21,11 @@ function NewProductPage({ initialProducts }: { initialProducts: Product[] }) {
     <>
       <div className="px-10 grid grid-cols-[22%_78%] mt-10 space-x-10 max-sm:grid-cols-1 max-sm:px-0 max-sm:mt-0">
         <div id="left">
-          <LeftSide  />
+          <LeftSide />
         </div>
         <div id="right">
           <SlidFilter />
-
-          <RightSide  />
+          <SideProducts filtered={filteredProducts} />
         </div>
       </div>
     </>

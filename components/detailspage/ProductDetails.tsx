@@ -1,5 +1,5 @@
 import React from "react";
-import Rating from "../NewProductsSection/Rating";
+import Rating from "../global/Rating";
 import ProductSelector from "./ProductSelector";
 import Quantity from "./Quantity";
 import { Product } from "@/types/homePage";

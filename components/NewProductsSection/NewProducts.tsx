@@ -3,9 +3,10 @@ import Title from "../global/Title";
 import { Button } from "../ui/button";
 import { MdNavigateNext } from "react-icons/md";
 import { Separator } from "@/components/ui/separator";
-import Card from "./Card";
+
 import Link from "next/link";
 import { ProductsService } from "@/services/api/product";
+import Card from "../global/Card";
 
 export const product2 = [
   {
