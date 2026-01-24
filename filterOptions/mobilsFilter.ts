@@ -1,13 +1,4 @@
-
-
-
-export const brandOptions = [
-  "Apple",
-  "Samsung",
-  "Huawei",
-  "Honor",
-  "Xiaomi",
-];
+export const brandOptions = ["Apple", "Samsung", "Huawei", "Honor", "Xiaomi"];
 
 // Price ranges (دولار)
 export const priceOptions = [

@@ -8,8 +8,6 @@ import { usePhonesFilters } from "@/stores/usePhoneFilterStore";
 import FilteSide from "./FilteSide";
 import LeftSideFilters from "./LeftSideFilters";
 
-
-
 function PhonesPage({ initialProducts }: { initialProducts: Product[] }) {
   const setProducts = usePhonesFilters((state) => state.setProducts);
 
@@ -24,7 +22,7 @@ function PhonesPage({ initialProducts }: { initialProducts: Product[] }) {
       </div>
       <div id="right">
         <SideProducts filtered={filtered} />
-       <FilteSide/>
+        <FilteSide />
       </div>
     </div>
   );

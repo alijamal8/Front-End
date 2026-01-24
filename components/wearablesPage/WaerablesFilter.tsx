@@ -1,5 +1,12 @@
 "use client";
 import React from "react";
+import {
+ 
+  watchBrandOptions,
+  
+  watchPriceOptions,
+} from "@/filterOptions/watchFilter";
+import { usePhonesFilters } from "@/stores/usePhoneFilterStore";
 import { Road } from "../global/Road";
 import {
   Accordion,
@@ -9,24 +16,11 @@ import {
 } from "../ui/accordion";
 import { Checkbox } from "../ui/checkbox";
 import { Label } from "../ui/label";
-import {
-  batteryOptions,
-  brandOptions,
-  cameraOptions,
-  displaySizeOptions,
-  priceOptions,
-  ramOptions,
-  storageOptions,
-} from "@/filterOptions/mobilsFilter";
-import { usePhonesFilters } from "@/stores/usePhoneFilterStore";
 
-function LeftSideFilters() {
+function WaerablesFilter() {
   const filters = usePhonesFilters((state) => state.filters);
   const toggleBrand = usePhonesFilters((s) => s.toggleBrand);
   const togglePrice = usePhonesFilters((s) => s.togglePrice);
-  const toggleRam = usePhonesFilters((s) => s.toggleRam);
-  const toggleStorage = usePhonesFilters((s) => s.toggleStorage);
-  const toggleCamera = usePhonesFilters((s) => s.toggleCamera);
   const toggleBattery = usePhonesFilters((s) => s.toggleBattery);
   const toggleDisplay = usePhonesFilters((s) => s.toggleDisplay);
 
@@ -36,7 +30,7 @@ function LeftSideFilters() {
         <Road
           items={[
             { label: "Home", href: "/" },
-            { label: "Mobils", href: "/Mobils" },
+            { label: "Waerables", href: "/waerables" },
           ]}
         />
 
@@ -46,7 +40,7 @@ function LeftSideFilters() {
             <AccordionItem value="item-1">
               <AccordionTrigger className="text-md">Brand</AccordionTrigger>
               <AccordionContent className="flex flex-col gap-4 text-balance">
-                {brandOptions.map((brand) => (
+                {watchBrandOptions.map((brand) => (
                   <div key={brand} className="flex gap-3">
                     <Checkbox
                       id={`category-${brand}`}
@@ -66,7 +60,7 @@ function LeftSideFilters() {
             <AccordionItem value="item-1">
               <AccordionTrigger className="text-md">Price</AccordionTrigger>
               <AccordionContent className="flex flex-col gap-4 text-balance">
-                {priceOptions.map((price) => (
+                {watchPriceOptions.map((price) => (
                   <div key={price.label} className="flex gap-3">
                     <Checkbox
                       id={`price-${price.label}`}
@@ -84,77 +78,11 @@ function LeftSideFilters() {
 
           <Accordion type="single" collapsible className="w-full">
             <AccordionItem value="item-1">
-              <AccordionTrigger className="text-md">RAM</AccordionTrigger>
-              <AccordionContent className="flex flex-col gap-4 text-balance">
-                {ramOptions.map((ram) => (
-                  <div key={ram} className="flex gap-3">
-                    <Checkbox
-                      id={`ram-${ram}`}
-                      checked={filters.ram.includes(ram)}
-                      onCheckedChange={() => toggleRam(ram)}
-                    />
-                    <Label htmlFor={`ram-${ram}`} className="text-md">
-                      {ram}GB
-                    </Label>
-                  </div>
-                ))}
-              </AccordionContent>
-            </AccordionItem>
-          </Accordion>
-
-          <Accordion type="single" collapsible className="w-full">
-            <AccordionItem value="item-1">
-              <AccordionTrigger className="text-md">
-                Storage Size
-              </AccordionTrigger>
-              <AccordionContent className="flex flex-col gap-4 text-balance">
-                {storageOptions.map((storage) => (
-                  <div key={storage} className="flex gap-3">
-                    <Checkbox
-                      id={`storage-${storage}`}
-                      checked={filters.storage.includes(storage)}
-                      onCheckedChange={() => toggleStorage(storage)}
-                    />
-                    <Label htmlFor={`storage-${storage}`} className="text-md">
-                      {storage}GB
-                    </Label>
-                  </div>
-                ))}
-              </AccordionContent>
-            </AccordionItem>
-          </Accordion>
-
-          <Accordion type="single" collapsible className="w-full">
-            <AccordionItem value="item-1">
-              <AccordionTrigger className="text-md">
-                Camera Resolution
-              </AccordionTrigger>
-              <AccordionContent className="flex flex-col gap-4 text-balance">
-                {cameraOptions.map((camera) => (
-                  <div key={camera.label} className="flex gap-3">
-                    <Checkbox
-                      id={`camera-${camera.label}`}
-                      checked={filters.camera.includes(camera)}
-                      onCheckedChange={() => toggleCamera(camera)}
-                    />
-                    <Label
-                      htmlFor={`camera-${camera.label}`}
-                      className="text-md"
-                    >
-                      {camera.label}
-                    </Label>
-                  </div>
-                ))}
-              </AccordionContent>
-            </AccordionItem>
-          </Accordion>
-          <Accordion type="single" collapsible className="w-full">
-            <AccordionItem value="item-1">
               <AccordionTrigger className="text-md">
                 Battery Size
               </AccordionTrigger>
-              <AccordionContent className="flex flex-col gap-4 text-balance">
-                {batteryOptions.map((battery) => (
+              {/* <AccordionContent className="flex flex-col gap-4 text-balance">
+                {batteryLifeOptions.map((battery) => (
                   <div key={battery.label} className="flex gap-3">
                     <Checkbox
                       id={`battery-${battery.label}`}
@@ -169,7 +97,7 @@ function LeftSideFilters() {
                     </Label>
                   </div>
                 ))}
-              </AccordionContent>
+              </AccordionContent> */}
             </AccordionItem>
           </Accordion>
           <Accordion type="single" collapsible className="w-full">
@@ -177,7 +105,7 @@ function LeftSideFilters() {
               <AccordionTrigger className="text-md">
                 Display Size
               </AccordionTrigger>
-              <AccordionContent className="flex flex-col gap-4 text-balance">
+              {/* <AccordionContent className="flex flex-col gap-4 text-balance">
                 {displaySizeOptions.map((dispaly) => (
                   <div key={dispaly.label} className="flex gap-3">
                     <Checkbox
@@ -193,7 +121,7 @@ function LeftSideFilters() {
                     </Label>
                   </div>
                 ))}
-              </AccordionContent>
+              </AccordionContent> */}
             </AccordionItem>
           </Accordion>
         </div>
@@ -202,4 +130,4 @@ function LeftSideFilters() {
   );
 }
 
-export default LeftSideFilters;
+export default WaerablesFilter;

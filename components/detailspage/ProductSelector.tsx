@@ -25,10 +25,10 @@ export default function ProductSelector({ product }: { product: Product }) {
         </h1>
 
         <div className="mb-12">
-          <h2 className="text-2xl font-semibold mb-6">Storage</h2>
-
           {product.variants?.length ? (
             <div className="space-y-3">
+              <h2 className="text-2xl font-semibold mb-6">Storage</h2>
+
               {product.variants.map((option, index) => (
                 <button
                   key={index}
@@ -47,9 +47,7 @@ export default function ProductSelector({ product }: { product: Product }) {
               ))}
             </div>
           ) : (
-            <button className="w-full flex items-center justify-between p-4 rounded-lg border-2 transition-colors border-blue-500">
-              {product.specifications[1]?.value}GB
-            </button>
+            ""
           )}
         </div>
       </div>

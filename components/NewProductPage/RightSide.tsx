@@ -1,7 +1,8 @@
-"use client";
+import { Product } from "@/types/homePage";
+import { Separator } from "@radix-ui/react-dropdown-menu";
 import React, { useEffect, useState } from "react";
-import { Separator } from "../ui/separator";
-
+import Card from "../global/Card";
+import NoResult from "../global/NoResult";
 import {
   Pagination,
   PaginationContent,
@@ -9,13 +10,9 @@ import {
   PaginationLink,
   PaginationNext,
   PaginationPrevious,
-} from "@/components/ui/pagination";
+} from "../ui/pagination";
 
-import NoResult from "./NoResult";
-import Card from "./Card";
-import { Product } from "@/types/homePage";
-
-function SideProducts({ filtered }: { filtered: Product[] }) {
+function RightSide({ filtered }: { filtered: Product[] }) {
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 6;
 
@@ -38,12 +35,20 @@ function SideProducts({ filtered }: { filtered: Product[] }) {
   const handlePrevious = () => {
     if (currentPage > 1) setCurrentPage((prev) => prev - 1);
   };
-  const link = filtered[0]?.category.name;
+
+  const label =
+    filtered[0]?.is_new === 1
+      ? "new-products"
+      : filtered[0]?.is_featured === 1
+      ? "featured-products"
+      : filtered[0]?.is_gaming === 1
+      ? "gaming-products"
+      : "";
 
   return (
     <div className="mt-11 p-6 bg-[#f8f9fa] dark:bg-black max-sm:mt-0">
       <div className="mb-4">
-        <h1 className="text-4xl font-bold mb-4 max-sm:text-xl">{link}</h1>
+        <h1 className="text-4xl font-bold mb-4 max-sm:text-xl">{label}</h1>
         <p>{filtered.length} products</p>
       </div>
 
@@ -51,7 +56,7 @@ function SideProducts({ filtered }: { filtered: Product[] }) {
 
       <div id="cards" className="flex flex-wrap justify-center gap-12">
         {filtered.length === 0 ? <NoResult /> : ""}
-        <Card product={currentProducts} from={link} />
+        <Card product={currentProducts} from={label} />
       </div>
       {/*  {link}  */}
       <Separator className="mt-8" />
@@ -87,4 +92,4 @@ function SideProducts({ filtered }: { filtered: Product[] }) {
   );
 }
 
-export default SideProducts;
+export default RightSide;

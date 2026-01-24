@@ -137,13 +137,13 @@ export const usePhonesFilters = create<State>((set, get) => ({
 
     if (filters.battery.length)
       result = result.filter(p => {
-        const batValue = getSpec(p, "battery");
+        const batValue = getSpec(p,"battery");
         return batValue !== null && filters.battery.some(b => batValue >= b.min && batValue <= b.max);
       });
 
     if (filters.displaySize.length)
       result = result.filter(p => {
-        const dispValue = getSpec(p, "disply size"); // (نفس spelling)
+        const dispValue = getSpec(p, "disply size"); 
         return dispValue !== null && filters.displaySize.some(d => dispValue >= d.min && dispValue <= d.max);
       });
 

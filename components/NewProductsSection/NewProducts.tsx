@@ -139,7 +139,7 @@ export const product2 = [
 ];
 
 async function ProductSection() {
-  const data = await ProductsService.getNewProduct();
+  const data = await ProductsService.getNewProduct("new");
   const product = data.slice(0, 12);
 
   return (

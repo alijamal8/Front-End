@@ -12,21 +12,19 @@ import { Label } from "../ui/label";
 import {
   batteryOptions,
   brandOptions,
-  cameraOptions,
   displaySizeOptions,
   priceOptions,
   ramOptions,
   storageOptions,
-} from "@/filterOptions/mobilsFilter";
-import { usePhonesFilters } from "@/stores/usePhoneFilterStore";
+} from "@/filterOptions/tabletsFilter";
 
-function LeftSideFilters() {
+import { usePhonesFilters } from "@/stores/usePhoneFilterStore";
+function FilterSide() {
   const filters = usePhonesFilters((state) => state.filters);
   const toggleBrand = usePhonesFilters((s) => s.toggleBrand);
   const togglePrice = usePhonesFilters((s) => s.togglePrice);
   const toggleRam = usePhonesFilters((s) => s.toggleRam);
   const toggleStorage = usePhonesFilters((s) => s.toggleStorage);
-  const toggleCamera = usePhonesFilters((s) => s.toggleCamera);
   const toggleBattery = usePhonesFilters((s) => s.toggleBattery);
   const toggleDisplay = usePhonesFilters((s) => s.toggleDisplay);
 
@@ -35,8 +33,8 @@ function LeftSideFilters() {
       <div className="max-sm:p-4">
         <Road
           items={[
-            { label: "Home", href: "/" },
-            { label: "Mobils", href: "/Mobils" },
+            { label: "Home", href: "/" }, 
+            { label: "Tablets", href: "/tablets" },
           ]}
         />
 
@@ -127,30 +125,6 @@ function LeftSideFilters() {
           <Accordion type="single" collapsible className="w-full">
             <AccordionItem value="item-1">
               <AccordionTrigger className="text-md">
-                Camera Resolution
-              </AccordionTrigger>
-              <AccordionContent className="flex flex-col gap-4 text-balance">
-                {cameraOptions.map((camera) => (
-                  <div key={camera.label} className="flex gap-3">
-                    <Checkbox
-                      id={`camera-${camera.label}`}
-                      checked={filters.camera.includes(camera)}
-                      onCheckedChange={() => toggleCamera(camera)}
-                    />
-                    <Label
-                      htmlFor={`camera-${camera.label}`}
-                      className="text-md"
-                    >
-                      {camera.label}
-                    </Label>
-                  </div>
-                ))}
-              </AccordionContent>
-            </AccordionItem>
-          </Accordion>
-          <Accordion type="single" collapsible className="w-full">
-            <AccordionItem value="item-1">
-              <AccordionTrigger className="text-md">
                 Battery Size
               </AccordionTrigger>
               <AccordionContent className="flex flex-col gap-4 text-balance">
@@ -202,4 +176,4 @@ function LeftSideFilters() {
   );
 }
 
-export default LeftSideFilters;
+export default FilterSide;

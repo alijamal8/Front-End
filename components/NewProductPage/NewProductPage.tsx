@@ -1,11 +1,12 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import RightSide from "./RightSide";
+
 import LeftSide from "./LeftSide";
 import { Product } from "@/types/homePage";
 import SlidFilter from "./SlidFilter";
 import { useProductFilterStore } from "@/stores/filterStore";
-import SideProducts from "../global/SideProducts";
+
+import RightSide from "./RightSide";
 
 function NewProductPage({ initialProducts }: { initialProducts: Product[] }) {
   const filteredProducts = useProductFilterStore(
@@ -25,7 +26,7 @@ function NewProductPage({ initialProducts }: { initialProducts: Product[] }) {
         </div>
         <div id="right">
           <SlidFilter />
-          <SideProducts filtered={filteredProducts} />
+          <RightSide filtered={filteredProducts} />
         </div>
       </div>
     </>

@@ -62,6 +62,9 @@ export type Product = {
   description?: string;
   brand: Brand;
   brand_id: number;
+  is_new:number
+  is_gaming:number
+  is_featured:number
   category: Category2;
   category_id: number;
   images: Images[];
