@@ -23,3 +23,16 @@ export const batteryLifeOptions = [
   { label: "36 - 48 hours", min: 36, max: 48 },
   { label: "Over 48 hours", min: 48, max: Infinity },
 ];
+export const typeOptions = [
+  { label: "AirPods", value: "airpods" },
+  { label: "Wired Headphones", value: "wired" },
+  { label: "Wireless Headphones", value: "wireless" },
+  { label: "Wired & Wireless (Dual Mode)", value: "dual" },
+];
+
+export function getspec(product: { specifications: any[] }, name: any) {
+  const spec = product.specifications?.find(
+    (s: { name: any }) => s.name === name,
+  );
+  return spec ? spec.value : null;
+}

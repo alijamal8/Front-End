@@ -55,6 +55,7 @@ type Specifications= {
 };
 
 export type Product = {
+  type: any;
   id: number;
   name: string;
   price: number;

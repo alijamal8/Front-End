@@ -1,3 +1,4 @@
+import { getspec } from "@/filterOptions/audioFilter";
 import { Product } from "@/types/homePage";
 import { create } from "zustand";
 
@@ -11,6 +12,7 @@ type Filters = {
   camera: RangeObject[];
   battery: RangeObject[];
   displaySize: RangeObject[];
+  type: string[];
 };
 
 type State = {
@@ -25,6 +27,7 @@ type State = {
   toggleCamera: (obj: RangeObject) => void;
   toggleBattery: (obj: RangeObject) => void;
   toggleDisplay: (obj: RangeObject) => void;
+  toggleType: (type: string) => void;
   applyFilters: () => void;
 };
 
@@ -39,6 +42,7 @@ export const usePhonesFilters = create<State>((set, get) => ({
     camera: [],
     battery: [],
     displaySize: [],
+    type: [],
   },
 
   setProducts: (prod) => set({ products: prod, filtered: prod }),
@@ -46,15 +50,19 @@ export const usePhonesFilters = create<State>((set, get) => ({
   toggleBrand: (brand) => {
     const { filters } = get();
     const exists = filters.brand.includes(brand);
-    const newVal = exists ? filters.brand.filter(b => b !== brand) : [...filters.brand, brand];
+    const newVal = exists
+      ? filters.brand.filter((b) => b !== brand)
+      : [...filters.brand, brand];
     set({ filters: { ...filters, brand: newVal } });
     get().applyFilters();
   },
 
   togglePrice: (obj) => {
     const { filters } = get();
-    const exists = filters.price.find(p => p.label === obj.label);
-    const newVal = exists ? filters.price.filter(p => p.label !== obj.label) : [...filters.price, obj];
+    const exists = filters.price.find((p) => p.label === obj.label);
+    const newVal = exists
+      ? filters.price.filter((p) => p.label !== obj.label)
+      : [...filters.price, obj];
     set({ filters: { ...filters, price: newVal } });
     get().applyFilters();
   },
@@ -62,7 +70,9 @@ export const usePhonesFilters = create<State>((set, get) => ({
   toggleRam: (ram) => {
     const { filters } = get();
     const exists = filters.ram.includes(ram);
-    const newVal = exists ? filters.ram.filter(r => r !== ram) : [...filters.ram, ram];
+    const newVal = exists
+      ? filters.ram.filter((r) => r !== ram)
+      : [...filters.ram, ram];
     set({ filters: { ...filters, ram: newVal } });
     get().applyFilters();
   },
@@ -70,35 +80,53 @@ export const usePhonesFilters = create<State>((set, get) => ({
   toggleStorage: (storage) => {
     const { filters } = get();
     const exists = filters.storage.includes(storage);
-    const newVal = exists ? filters.storage.filter(s => s !== storage) : [...filters.storage, storage];
+    const newVal = exists
+      ? filters.storage.filter((s) => s !== storage)
+      : [...filters.storage, storage];
     set({ filters: { ...filters, storage: newVal } });
     get().applyFilters();
   },
 
   toggleCamera: (obj) => {
     const { filters } = get();
-    const exists = filters.camera.find(p => p.label === obj.label);
-    const newVal = exists ? filters.camera.filter(p => p.label !== obj.label) : [...filters.camera, obj];
+    const exists = filters.camera.find((p) => p.label === obj.label);
+    const newVal = exists
+      ? filters.camera.filter((p) => p.label !== obj.label)
+      : [...filters.camera, obj];
     set({ filters: { ...filters, camera: newVal } });
     get().applyFilters();
   },
 
   toggleBattery: (obj) => {
     const { filters } = get();
-    const exists = filters.battery.find(p => p.label === obj.label);
-    const newVal = exists ? filters.battery.filter(p => p.label !== obj.label) : [...filters.battery, obj];
+    const exists = filters.battery.find((p) => p.label === obj.label);
+    const newVal = exists
+      ? filters.battery.filter((p) => p.label !== obj.label)
+      : [...filters.battery, obj];
     set({ filters: { ...filters, battery: newVal } });
     get().applyFilters();
   },
 
   toggleDisplay: (obj) => {
     const { filters } = get();
-    const exists = filters.displaySize.find(p => p.label === obj.label);
-    const newVal = exists ? filters.displaySize.filter(p => p.label !== obj.label) : [...filters.displaySize, obj];
+    const exists = filters.displaySize.find((p) => p.label === obj.label);
+    const newVal = exists
+      ? filters.displaySize.filter((p) => p.label !== obj.label)
+      : [...filters.displaySize, obj];
     set({ filters: { ...filters, displaySize: newVal } });
     get().applyFilters();
   },
 
+  toggleType: (type) => {
+    const { filters } = get();
+    const exists = filters.type.includes(type);
+    const newVal = exists
+      ? filters.type.filter((t) => t !== type)
+      : [...filters.type, type];
+
+    set({ filters: { ...filters, type: newVal } });
+    get().applyFilters();
+  },
 
   applyFilters: () => {
     const { products, filters } = get();
@@ -110,43 +138,68 @@ export const usePhonesFilters = create<State>((set, get) => ({
     };
 
     if (filters.brand.length)
-      result = result.filter(p => filters.brand.includes(p.brand.name));
+      result = result.filter((p) => filters.brand.includes(p.brand.name));
 
     if (filters.price.length)
-      result = result.filter(p => {
+      result = result.filter((p) => {
         const priceValue = Number(p.price);
-        return filters.price.some(pr => priceValue >= pr.min && priceValue <= pr.max);
+        return filters.price.some(
+          (pr) => priceValue >= pr.min && priceValue <= pr.max,
+        );
       });
 
     if (filters.ram.length)
-      result = result.filter(p => {
+      result = result.filter((p) => {
         const ramValue = getSpec(p, "ram");
         return ramValue !== null && filters.ram.includes(ramValue);
       });
 
     if (filters.storage.length)
-      result = result.filter(p => {
+      result = result.filter((p) => {
         const stValue = getSpec(p, "storage");
         return stValue !== null && filters.storage.includes(stValue);
       });
 
     if (filters.camera.length)
-      result = result.filter(p => {
+      result = result.filter((p) => {
         const camValue = getSpec(p, "camera");
-        return camValue !== null && filters.camera.some(c => camValue >= c.min && camValue <= c.max);
+        return (
+          camValue !== null &&
+          filters.camera.some((c) => camValue >= c.min && camValue <= c.max)
+        );
       });
 
     if (filters.battery.length)
-      result = result.filter(p => {
+      result = result.filter((p) => {
         const batValue = getSpec(p, "battery");
-        return batValue !== null && filters.battery.some(b => batValue >= b.min && batValue <= b.max);
+        return (
+          batValue !== null &&
+          filters.battery.some((b) => batValue >= b.min && batValue <= b.max)
+        );
       });
 
     if (filters.displaySize.length)
-      result = result.filter(p => {
+      result = result.filter((p) => {
         const dispValue = getSpec(p, "display size");
-        return dispValue !== null && filters.displaySize.some(d => dispValue >= d.min && dispValue <= d.max);
+        return (
+          dispValue !== null &&
+          filters.displaySize.some(
+            (d) => dispValue >= d.min && dispValue <= d.max,
+          )
+        );
       });
+
+    if (filters.type.length) {
+      result = result.filter((p) => {
+        const rawType = getspec(p, "type");
+
+        if (rawType === null || rawType === undefined) return false;
+
+        const typeValue = String(rawType).toLowerCase();
+
+        return filters.type.includes(typeValue);
+      });
+    }
 
     set({ filtered: result });
   },
