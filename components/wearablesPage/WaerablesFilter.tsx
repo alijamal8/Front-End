@@ -1,9 +1,9 @@
 "use client";
 import React from "react";
 import {
- 
+ batteryLifeOptions,
   watchBrandOptions,
-  
+  displaySizeOptions,
   watchPriceOptions,
 } from "@/filterOptions/watchFilter";
 import { usePhonesFilters } from "@/stores/usePhoneFilterStore";
@@ -81,7 +81,7 @@ function WaerablesFilter() {
               <AccordionTrigger className="text-md">
                 Battery Size
               </AccordionTrigger>
-              {/* <AccordionContent className="flex flex-col gap-4 text-balance">
+              <AccordionContent className="flex flex-col gap-4 text-balance">
                 {batteryLifeOptions.map((battery) => (
                   <div key={battery.label} className="flex gap-3">
                     <Checkbox
@@ -97,7 +97,7 @@ function WaerablesFilter() {
                     </Label>
                   </div>
                 ))}
-              </AccordionContent> */}
+              </AccordionContent>
             </AccordionItem>
           </Accordion>
           <Accordion type="single" collapsible className="w-full">
@@ -105,23 +105,23 @@ function WaerablesFilter() {
               <AccordionTrigger className="text-md">
                 Display Size
               </AccordionTrigger>
-              {/* <AccordionContent className="flex flex-col gap-4 text-balance">
-                {displaySizeOptions.map((dispaly) => (
-                  <div key={dispaly.label} className="flex gap-3">
+              <AccordionContent className="flex flex-col gap-4 text-balance">
+                {displaySizeOptions.map((displaysize) => (
+                  <div key={displaysize.label} className="flex gap-3">
                     <Checkbox
-                      id={`dispaly-${dispaly.label}`}
-                      checked={filters.displaySize.includes(dispaly)}
-                      onCheckedChange={() => toggleDisplay(dispaly)}
+                      id={`displaysize-${displaysize.label}`}
+                      checked={filters.displaySize.includes(displaysize)}
+                      onCheckedChange={() => toggleDisplay(displaysize)}
                     />
                     <Label
-                      htmlFor={`dispaly-${dispaly.label}`}
+                      htmlFor={`displaysize-${displaysize.label}`}
                       className="text-md"
                     >
-                      {dispaly.label}
+                      {displaysize.label}
                     </Label>
                   </div>
                 ))}
-              </AccordionContent> */}
+              </AccordionContent>
             </AccordionItem>
           </Accordion>
         </div>

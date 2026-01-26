@@ -16,3 +16,16 @@ export const watchPriceOptions = [
 ];
 
 
+export const batteryLifeOptions = [
+  { label: "Up to 1 day", min: 0, max: 1 },
+  { label: "1 - 3 days", min: 1, max: 3 },
+  { label: "3 - 7 days", min: 3, max: 7 },
+  { label: "7 - 14 days", min: 7, max: 14 },
+  { label: "Over 14 days", min: 14, max: Infinity },
+];
+
+export const displaySizeOptions = [
+  { label: " 38–40 mm", min: 38, max: 40 },
+  { label: " 41–44 mm", min: 41, max: 44 },
+  { label: " 45–49 mm", min: 45, max: 49 },
+];

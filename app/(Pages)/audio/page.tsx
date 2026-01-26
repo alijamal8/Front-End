@@ -1,14 +1,13 @@
-import WearablesPage from '@/components/wearablesPage/WearablesPage'
+import AudioPage from '@/components/audioPage/AudioPage'
 import { ProductsService } from '@/services/api/product';
 import React from 'react';
 
-
 async function page() {
-  const data = await ProductsService.getCategoryProduct("Watches");
+  const data = await ProductsService.getCategoryProduct("Audio");
    console.log(data)
   return (
     <div>
-      <WearablesPage initialProducts={data}/>
+      <AudioPage initialProducts={data}/>
     </div>
   )
 }

@@ -125,7 +125,8 @@ export const usePhonesFilters = create<State>((set, get) => ({
       });
 
     if (filters.storage.length)
-      result = result.filter(p => {const stValue = getSpec(p, "storage");
+      result = result.filter(p => {
+        const stValue = getSpec(p, "storage");
         return stValue !== null && filters.storage.includes(stValue);
       });
 
@@ -137,13 +138,13 @@ export const usePhonesFilters = create<State>((set, get) => ({
 
     if (filters.battery.length)
       result = result.filter(p => {
-        const batValue = getSpec(p,"battery");
+        const batValue = getSpec(p, "battery");
         return batValue !== null && filters.battery.some(b => batValue >= b.min && batValue <= b.max);
       });
 
     if (filters.displaySize.length)
       result = result.filter(p => {
-        const dispValue = getSpec(p, "disply size"); 
+        const dispValue = getSpec(p, "display size");
         return dispValue !== null && filters.displaySize.some(d => dispValue >= d.min && dispValue <= d.max);
       });
 
