@@ -3,10 +3,9 @@ import React from "react";
 import {
   brandOptions,
   priceOptions,
-  batteryLifeOptions,
-  typeOptions,
+ 
 } from "@/filterOptions/audioFilter";
-
+import { typeProductOptions } from "@/filterOptions/accessories";
 import { Road } from "../global/Road";
 import {
   Accordion,
@@ -17,7 +16,7 @@ import {
 import { Checkbox } from "../ui/checkbox";
 import { Label } from "../ui/label";
 
-export default function AudioFilter() {
+function AccessoriesFilter() {
   const filters = usePhonesFilters((state) => state.filters);
   const toggleBrand = usePhonesFilters((s) => s.toggleBrand);
   const togglePrice = usePhonesFilters((s) => s.togglePrice);
@@ -30,7 +29,7 @@ export default function AudioFilter() {
         <Road
           items={[
             { label: "Home", href: "/" },
-            { label: "Audio", href: "/audio" },
+            { label: "Accessories", href: "/accessories" },
           ]}
         />
 
@@ -57,9 +56,9 @@ export default function AudioFilter() {
           </Accordion>
           <Accordion type="single" collapsible className="w-full">
             <AccordionItem value="item-1">
-              <AccordionTrigger className="text-md">Type</AccordionTrigger>
+              <AccordionTrigger className="text-md">Product Type</AccordionTrigger>
               <AccordionContent className="flex flex-col gap-4 text-balance">
-                {typeOptions.map((type) => (
+                {typeProductOptions.map((type) => (
                   <div key={type.value} className="flex gap-3">
                     <Checkbox
                       id={`category-${type.value}`}
@@ -96,34 +95,11 @@ export default function AudioFilter() {
                 ))}
               </AccordionContent>
             </AccordionItem>
-          </Accordion>
-
-          <Accordion type="single" collapsible className="w-full">
-            <AccordionItem value="item-1">
-              <AccordionTrigger className="text-md">Battery</AccordionTrigger>
-              <AccordionContent className="flex flex-col gap-4 text-balance">
-                {batteryLifeOptions.map((battery) => (
-                  <div key={battery.label} className="flex gap-3">
-                    <Checkbox
-                      id={`battery-${battery.label}`}
-                      checked={filters.battery.includes(battery)}
-                      onCheckedChange={() => toggleBattery(battery)}
-                    />
-                    <Label
-                      htmlFor={`battery-${battery.label}`}
-                      className="text-md"
-                    >
-                      {battery.label}
-                    </Label>
-                  </div>
-                ))}
-              </AccordionContent>
-            </AccordionItem>
-          </Accordion>
+          </Accordion>     
         </div>
       </div>
     </div>
   );
 }
 
-
+export default AccessoriesFilter;

@@ -27,7 +27,7 @@ export const typeOptions = [
   { label: "AirPods", value: "airpods" },
   { label: "Wired Headphones", value: "wired" },
   { label: "Wireless Headphones", value: "wireless" },
-  { label: "Wired & Wireless (Dual Mode)", value: "dual" },
+  { label: "Wired & Wireless (Dual Mode)", value: "wired & wireless (dual mode)" },
 ];
 
 export function getspec(product: { specifications: any[] }, name: any) {
