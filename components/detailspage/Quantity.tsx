@@ -10,8 +10,12 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Button } from "../ui/button";
-function Quantity() {
+import { useCartStore } from "@/stores/cartStore";
+import { Product } from "@/types/homePage";
+
+function Quantity({ product }: { product: Product }) {
   const [quantity, setQuantity] = useState("1");
+  const addToCart = useCartStore((state) => state.addToCart);
   return (
     <div>
       <h2 className="text-xl font-semibold mb-4">Quantity</h2>
@@ -31,7 +35,7 @@ function Quantity() {
       </Select>
 
       <div className="flex justify-between max-w-sm mt-10">
-        <Button className="px-10 text-lg">Add to Card</Button>
+        <Button onClick={() => addToCart(product , Number(quantity))} className="px-10 text-lg">Add to Card</Button>
         <Button className="px-13 text-lg">Buy Now</Button>
       </div>
     </div>

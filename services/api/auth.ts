@@ -44,4 +44,21 @@ export const authService = {
       toast.error(message);
     }
   },
+  async logout() {
+    try {
+      const res = await axios.post("http://127.0.0.1:8000/api/logout", {
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+      });
+      toast.success("Logout successful ");
+      localStorage.removeItem("token");
+      window.location.href = "/login";
+    } catch (error: any) {
+      const message =
+        error.response?.data?.message || "Logout failed, please try again";
+      toast.error(message);
+    }
+  },
 };

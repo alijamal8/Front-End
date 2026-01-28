@@ -71,7 +71,7 @@ export const usePhonesFilters = create<State>((set, get) => ({
     const { filters } = get();
     const exists = filters.ram.includes(ram);
     const newVal = exists
-      ? filters.ram.filter((r) => r !== ram)
+      ? filters.ram.filter((r) => r !== ram) // بقيلي ياه الشرط
       : [...filters.ram, ram];
     set({ filters: { ...filters, ram: newVal } });
     get().applyFilters();

@@ -19,7 +19,7 @@ function ProductDetails({ product }: { product: Product }) {
         </p>
 
         <ProductSelector product={product} />
-        <Quantity />
+        <Quantity product={product} />
       </div>
     </div>
   );

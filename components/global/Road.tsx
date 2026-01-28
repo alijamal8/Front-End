@@ -15,10 +15,10 @@ export function Road({ items }: BreadcrumbNavProps) {
     <Breadcrumb>
       <BreadcrumbList>
         {items.map((item, index) => (
-          <div key={index} className="flex items-center">
+          <div key={index} className="flex items-center ">
             <BreadcrumbLink asChild>
-              <Link href={item.href || "#"}>
-                {item.label}
+              <Link className="text-lg font-bold" href={item.href || "#"}>
+                {item.label} 
               </Link>
             </BreadcrumbLink>
             {index < items.length - 1 && <BreadcrumbSeparator />}
