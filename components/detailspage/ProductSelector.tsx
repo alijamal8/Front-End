@@ -42,7 +42,7 @@ export default function ProductSelector({ product }: { product: Product }) {
                   <span className="text-lg font-semibold">
                     {option.storage}GB
                   </span>
-                  <span className="text-lg font-semibold">${option.price}</span>
+                  <span className="text-lg font-semibold">{option.price} IQD</span>
                 </button>
               ))}
             </div>

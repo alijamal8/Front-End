@@ -17,8 +17,10 @@ function Card({ product, from }: CardProps) {
   const cart = useCartStore((state) => state.cart);
   const updateQuantity = useCartStore((state) => state.updateQuantity);
   const decreasQuantity = useCartStore((state) => state.decreaseQuantity);
-
   const a = false;
+  //   price.toLocaleString("ar-IQ") + " د.ع";
+// <p>{formatIQD(product.price)}</p>
+
 
   return (
     <>
@@ -54,7 +56,7 @@ function Card({ product, from }: CardProps) {
 
               <div className="flex justify-between pt-4 pb-2">
                 <h1 className="font-bold text-xl">{item.name}</h1>
-                <p className="font-bold text-xl">{item.price}$</p>
+                <p className="font-bold text-xl">{item.price} IQD</p>
               </div>
             </Link>
 

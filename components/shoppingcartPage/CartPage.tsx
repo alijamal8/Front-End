@@ -15,7 +15,7 @@ function CartPage() {
   ) : (
     <div className="px-10 grid grid-cols-[70%_30%] mt-10 space-x-10 max-sm:grid-cols-1 max-sm:px-0 max-sm:mt-0">
       <div className="bg-black" id="left">
-        <LeftCart />
+        <LeftCart from="cart" />
       </div>
 
       <div className="bg-black" id="right">

@@ -28,7 +28,7 @@ function ProductImages({ product }: { product: Product }) {
         <Road
           items={[
             { label: "Home", href: "/" },
-            { label: "New Products", href: "/newproduct" },
+            { label: "Product", href: `/products/${product.id}` },
           ]}
         />
       </div>
