@@ -8,7 +8,8 @@ export default function Links() {
   { name: "Tablets", link: "/tablets" },
   { name: "Wearables", link: "/wearables" },
   { name: "Audio", link: "/audio" },
-  { name: "Accessories", link: "/accessories" }
+  { name: "Accessories", link: "/accessories" },
+  { name: "Admin", link: "/admin/products" }
 ];
 
   return (

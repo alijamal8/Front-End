@@ -3,12 +3,11 @@ import "./globals.css";
 import { ThemeProvider } from "@/components/global/theme-provider";
 import { Toaster } from "@/components/ui/sonner";
 import { ReactQueryProvider } from "./providers/ReactQueryProvider";
-import Navbar from "@/components/navbar/Navbar";
-import { Inter } from 'next/font/google'
- 
+import { Inter } from "next/font/google";
+
 const inter = Inter({
-  subsets: ['latin'],
-})
+  subsets: ["latin"],
+});
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -29,8 +28,6 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <Navbar />
-
           <ReactQueryProvider>{children}</ReactQueryProvider>
           <Toaster />
         </ThemeProvider>
