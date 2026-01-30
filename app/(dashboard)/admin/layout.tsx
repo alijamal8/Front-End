@@ -1,14 +1,13 @@
-import Navbar from "@/components/navbar/Navbar";
+import AdminNav from "@/components/admin/AdminNav";
+import { AppSidebar } from "@/components/admin/Sidebar";
+import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
 
-export default function dashboardAdminLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+
+export default function Layout({ children }: { children: React.ReactNode }) {
   return (
-    <main>
-      <Navbar />
-      {children}
-    </main>
+    <SidebarProvider>
+      <AppSidebar />
+      <main>{children}</main>
+    </SidebarProvider>
   );
 }
