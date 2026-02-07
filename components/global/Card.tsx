@@ -19,8 +19,7 @@ function Card({ product, from }: CardProps) {
   const decreasQuantity = useCartStore((state) => state.decreaseQuantity);
   const a = false;
   //   price.toLocaleString("ar-IQ") + " د.ع";
-// <p>{formatIQD(product.price)}</p>
-
+  // <p>{formatIQD(product.price)}</p>
 
   return (
     <>
@@ -37,7 +36,11 @@ function Card({ product, from }: CardProps) {
                   quality={100}
                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                   className="w-full h-full object-contain max-h-[290px] transition-all duration-500 ease-in-out group-hover:scale-110 group-hover:opacity-80"
-                  src={`http://localhost:8000/${item.images[0].image_url.replace(/^\/+/, "")}`}
+                  src={
+                    item.images?.[0]?.image_url
+                      ? `http://localhost:8000/storage/${item.images[0].image_url}`
+                      : "/no-image.png"
+                  }
                 />
 
                 <div className="absolute right-4 top-4">

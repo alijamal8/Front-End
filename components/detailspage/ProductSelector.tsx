@@ -56,7 +56,7 @@ export default function ProductSelector({ product }: { product: Product }) {
       <div className="pb-6">
         <h2 className="text-xl font-semibold mb-4">Color</h2>
         <p className="text-base font-medium mb-4">
-          {product.images[selectedColor].color_name}
+          {product.images[selectedColor]?.color_name}
         </p>
         <div className="flex gap-4">
           {product.images.map((option, index) => (

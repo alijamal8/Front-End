@@ -33,7 +33,7 @@ function AccessoriesFilter() {
           ]}
         />
 
-        <div className="p-6 mt-6 bg-[#f8f9fa] dark:bg-black max-sm:hidden">
+        <div className="p-6 mt-6  dark:bg-black max-sm:hidden">
           <h1 className="text-2xl mb-4">Filters</h1>
           <Accordion type="single" collapsible className="w-full">
             <AccordionItem value="item-1">

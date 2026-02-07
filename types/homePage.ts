@@ -82,3 +82,10 @@ export interface CardProps
 export interface LeftSideProps {
   onFilterChange: (categories: string[], brands: string[]) => void;
 }
+
+export type ProductImage = {
+  file: File;
+  is_main: boolean;
+  color_name: string;
+  color_hex: string;
+};

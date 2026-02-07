@@ -41,7 +41,7 @@ function ProductImages({ product }: { product: Product }) {
                   <Card>
                     <CardContent className="relative flex aspect-square items-center justify-center p-6 ">
                       <Image
-                        src={`http://localhost:8000/${item.image_url}`}
+                        src={`http://localhost:8000/storage/${item.image_url}`}
                         alt=""
                         fill
                         sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"

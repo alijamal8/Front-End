@@ -1,13 +1,11 @@
-const API_URL = "http://127.0.0.1:8000/api";
+const API_URL = "http://localhost:8000/api";
 
 export const ProductsService = {
- 
-
-  async getNewProduct(type:string) {
+  async getNewProduct(type: string) {
     const res = await fetch(`${API_URL}/products?type=${type}`, {
       next: { revalidate: 60 },
     });
-//edit type make  it dynmic
+    //edit type make  it dynmic
     if (!res.ok) {
       throw new Error("Failed to fetch data");
     }
@@ -29,12 +27,11 @@ export const ProductsService = {
     return data;
   },
 
-
-  async getCategoryProduct(category:string) {
+  async getCategoryProduct(category: string) {
     const res = await fetch(`${API_URL}/products?category=${category}`, {
       next: { revalidate: 60 },
     });
-//edit type make  it dynmic
+    //edit type make  it dynmic
     if (!res.ok) {
       throw new Error("Failed to fetch data");
     }
@@ -42,8 +39,18 @@ export const ProductsService = {
     const data = await res.json();
     return data;
   },
-  
+
+  async createProduct(formData: FormData) {
+    const res = await fetch(`${API_URL}/products`, {
+      method: "POST",
+      body: formData,
+    });
+    if (!res.ok) {
+      throw new Error("Failed to create product");
+    }
+
+    const data = await res.json();
+    console.log(data);
+    return data;
+  },
 };
-
-
-  
