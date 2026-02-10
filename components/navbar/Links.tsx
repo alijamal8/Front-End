@@ -9,7 +9,6 @@ export default function Links() {
   { name: "Wearables", link: "/wearables" },
   { name: "Audio", link: "/audio" },
   { name: "Accessories", link: "/accessories" },
-  { name: "Admin", link: "/admin/products" }
 ];
 
   return (

@@ -36,7 +36,7 @@ export default function LeftCart({ from }: { from: string }) {
 
                   <div className="h-32 w-32 flex-shrink-0 overflow-hidden rounded-lg bg-gray-50">
                     <Image
-                      src={`http://localhost:8000/${item.images[0].image_url.replace(/^\/+/, "")}`}
+                      src={`http://localhost:8000/storage/${item.images[0].image_url.replace(/^\/+/, "")}`}
                       alt={item.name}
                       width={128}
                       height={128}

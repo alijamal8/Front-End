@@ -39,18 +39,4 @@ export const ProductsService = {
     const data = await res.json();
     return data;
   },
-
-  async createProduct(formData: FormData) {
-    const res = await fetch(`${API_URL}/products`, {
-      method: "POST",
-      body: formData,
-    });
-    if (!res.ok) {
-      throw new Error("Failed to create product");
-    }
-
-    const data = await res.json();
-    console.log(data);
-    return data;
-  },
 };

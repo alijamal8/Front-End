@@ -1,50 +1,60 @@
 import { Info } from "lucide-react";
 import React from "react";
+import Payment from "./Payment";
+import { checkoutStore } from "@/stores/checkoutStore";
 
 function ShipForm() {
+  const { shipinfoInform, setshipinfoInform } = checkoutStore();
+  
   return (
     <>
-  
       <div className="mt-4 grid grid-cols-2 gap-4">
         <input
+          value={shipinfoInform.first_name}
+          onChange={(e) => setshipinfoInform("first_name", e.target.value)}
           type="text"
           placeholder="First name"
           className="rounded-md border border-gray-300 bg-white px-4 py-3 text-gray-900 placeholder:text-gray-500 focus:border-cyan-500 focus:outline-none focus:ring-1 focus:ring-cyan-500 dark:border-gray-700 dark:bg-black dark:text-white dark:placeholder:text-gray-400"
         />
         <input
-          type="text"
+          value={shipinfoInform.last_name}
+          onChange={(e) => setshipinfoInform("last_name", e.target.value)}
+          type="text" 
           placeholder="Last name"
           className="rounded-md border border-gray-300 bg-white px-4 py-3 text-gray-900 placeholder:text-gray-500 focus:border-cyan-500 focus:outline-none focus:ring-1 focus:ring-cyan-500 dark:border-gray-700 dark:bg-black dark:text-white dark:placeholder:text-gray-400"
         />
       </div>
 
       <input
+        value={shipinfoInform.address}
+        onChange={(e) => setshipinfoInform("address", e.target.value)}
         type="text"
         placeholder="Address"
         className="mt-4 w-full rounded-md border border-gray-300 bg-white px-4 py-3 text-gray-900 placeholder:text-gray-500 focus:border-cyan-500 focus:outline-none focus:ring-1 focus:ring-cyan-500 dark:border-gray-700 dark:bg-black dark:text-white dark:placeholder:text-gray-400"
       />
 
       <input
+        value={shipinfoInform.apartment}
+        onChange={(e) => setshipinfoInform("apartment", e.target.value)}
         type="text"
         placeholder="Apartment, suite, etc. (optional)"
         className="mt-4 w-full rounded-md border border-gray-300 bg-white px-4 py-3 text-gray-900 placeholder:text-gray-500 focus:border-cyan-500 focus:outline-none focus:ring-1 focus:ring-cyan-500 dark:border-gray-700 dark:bg-black dark:text-white dark:placeholder:text-gray-400"
       />
 
-      <div className="mt-4 grid grid-cols-2 gap-4">
+      <div className="mt-4 grid grid-cols-1 gap-4">
         <input
+          value={shipinfoInform.city}
+          onChange={(e) => setshipinfoInform("city", e.target.value)}
           type="text"
           placeholder="City"
-          className="rounded-md border border-gray-300 bg-white px-4 py-3 text-gray-900 placeholder:text-gray-500 focus:border-cyan-500 focus:outline-none focus:ring-1 focus:ring-cyan-500 dark:border-gray-700 dark:bg-black dark:text-white dark:placeholder:text-gray-400"
-        />
-        <input
-          type="text"
-          placeholder="Postal code (optional)"
           className="rounded-md border border-gray-300 bg-white px-4 py-3 text-gray-900 placeholder:text-gray-500 focus:border-cyan-500 focus:outline-none focus:ring-1 focus:ring-cyan-500 dark:border-gray-700 dark:bg-black dark:text-white dark:placeholder:text-gray-400"
         />
       </div>
 
       <div className="relative mt-4">
         <input
+          value={shipinfoInform.phone_number}
+          onChange={(e) => setshipinfoInform("phone_number", e.target.value)}
           type="tel"
           placeholder="Phone"
           className="w-full rounded-md border border-gray-300 bg-white px-4 py-3 pr-10 text-gray-900 placeholder:text-gray-500 focus:border-cyan-500 focus:outline-none focus:ring-1 focus:ring-cyan-500 dark:border-gray-700 dark:bg-black dark:text-white dark:placeholder:text-gray-400"
@@ -63,16 +73,8 @@ function ShipForm() {
           <span className="font-semibold text-gray-900 dark:text-white">
             5000 IQD
           </span>
-
         </div>
-        <h2 className="mb-4 mt-8 text-xl font-semibold text-gray-900 dark:text-white">
-          Payment
-        </h2>
-        <div className="rounded-md mb-4 border-2 border-cyan-500 bg-cyan-50 px-4 py-3 dark:bg-cyan-950">
-          <span className="font-medium text-gray-900 dark:text-white">
-            Cash on Delivery (COD)
-          </span>
-        </div>
+        <Payment />
       </div>
     </>
   );

@@ -4,7 +4,7 @@ import LeftCart from "./LeftCart";
 import RightCart from "./RightCart";
 import { useCartStore } from "@/stores/cartStore";
 import EmptyCart from "./EmptyCart";
-import { toast } from "sonner";
+
 
 function CartPage() {
   const cart = useCartStore((state) => state.cart);

@@ -6,11 +6,34 @@ import { Button } from "../ui/button";
 import RightSide from "./RightSide";
 import PickupForm from "./PickupForm";
 import ShipForm from "./ShipForm";
+import { checkoutStore } from "@/stores/checkoutStore";
+import { useCartStore } from "@/stores/cartStore";
+import React from "react";
+import { OrderService } from "@/services/api/order";
 
 export default function CheckoutPage() {
   const [deliveryMethod, setDeliveryMethod] = useState<"ship" | "pickup">(
     "ship",
   );
+  const { resetshipinfoInform, shipinfoInform, payment_method } =
+    checkoutStore();
+  const cart = useCartStore((state) => state.cart);
+
+  function handleCheckout() {
+    const items = cart.map(({ id, quantity }) => ({
+      product_id: id,
+      quantity,
+    }));
+
+    const payload = {
+      items,
+      shipping: shipinfoInform,
+      payment_method: payment_method,
+    };
+
+    // console.log(payload);
+    OrderService.createOrder(payload);
+  }
 
   return (
     <div className="min-h-screen bg-[#f8f9fa] dark:bg-black">
@@ -54,7 +77,13 @@ export default function CheckoutPage() {
 
               {deliveryMethod === "pickup" ? <PickupForm /> : <ShipForm />}
 
-              <Button className="mt-5 w-full p-6 text-xl">Check Out</Button>
+              <Button
+              type="button"
+                onClick={handleCheckout}
+                className="mt-5 w-full p-6 text-xl"
+              >
+                Check Out
+              </Button>
             </div>
           </div>
 

@@ -23,7 +23,7 @@ function Card({ product, from }: CardProps) {
 
   return (
     <>
-      {product.map((item) => {
+      {product?.map((item) => {
         const cartItem = cart.find((c) => c.id === item.id);
         return (
           <div className="cursor-pointer" id="card" key={item.id}>

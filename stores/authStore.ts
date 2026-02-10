@@ -27,6 +27,7 @@ interface AuthStore {
 export const useAuthStore = create<AuthStore>((set) => ({
   registerForm: { ...registerInitial },
   loginForm: { ...loginInitial },
+  
 
   setRegisterForm: (field, value) =>
     set((state) => ({
