@@ -1,0 +1,37 @@
+{
+  "navbar": {
+    "mobiles": "هواتف",
+    "tablets": "أجهزة لوحية",
+    "wearables": "أجهزة قابلة للارتداء",
+    "audio": "صوتيات",
+    "accessories": "إكسسوارات",
+    "account": "حسابي",
+    "login": "تسجيل الدخول",
+    "register": "إنشاء حساب",
+    "search":"ادخل كلمة البحث"
+  },
+  "home": {
+    "title": "تصفح افضل المنتجات حسب الفئة",
+    "slider": "اعرف المزيد"
+  },
+  "newProducts": {
+    "title": "تصفح افضل المنتجات حسب الفئة",
+    "subtitle": "وصل الان",
+    "showAll": "عرض كل المنتجات"
+  },
+  "category": {
+    "Mobiles": "هواتف",
+    "Tablets": "أجهزة لوحية",
+    "Wearables": "أجهزة قابلة للارتداء",
+    "Audio": "صوتيات",
+    "Accessories": "إكسسوارات"
+  },
+      "AccessoriesPage":{
+        "Filter":"فلتر",
+        "Brand":"الماركة",
+        "ProductType":"نوع المنتج",
+        "Price":"السعر",
+        "products":"منتجات",
+        "No items found for the selected filters":"لا يوجد منتجات مطابقة للفلتر"
+    }
+}

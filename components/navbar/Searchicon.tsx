@@ -6,7 +6,7 @@ import { Propsclick } from "@/types/navbar";
 function Searchicon({ onClick }: Propsclick) {
   return (
     <Button onClick={onClick} variant={"ghost"}>
-      <Search className="hover:cursor-pointer border-0  size-5" />
+      <Search className="hover:cursor-pointer border-0 size-5" />
     </Button>
   );
 }

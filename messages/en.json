@@ -1,0 +1,44 @@
+{
+    "navbar": {
+        "mobiles": "Mobiles",
+        "tablets": "Tablets",
+        "wearables": "Wearables",
+        "audio": "Audio",
+        "accessories": "Accessories",
+        "account": "My Account",
+        "login": "Login",
+        "register": "Register",
+        "search":"Enter your search keyword"
+    },
+
+
+    "home": {
+        "title": "Explore Top Products By Category",
+        "slider": "Learn More"
+    },
+    "newProducts": {
+        "title": "Explore Top Products By Category",
+        "subtitle": "New arrivals",
+        "showAll": "Show All Products"
+    },
+    "category": {
+        "Mobiles": "Mobiles",
+        "Tablets": "Tablets",
+        "Wearables": "Wearables",
+        "Audio": "Audio",
+        "Accessories": "Accessories"
+    },
+    "AccessoriesPage":{
+        "Filter":"Filter",
+        "Brand":"Brand",
+        "ProductType":"Product Type",
+        "Price":"Price",
+        "products":"products",
+        "No items found for the selected filters":"No items found for the selected filters",
+        "Next":"Next",
+        "Previous":"Previous"
+    }
+
+
+
+}

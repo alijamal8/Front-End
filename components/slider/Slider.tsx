@@ -12,6 +12,7 @@ import Link from "next/link";
 
 import { Sliders } from "@/types/homePage";
 import { sliserService } from "@/services/api/slider";
+import { getTranslations } from "next-intl/server";
 
 const sliders2 = [
   {
@@ -61,6 +62,7 @@ const sliders2 = [
 
 async function Slider() {
   const sliders: Sliders[] = await sliserService.getSliders();
+  const t = await getTranslations("home");
 
   return (
     <div>
@@ -117,7 +119,7 @@ async function Slider() {
                         variant={"secondary"}
                         className="mt-4 px-8 cursor-pointer max-sm:px-4"
                       >
-                        {item.button_label}
+                        {t("slider")}
                       </Button>
                     </div>
                   </CardContent>

@@ -8,6 +8,7 @@ import Image from "next/image";
 import React, { useEffect } from "react";
 import { SkeletonCard } from "./SkeletonCard";
 import Link from "next/link";
+import { useTranslations } from "next-intl";
 
 const category2 = [
   {
@@ -65,6 +66,7 @@ function CategoryGrid() {
 
   // if (isLoading) return <SkeletonCard />;
   // if (isError) return <SkeletonCard />;
+  const t = useTranslations("category");
 
   return (
     <div className="mt-14 ">
@@ -95,7 +97,7 @@ function CategoryGrid() {
                             : "text-white"
                         }`}
                       >
-                        {category2[0].title}
+                        {t("Mobiles")}
                       </h1>
                     </div>
                   </div>
@@ -128,7 +130,7 @@ function CategoryGrid() {
                                 : "text-white"
                             } text-2xl font-bold`}
                           >
-                            {card.title}
+                            {t(card.title)}
                           </h1>
                         </div>
                       </div>

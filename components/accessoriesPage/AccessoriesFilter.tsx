@@ -15,14 +15,14 @@ import {
 } from "../ui/accordion";
 import { Checkbox } from "../ui/checkbox";
 import { Label } from "../ui/label";
+import { useTranslations } from "next-intl";
 
 function AccessoriesFilter() {
   const filters = usePhonesFilters((state) => state.filters);
   const toggleBrand = usePhonesFilters((s) => s.toggleBrand);
   const togglePrice = usePhonesFilters((s) => s.togglePrice);
-  const toggleBattery = usePhonesFilters((s) => s.toggleBattery);
   const toggleType = usePhonesFilters((s) => s.toggleType);
-
+const t = useTranslations("AccessoriesPage");
   return (
     <div>
       <div className="max-sm:p-4">
@@ -34,10 +34,10 @@ function AccessoriesFilter() {
         />
 
         <div className="p-6 mt-6  dark:bg-black max-sm:hidden">
-          <h1 className="text-2xl mb-4">Filters</h1>
+          <h1 className="text-2xl mb-4">{t("Filter")}</h1>
           <Accordion type="single" collapsible className="w-full">
             <AccordionItem value="item-1">
-              <AccordionTrigger className="text-md">Brand</AccordionTrigger>
+              <AccordionTrigger className="text-md">{t("Brand")}</AccordionTrigger>
               <AccordionContent className="flex flex-col gap-4 text-balance">
                 {brandOptions.map((brand) => (
                   <div key={brand} className="flex gap-3">
@@ -56,7 +56,7 @@ function AccessoriesFilter() {
           </Accordion>
           <Accordion type="single" collapsible className="w-full">
             <AccordionItem value="item-1">
-              <AccordionTrigger className="text-md">Product Type</AccordionTrigger>
+              <AccordionTrigger className="text-md">{t("ProductType")}</AccordionTrigger>
               <AccordionContent className="flex flex-col gap-4 text-balance">
                 {typeProductOptions.map((type) => (
                   <div key={type.value} className="flex gap-3">
@@ -79,7 +79,7 @@ function AccessoriesFilter() {
 
           <Accordion type="single" collapsible className="w-full">
             <AccordionItem value="item-1">
-              <AccordionTrigger className="text-md">Price</AccordionTrigger>
+              <AccordionTrigger className="text-md">{t("Price")}</AccordionTrigger>
               <AccordionContent className="flex flex-col gap-4 text-balance">
                 {priceOptions.map((price) => (
                   <div key={price.label} className="flex gap-3">
