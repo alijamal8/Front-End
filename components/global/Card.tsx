@@ -10,6 +10,7 @@ import Link from "next/link";
 import Rating from "./Rating";
 import { useCartStore } from "@/stores/cartStore";
 import { FaPlus } from "react-icons/fa6";
+import { useTranslations } from "next-intl";
 const a = false;
 
 function Card({ product, from }: CardProps) {
@@ -18,6 +19,7 @@ function Card({ product, from }: CardProps) {
   const updateQuantity = useCartStore((state) => state.updateQuantity);
   const decreasQuantity = useCartStore((state) => state.decreaseQuantity);
   const a = false;
+  const t = useTranslations("cart");
   //   price.toLocaleString("ar-IQ") + " د.ع";
   // <p>{formatIQD(product.price)}</p>
 
@@ -76,7 +78,7 @@ function Card({ product, from }: CardProps) {
                   className="border-black rounded-2xl px-34 py-5"
                   variant="outline"
                 >
-                  Add to Cart
+                  {t("Add to Cart")}
                 </Button>
               ) : (
                 <div className="flex justify-between items-center w-full">

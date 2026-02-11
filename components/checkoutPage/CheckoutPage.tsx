@@ -10,8 +10,10 @@ import { checkoutStore } from "@/stores/checkoutStore";
 import { useCartStore } from "@/stores/cartStore";
 import React from "react";
 import { OrderService } from "@/services/api/order";
+import { useTranslations } from "next-intl";
 
 export default function CheckoutPage() {
+  const t = useTranslations("checkout");
   const [deliveryMethod, setDeliveryMethod] = useState<"ship" | "pickup">(
     "ship",
   );
@@ -42,7 +44,7 @@ export default function CheckoutPage() {
           <div className="space-y-8">
             <div>
               <h2 className="mb-4 text-xl font-semibold text-gray-900 dark:text-white">
-                Delivery
+                {t("delivery_title")}
               </h2>
 
               <div className="space-y-3">
@@ -54,7 +56,7 @@ export default function CheckoutPage() {
                       : "border-gray-300 bg-white hover:border-gray-400 dark:border-gray-700 dark:bg-black"
                   }`}
                 >
-                  <span className="font-medium">Ship</span>
+                  <span className="font-medium">{t("ship")}</span>
                   <Truck className="h-5 w-5 text-cyan-600" />
                 </button>
 
@@ -66,13 +68,13 @@ export default function CheckoutPage() {
                       : "border-gray-300 bg-white hover:border-gray-400 dark:border-gray-700 dark:bg-black"
                   }`}
                 >
-                  <span className="font-medium">Pick up from store</span>
+                  <span className="font-medium">{t("pickup")}</span>
                   <Store className="h-5 w-5" />
                 </button>
               </div>
 
               <select className="mt-4 w-full rounded-md border px-4 py-3">
-                <option>Iraq</option>
+                <option>{t("country_iraq")}</option>
               </select>
 
               {deliveryMethod === "pickup" ? <PickupForm /> : <ShipForm />}
@@ -82,7 +84,7 @@ export default function CheckoutPage() {
                 onClick={handleCheckout}
                 className="mt-5 w-full p-6 text-xl"
               >
-                Check Out
+                {t("place_order")}
               </Button>
             </div>
           </div>

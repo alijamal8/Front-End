@@ -12,7 +12,7 @@ import Link from "next/link";
 
 import { Sliders } from "@/types/homePage";
 import { sliserService } from "@/services/api/slider";
-import { getTranslations } from "next-intl/server";
+import { getTranslations, getLocale } from "next-intl/server";
 
 const sliders2 = [
   {
@@ -60,18 +60,22 @@ const sliders2 = [
   },
 ];
 
+// ... existing imports
+
 async function Slider() {
   const sliders: Sliders[] = await sliserService.getSliders();
   const t = await getTranslations("home");
+  const locale = await getLocale();
+  const dir = locale === "ar" ? "rtl" : "ltr";
 
   return (
     <div>
-      <Carousel>
+      <Carousel opts={{ direction: dir }} className="w-full">
         <CarouselContent>
           {sliders2.map((item, index) => (
             <CarouselItem key={index}>
               <div>
-                <Card className="p-0">
+                <Card className="p-0 border-0">
                   <CardContent className="flex p-0 relative m-0 aspect-square items-center justify-center max-w-[1700px] h-[800px] bg-0 max-sm:max-w-[500px] max-sm:max-h-[500px] xl:max-w-[2200px]">
                     <Link href={""}>
                       <Image
@@ -82,42 +86,41 @@ async function Slider() {
                         priority={index === 0}
                         quality={100}
                       />
-                      {/* src={`http://localhost:8000/${item.image_url.replace(/^\/+/, '')}`} */}
                     </Link>
                     <div
-                      className={` absolute ${
+                      className={`absolute flex flex-col justify-center ${
                         item.position === "left"
-                          ? `${
-                              item.text_color === "black"
-                                ? "text-black"
-                                : "text-white"
-                            } left-30 bottom-80 max-sm:bottom-15 max-sm:left-5 max-lg:right-5 max-lg:bottom-10`
-                          : `${
-                              item.text_color === "black"
-                                ? "text-black"
-                                : "text-white"
-                            } right-40 bottom-80 max-sm:right-5 max-sm:bottom-20 max-lg:right-5 max-lg:bottom-50`
+                          ? `left-30 max-sm:left-5 text-left items-start ${
+                              dir === "rtl" ? "items-end text-right" : ""
+                            }`
+                          : `right-40 max-sm:right-5 text-right items-end ${
+                              dir === "rtl" ? "items-start text-left" : ""
+                            }`
+                      } bottom-80 max-sm:bottom-20 max-lg:bottom-20 ${
+                        item.text_color === "black"
+                          ? "text-black"
+                          : "text-white"
                       }`}
                     >
-                      <h1 className="text-5xl font-bold max-sm:text-2xl">
+                      <h1 className="text-5xl font-bold max-sm:text-2xl mb-4">
                         {item.title}
                       </h1>
 
-                      <p className="text-sm  py-4 ">
+                      <div className="text-sm py-4 ">
                         {item.description.split(",").map((line, index) => (
                           <span
                             key={index}
-                            className="block text-2xl max-sm:text-sm"
+                            className={`block text-2xl max-sm:text-sm mb-1 ${item.position === "left" ? "text-left" : "text-right"}`}
                           >
                             {line}
                           </span>
                         ))}
-                      </p>
+                      </div>
 
                       <Button
                         size={"lg"}
                         variant={"secondary"}
-                        className="mt-4 px-8 cursor-pointer max-sm:px-4"
+                        className="mt-4 px-8 cursor-pointer max-sm:px-4 w-fit"
                       >
                         {t("slider")}
                       </Button>
@@ -128,9 +131,8 @@ async function Slider() {
             </CarouselItem>
           ))}
         </CarouselContent>
-
-        <CarouselPrevious className="left-5 max-sm:hidden" />
-        <CarouselNext className="right-5 max-sm:hidden" />
+        <CarouselNext className="absolute right-5 top-1/2 -translate-y-1/2 max-sm:hidden z-10" />
+        <CarouselPrevious className="absolute left-5 top-1/2 -translate-y-1/2 max-sm:hidden z-10 " />
       </Carousel>
     </div>
   );

@@ -33,5 +33,40 @@
         "Price":"السعر",
         "products":"منتجات",
         "No items found for the selected filters":"لا يوجد منتجات مطابقة للفلتر"
+    },
+    "cart": {
+        "title_empty": "سلة التسوق فارغة حالياً.",
+        "continue_shopping": "متابعة التسوق",
+        "title_filled": "سلة التسوق",
+        "clear_cart": "إفراغ السلة",
+        "summary_title": "ملخص الطلب",
+        "subtotal": "المجموع الفرعي",
+        "shipping": "الشحن",
+        "you_saved": "لقد وفرت",
+        "total": "المجموع",
+        "checkout": "الدفع",
+        "Add to Cart":"أضافة للسلة"
+    },
+    "checkout": {
+        "delivery_title": "التوصيل",
+        "ship": "شحن",
+        "pickup": "استلام من المتجر",
+        "pickup_locations": "مواقع الاستلام",
+        "billing_name": "اسم الفاتورة",
+        "first_name": "الاسم الأول",
+        "last_name": "الاسم الأخير",
+        "phone": "رقم الهاتف",
+        "address": "العنوان",
+        "apartment": "شقة، جناح، إلخ (اختياري)",
+        "city": "المدينة",
+        "shipping_method": "طريقة الشحن",
+        "payment_title": "الدفع",
+        "cod": "الدفع عند الاستلام",
+        "credit_card": "بطاقة ائتمان",
+        "card_number": "رقم البطاقة",
+        "cvv": "رمز التحقق (CVV)",
+        "expiry_date": "تاريخ الانتهاء",
+        "place_order": "إتمام الطلب",
+        "country_iraq": "العراق"
     }
 }

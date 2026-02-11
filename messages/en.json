@@ -34,11 +34,41 @@
         "ProductType":"Product Type",
         "Price":"Price",
         "products":"products",
-        "No items found for the selected filters":"No items found for the selected filters",
-        "Next":"Next",
-        "Previous":"Previous"
+        "No items found for the selected filters":"No items found for the selected filters"
+    },
+    "cart": {
+        "title_empty": "Your Cart Is Currently Empty.",
+        "continue_shopping": "Continue Shopping",
+        "title_filled": "Your cart",
+        "clear_cart": "Clear Cart",
+        "summary_title": "Order Summary",
+        "subtotal": "Subtotal",
+        "shipping": "Shipping",
+        "you_saved": "You saved",
+        "total": "Total",
+        "checkout": "Check Out",
+        "Add to Cart":"Add to Cart"
+    },
+    "checkout": {
+        "delivery_title": "Delivery",
+        "ship": "Ship",
+        "pickup": "Pick up from store",
+        "pickup_locations": "Pickup locations",
+        "billing_name": "Billing Name",
+        "first_name": "First name",
+        "last_name": "Last name",
+        "phone": "Phone",
+        "address": "Address",
+        "apartment": "Apartment, suite, etc. (optional)",
+        "city": "City",
+        "shipping_method": "Shipping method",
+        "payment_title": "Payment",
+        "cod": "Cash on Delivery (COD)",
+        "credit_card": "Credit Card",
+        "card_number": "Card Number",
+        "cvv": "CVV",
+        "expiry_date": "Expiry Date",
+        "place_order": "Check Out",
+        "country_iraq": "Iraq"
     }
-
-
-
 }

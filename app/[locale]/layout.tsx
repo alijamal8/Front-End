@@ -4,13 +4,19 @@ import { NextIntlClientProvider } from "next-intl";
 import { getMessages } from "next-intl/server";
 import { ThemeProvider } from "@/components/global/theme-provider";
 import { Toaster } from "@/components/ui/sonner";
-import { Inter } from "next/font/google";
+import { Inter, Cairo } from "next/font/google"; 
 import { ReactQueryProvider } from "../providers/ReactQueryProvider";
 import { notFound } from "next/navigation";
 import { routing } from "../i18n/routing";
 
+// Configure Inter
 const inter = Inter({
   subsets: ["latin"],
+});
+
+// Configure Cairo
+const cairo = Cairo({
+  subsets: ["arabic"],
 });
 
 export const metadata: Metadata = {
@@ -37,9 +43,12 @@ export default async function RootLayout({
   // side is the easiest way to get started
   const messages = await getMessages();
 
+  // Select font based on locale
+  const fontClass = locale === 'ar' ? cairo.className : inter.className;
+
   return (
     <html lang={locale} dir={locale === 'ar' ? 'rtl' : 'ltr'} suppressHydrationWarning>
-      <body className={inter.className}>
+      <body className={fontClass}>
         <ThemeProvider
           attribute="class"
           defaultTheme="dark"

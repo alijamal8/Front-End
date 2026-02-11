@@ -9,14 +9,17 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { checkoutStore } from "@/stores/checkoutStore";
+import { useTranslations } from "next-intl";
+
 function Payment() {
+  const t = useTranslations("checkout");
   const { shipinfoInform, setshipinfoInform, payment_method, setPaymentMethod } =
     checkoutStore();
 
   return (
     <div>
       <h2 className="mb-4 mt-8 text-xl font-semibold text-gray-900 dark:text-white">
-        Payment
+        {t("payment_title")}
       </h2>
 
       <Select
@@ -24,12 +27,12 @@ function Payment() {
         onValueChange={(value) => setPaymentMethod(value)}
       >
         <SelectTrigger className="w-full py-6 mb-4">
-          <SelectValue placeholder="Cash on Delivery (COD)" />
+          <SelectValue placeholder={t("cod")} />
         </SelectTrigger>
         <SelectContent>
           <SelectGroup>
-            <SelectItem value="cash">Cash on Delivery (COD)</SelectItem>
-            <SelectItem value="card">Credit Card (CD)</SelectItem>
+            <SelectItem value="cash">{t("cod")}</SelectItem>
+            <SelectItem value="card">{t("credit_card")}</SelectItem>
           </SelectGroup>
         </SelectContent>
       </Select>
@@ -40,7 +43,7 @@ function Payment() {
             value={shipinfoInform.card_number}
             onChange={(e) => setshipinfoInform("card_number", e.target.value)}
             type="text"
-            placeholder="Card Number"
+            placeholder={t("card_number")}
             className="w-full rounded-md border border-gray-300 bg-white px-4 py-3 text-gray-900 placeholder:text-gray-500 focus:border-cyan-500 focus:outline-none focus:ring-1 focus:ring-cyan-500 dark:border-gray-700 dark:bg-black dark:text-white dark:placeholder:text-gray-400"
           />
           <div className="mt-4 grid grid-cols-2 gap-4">
@@ -48,7 +51,7 @@ function Payment() {
               value={shipinfoInform.card_cvv}
               onChange={(e) => setshipinfoInform("card_cvv", e.target.value)}
               type="text"
-              placeholder="CVV"
+              placeholder={t("cvv")}
               className="rounded-md border border-gray-300 bg-white px-4 py-3 text-gray-900 placeholder:text-gray-500 focus:border-cyan-500 focus:outline-none focus:ring-1 focus:ring-cyan-500 dark:border-gray-700 dark:bg-black dark:text-white dark:placeholder:text-gray-400"
             />
             <input
@@ -57,7 +60,7 @@ function Payment() {
                 setshipinfoInform("card_expiration_date", e.target.value)
               }
               type="date"
-              placeholder="Expiry Date"
+              placeholder={t("expiry_date")}
               className="rounded-md border border-gray-300 bg-white px-4 py-3 text-gray-900 placeholder:text-gray-500 focus:border-cyan-500 focus:outline-none focus:ring-1 focus:ring-cyan-500 dark:border-gray-700 dark:bg-black dark:text-white dark:placeholder:text-gray-400"
             />
           </div>

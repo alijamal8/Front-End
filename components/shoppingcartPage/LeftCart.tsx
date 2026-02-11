@@ -6,7 +6,10 @@ import Image from "next/image";
 import { Minus, Plus, X } from "lucide-react";
 import { Button } from "../ui/button";
 
+import { useTranslations } from "next-intl";
+
 export default function LeftCart({ from }: { from: string }) {
+  const t = useTranslations("cart");
   const cart = useCartStore((state) => state.cart);
   const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
   const decreasQuantity = useCartStore((state) => state.decreaseQuantity);
@@ -17,9 +20,9 @@ export default function LeftCart({ from }: { from: string }) {
     <div className="min-h-screen dark:bg-black bg-[#f8f9fa] md:p-12">
       <div className="mx-auto max-w-7xl">
         <h1 className="mb-8 text-4xl font-bold text-black dark:text-white">
-          Your cart ({totalItems})
+          {t("title_filled")} ({totalItems})
           <Button className="float-right text-lg" onClick={() => clearCart()}>
-            clear cart
+            {t("clear_cart")}
           </Button>
         </h1>
         <div className="grid gap-8 lg:grid-cols-[1fr,400px]">
