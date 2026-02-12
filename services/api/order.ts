@@ -19,7 +19,7 @@ export const OrderService = {
       toast.error(error.message);
       throw error;
     }
-    toast.success("Order created successfully");
+    toast.success("تم إنشاء الطلب بنجاح");
     return await res.json();
   },
 };

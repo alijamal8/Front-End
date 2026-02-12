@@ -21,7 +21,7 @@ export default function LeftCart({ from }: { from: string }) {
       <div className="mx-auto max-w-7xl">
         <h1 className="mb-8 text-4xl font-bold text-black dark:text-white">
           {t("title_filled")} ({totalItems})
-          <Button className="float-right text-lg" onClick={() => clearCart()}>
+          <Button className="float-right text-lg rtl:float-left" onClick={() => clearCart()}>
             {t("clear_cart")}
           </Button>
         </h1>

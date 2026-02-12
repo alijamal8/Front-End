@@ -36,7 +36,7 @@ const category2 = [
   {
     id: 4,
     image_url: "/category/product_se__cbhd710p3auq_large.png",
-    title: "Wearables",
+    title: "Watches",
     text_color: "black",
     link: "/wearables",
   },

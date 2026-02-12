@@ -8,7 +8,7 @@
     "account": "حسابي",
     "login": "تسجيل الدخول",
     "register": "إنشاء حساب",
-    "search":"ادخل كلمة البحث"
+    "search": "ادخل كلمة البحث"
   },
   "home": {
     "title": "تصفح افضل المنتجات حسب الفئة",
@@ -16,57 +16,98 @@
   },
   "newProducts": {
     "title": "تصفح افضل المنتجات حسب الفئة",
-    "subtitle": "وصل الان",
-    "showAll": "عرض كل المنتجات"
+    "subtitle": "المنتجات الجديدة",
+    "showAll": "عرض كل المنتجات",
+    "featured_products": "المنتجات المميزة",
+    "gaming_products": "منتجات لألعاب"
   },
   "category": {
     "Mobiles": "هواتف",
     "Tablets": "أجهزة لوحية",
-    "Wearables": "أجهزة قابلة للارتداء",
+    "Watches": "ساعات",
     "Audio": "صوتيات",
-    "Accessories": "إكسسوارات"
+    "Accessories": "إكسسوارات",
+    "products": "منتجات"
   },
-      "AccessoriesPage":{
-        "Filter":"فلتر",
-        "Brand":"الماركة",
-        "ProductType":"نوع المنتج",
-        "Price":"السعر",
-        "products":"منتجات",
-        "No items found for the selected filters":"لا يوجد منتجات مطابقة للفلتر"
-    },
-    "cart": {
-        "title_empty": "سلة التسوق فارغة حالياً.",
-        "continue_shopping": "متابعة التسوق",
-        "title_filled": "سلة التسوق",
-        "clear_cart": "إفراغ السلة",
-        "summary_title": "ملخص الطلب",
-        "subtotal": "المجموع الفرعي",
-        "shipping": "الشحن",
-        "you_saved": "لقد وفرت",
-        "total": "المجموع",
-        "checkout": "الدفع",
-        "Add to Cart":"أضافة للسلة"
-    },
-    "checkout": {
-        "delivery_title": "التوصيل",
-        "ship": "شحن",
-        "pickup": "استلام من المتجر",
-        "pickup_locations": "مواقع الاستلام",
-        "billing_name": "اسم الفاتورة",
-        "first_name": "الاسم الأول",
-        "last_name": "الاسم الأخير",
-        "phone": "رقم الهاتف",
-        "address": "العنوان",
-        "apartment": "شقة، جناح، إلخ (اختياري)",
-        "city": "المدينة",
-        "shipping_method": "طريقة الشحن",
-        "payment_title": "الدفع",
-        "cod": "الدفع عند الاستلام",
-        "credit_card": "بطاقة ائتمان",
-        "card_number": "رقم البطاقة",
-        "cvv": "رمز التحقق (CVV)",
-        "expiry_date": "تاريخ الانتهاء",
-        "place_order": "إتمام الطلب",
-        "country_iraq": "العراق"
-    }
+  "AccessoriesPage": {
+    "Filter": "فلتر",
+    "Brand": "الماركة",
+    "ProductType": "نوع المنتج",
+    "Price": "السعر",
+    "products": "منتجات",
+    "No items found for the selected filters": "لا يوجد منتجات مطابقة للفلتر",
+    "category": "فئة",
+    "RAM": "الرام",
+    "Battery Size": "البطارية",
+    "Camera Resolution": "الكامرة",
+    "Display Size": "حجم الشاشة",
+    "Storage Size": "الذاكرة",
+    "Color": "اللون"
+  },
+  "cart": {
+    "title_empty": "سلة التسوق فارغة حالياً.",
+    "continue_shopping": "متابعة التسوق",
+    "title_filled": "سلة التسوق",
+    "clear_cart": "إفراغ السلة",
+    "summary_title": "ملخص الطلب",
+    "subtotal": "المجموع الفرعي",
+    "shipping": "الشحن",
+    "you_saved": "لقد وفرت",
+    "total": "المجموع",
+    "checkout": "الدفع",
+    "Add to Cart": "أضافة للسلة"
+  },
+  "checkout": {
+    "delivery_title": "التوصيل",
+    "ship": "شحن",
+    "pickup": "استلام من المتجر",
+    "pickup_locations": "مواقع الاستلام",
+    "billing_name": "اسم الفاتورة",
+    "first_name": "الاسم الأول",
+    "last_name": "الاسم الأخير",
+    "phone": "رقم الهاتف",
+    "address": "العنوان",
+    "apartment": "شقة، جناح، إلخ (اختياري)",
+    "city": "المدينة",
+    "shipping_method": "طريقة الشحن",
+    "payment_title": "الدفع",
+    "cod": "الدفع عند الاستلام",
+    "credit_card": "بطاقة ائتمان",
+    "card_number": "رقم البطاقة",
+    "cvv": "رمز التحقق (CVV)",
+    "expiry_date": "تاريخ الانتهاء",
+    "place_order": "إتمام الطلب",
+    "country_iraq": "العراق"
+  },
+  "productDetails": {
+    "Add to Cart": "أضافة للسلة",
+    "Buy Now": "شراء الآن",
+    "Price": "السعر",
+    "Color": "اللون",
+    "Quantity": "الكمية",
+    "Specifications": "المواصفات"
+  },
+  "audioPage": {
+    "AirPods": "ايربودز",
+    "Wired Headphones": "سماعات سلكية",
+    "Wireless Headphones": "سماعات لاسلكية",
+    "Wired & Wireless (Dual Mode)": "سماعات سلكية ولاسلكية (وضع مزدوج)",
+    "Up to 12 hours": "حتى 12 ساعة",
+    "12 - 24 hours": "من 12 إلى 24 ساعة",
+    "24 - 36 hours": "من 24 إلى 36 ساعة",
+    "36 - 48 hours": "من 36 إلى 48 ساعة",
+    "Over 48 hours": "أكثر من 48 ساعة",
+    "Mobile Chargers": "شواحن الموبايل",
+    "Mobile Cables": "كيابل الموبايل",
+    "Mobile Holder": "حامل الموبايل",
+    "Mobile Cases": "كفرات الموبايل",
+    "Power Bank": "باور بانك",
+    "Digital Pens": "أقلام رقمية"
+  },
+  "sectionsPages": {
+    "New Arrivals": "المنتجات الجديدة",
+    "Featured Products": "المنتجات المميزة",
+    "Gaming Products": "منتجات لألعاب",
+    "products": "منتجات"
+  }
 }

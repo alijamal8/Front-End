@@ -1,10 +1,6 @@
 import { usePhonesFilters } from "@/stores/usePhoneFilterStore";
 import React from "react";
-import {
-  brandOptions,
-  priceOptions,
- 
-} from "@/filterOptions/audioFilter";
+import { brandOptions, priceOptions } from "@/filterOptions/audioFilter";
 import { typeProductOptions } from "@/filterOptions/accessories";
 import { Road } from "../global/Road";
 import {
@@ -22,7 +18,9 @@ function AccessoriesFilter() {
   const toggleBrand = usePhonesFilters((s) => s.toggleBrand);
   const togglePrice = usePhonesFilters((s) => s.togglePrice);
   const toggleType = usePhonesFilters((s) => s.toggleType);
-const t = useTranslations("AccessoriesPage");
+
+  const t = useTranslations("AccessoriesPage");
+  const t2 = useTranslations("audioPage");
   return (
     <div>
       <div className="max-sm:p-4">
@@ -37,7 +35,9 @@ const t = useTranslations("AccessoriesPage");
           <h1 className="text-2xl mb-4">{t("Filter")}</h1>
           <Accordion type="single" collapsible className="w-full">
             <AccordionItem value="item-1">
-              <AccordionTrigger className="text-md">{t("Brand")}</AccordionTrigger>
+              <AccordionTrigger className="text-md">
+                {t("Brand")}
+              </AccordionTrigger>
               <AccordionContent className="flex flex-col gap-4 text-balance">
                 {brandOptions.map((brand) => (
                   <div key={brand} className="flex gap-3">
@@ -56,7 +56,9 @@ const t = useTranslations("AccessoriesPage");
           </Accordion>
           <Accordion type="single" collapsible className="w-full">
             <AccordionItem value="item-1">
-              <AccordionTrigger className="text-md">{t("ProductType")}</AccordionTrigger>
+              <AccordionTrigger className="text-md">
+                {t("ProductType")}
+              </AccordionTrigger>
               <AccordionContent className="flex flex-col gap-4 text-balance">
                 {typeProductOptions.map((type) => (
                   <div key={type.value} className="flex gap-3">
@@ -69,7 +71,7 @@ const t = useTranslations("AccessoriesPage");
                       htmlFor={`category-${type.value}`}
                       className="text-md"
                     >
-                      {type.label}
+                      {t2(type.label)}
                     </Label>
                   </div>
                 ))}
@@ -79,7 +81,9 @@ const t = useTranslations("AccessoriesPage");
 
           <Accordion type="single" collapsible className="w-full">
             <AccordionItem value="item-1">
-              <AccordionTrigger className="text-md">{t("Price")}</AccordionTrigger>
+              <AccordionTrigger className="text-md">
+                {t("Price")}
+              </AccordionTrigger>
               <AccordionContent className="flex flex-col gap-4 text-balance">
                 {priceOptions.map((price) => (
                   <div key={price.label} className="flex gap-3">
@@ -95,7 +99,7 @@ const t = useTranslations("AccessoriesPage");
                 ))}
               </AccordionContent>
             </AccordionItem>
-          </Accordion>     
+          </Accordion>
         </div>
       </div>
     </div>

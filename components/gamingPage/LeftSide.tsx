@@ -1,5 +1,4 @@
 "use client";
-
 import { Road } from "../global/Road";
 import { Checkbox } from "@/components/ui/checkbox";
 import {
@@ -14,7 +13,7 @@ import { useTranslations } from "next-intl";
 export const categories = [
   "Mobiles",
   "Tablets",
-  "Wearables",
+  "Watches",
   "Audio",
   "Accessories",
 ];
@@ -43,7 +42,7 @@ const t = useTranslations("AccessoriesPage");
         <Road
           items={[
             { label: "Home", href: "/" },
-            { label: "New Products", href: "/newproduct" },
+            { label: "Gaming Products", href: "/gamingProducts" },
           ]}
         />
       </div>

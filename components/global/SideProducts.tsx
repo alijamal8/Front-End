@@ -1,7 +1,6 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import { Separator } from "../ui/separator";
-
 import {
   Pagination,
   PaginationContent,
@@ -22,7 +21,7 @@ function SideProducts({ filtered }: { filtered: Product[] }) {
   const totalPages = Math.ceil(filtered.length / itemsPerPage);
   const startIndex = (currentPage - 1) * itemsPerPage;
   const currentProducts = filtered.slice(startIndex, startIndex + itemsPerPage);
-const t = useTranslations("AccessoriesPage");
+const t = useTranslations("category");
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   }, [currentPage]);
@@ -38,13 +37,19 @@ const t = useTranslations("AccessoriesPage");
   const handlePrevious = () => {
     if (currentPage > 1) setCurrentPage((prev) => prev - 1);
   };
-  const link = filtered[0]?.category.name;
+  const link = filtered[0]?.category?.name;
 
+  
   return (
     <div className="mt-11 p-6 bg-[#f8f9fa] dark:bg-black max-sm:mt-0">
       <div className="mb-4">
-        <h1 className="text-4xl font-bold mb-4 max-sm:text-xl">{link}</h1>
+        <h1 className="text-4xl font-bold mb-4 max-sm:text-xl">
+          {
+            link ? t(link) : ""
+          }
+        </h1>
         <p>{filtered.length} {t("products")}</p>
+
       </div>
 
       <Separator className="mb-8" />

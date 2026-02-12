@@ -1,74 +1,119 @@
 {
-    "navbar": {
-        "mobiles": "Mobiles",
-        "tablets": "Tablets",
-        "wearables": "Wearables",
-        "audio": "Audio",
-        "accessories": "Accessories",
-        "account": "My Account",
-        "login": "Login",
-        "register": "Register",
-        "search":"Enter your search keyword"
-    },
+  
+  "navbar": {
+    "mobiles": "Mobiles",
+    "tablets": "Tablets",
+    "wearables": "Wearables",
+    "audio": "Audio",
+    "accessories": "Accessories",
+    "account": "My Account",
+    "login": "Login",
+    "register": "Register",
+    "search": "Enter your search keyword"
+  },
 
-
-    "home": {
-        "title": "Explore Top Products By Category",
-        "slider": "Learn More"
-    },
-    "newProducts": {
-        "title": "Explore Top Products By Category",
-        "subtitle": "New arrivals",
-        "showAll": "Show All Products"
-    },
-    "category": {
-        "Mobiles": "Mobiles",
-        "Tablets": "Tablets",
-        "Wearables": "Wearables",
-        "Audio": "Audio",
-        "Accessories": "Accessories"
-    },
-    "AccessoriesPage":{
-        "Filter":"Filter",
-        "Brand":"Brand",
-        "ProductType":"Product Type",
-        "Price":"Price",
-        "products":"products",
-        "No items found for the selected filters":"No items found for the selected filters"
-    },
-    "cart": {
-        "title_empty": "Your Cart Is Currently Empty.",
-        "continue_shopping": "Continue Shopping",
-        "title_filled": "Your cart",
-        "clear_cart": "Clear Cart",
-        "summary_title": "Order Summary",
-        "subtotal": "Subtotal",
-        "shipping": "Shipping",
-        "you_saved": "You saved",
-        "total": "Total",
-        "checkout": "Check Out",
-        "Add to Cart":"Add to Cart"
-    },
-    "checkout": {
-        "delivery_title": "Delivery",
-        "ship": "Ship",
-        "pickup": "Pick up from store",
-        "pickup_locations": "Pickup locations",
-        "billing_name": "Billing Name",
-        "first_name": "First name",
-        "last_name": "Last name",
-        "phone": "Phone",
-        "address": "Address",
-        "apartment": "Apartment, suite, etc. (optional)",
-        "city": "City",
-        "shipping_method": "Shipping method",
-        "payment_title": "Payment",
-        "cod": "Cash on Delivery (COD)",
-        "credit_card": "Credit Card",
-        "card_number": "Card Number",
-        "cvv": "CVV",
-        "expiry_date": "Expiry Date",
-        "place_order": "Check Out",
-        "country_iraq": "Iraq"
-    }
+  "home": {
+    "title": "Explore Top Products By Category",
+    "slider": "Learn More"
+  },
+  "newProducts": {
+    "title": "Explore Top Products By Category",
+    "subtitle": "New arrivals",
+    "showAll": "Show All Products",
+    "featured_products": "Featured Products",
+    "gaming_products": "Gaming Products"
+  },
+  "category": {
+    "Mobiles": "Mobiles",
+    "Tablets": "Tablets",
+    "Watches": "Wearables",
+    "Audio": "Audio",
+    "Accessories": "Accessories",
+    "products": "products"
+  },
+  "AccessoriesPage": {
+    "category": "category",
+    "Filter": "Filter",
+    "Brand": "Brand",
+    "ProductType": "Product Type",
+    "Price": "Price",
+    "products": "products",
+    "No items found for the selected filters": "No items found for the selected filters",
+    "RAM": "RAM",
+    "Battery Size": "Battery Size",
+    "Camera Resolution": "Camera Resolution",
+    "Display Size": "Display Size",
+    "Storage Size": "Storage Size",
+    "Color": "Color",
+    "New Arrivals": "New Arrivals",
+    "Featured Products": "Featured Products",
+    "Gaming Products": "Gaming Products"
+  },
+  "cart": {
+    "title_empty": "Your Cart Is Currently Empty.",
+    "continue_shopping": "Continue Shopping",
+    "title_filled": "Your cart",
+    "clear_cart": "Clear Cart",
+    "summary_title": "Order Summary",
+    "subtotal": "Subtotal",
+    "shipping": "Shipping",
+    "you_saved": "You saved",
+    "total": "Total",
+    "checkout": "Check Out",
+    "Add to Cart": "Add to Cart"
+  },
+  "checkout": {
+    "delivery_title": "Delivery",
+    "ship": "Ship",
+    "pickup": "Pick up from store",
+    "pickup_locations": "Pickup locations",
+    "billing_name": "Billing Name",
+    "first_name": "First name",
+    "last_name": "Last name",
+    "phone": "Phone",
+    "address": "Address",
+    "apartment": "Apartment, suite, etc. (optional)",
+    "city": "City",
+    "shipping_method": "Shipping method",
+    "payment_title": "Payment",
+    "cod": "Cash on Delivery (COD)",
+    "credit_card": "Credit Card",
+    "card_number": "Card Number",
+    "cvv": "CVV",
+    "expiry_date": "Expiry Date",
+    "place_order": "Check Out",
+    "country_iraq": "Iraq"
+  },
+  "productDetails": {
+    "Add to Cart": "Add to Cart",
+    "Price": "Price",
+    "Color": "Color",
+    "Quantity": "Quantity",
+    "Buy Now": "Buy Now",
+    "Description": "Description",
+    "Specifications": "Specifications"
+  },
+  "audioPage": {
+    "AirPods": "AirPods",
+    "Wired Headphones": "Wired Headphones",
+    "Wireless Headphones": "Wireless Headphones",
+    "Wired & Wireless (Dual Mode)": "Wired & Wireless (Dual Mode)",
+    "Up to 12 hours": "Up to 12 hours",
+    "12 - 24 hours": "12 - 24 hours",
+    "24 - 36 hours": "24 - 36 hours",
+    "36 - 48 hours": "36 - 48 hours",
+    "Over 48 hours": "Over 48 hours",
+    "Mobile Chargers": "Mobile Chargers",
+    "Mobile Cables": "Mobile Cables",
+    "Mobile Holder": "Mobile Holder",
+    "Mobile Cases": "Mobile Cases",
+    "Power Bank": "Power Bank",
+    "Digital Pens": "Digital Pens"
+  },
+  "sectionsPages": {
+    "New Arrivals": "New Arrivals",
+    "Featured Products": "Featured Products",
+    "Gaming Products": "Gaming Products",
+    "products": "Products"
+  }
 }

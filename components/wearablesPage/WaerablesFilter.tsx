@@ -16,6 +16,7 @@ import {
 } from "../ui/accordion";
 import { Checkbox } from "../ui/checkbox";
 import { Label } from "../ui/label";
+import { useTranslations } from "next-intl";
 
 function WaerablesFilter() {
   const filters = usePhonesFilters((state) => state.filters);
@@ -23,6 +24,7 @@ function WaerablesFilter() {
   const togglePrice = usePhonesFilters((s) => s.togglePrice);
   const toggleBattery = usePhonesFilters((s) => s.toggleBattery);
   const toggleDisplay = usePhonesFilters((s) => s.toggleDisplay);
+  const t = useTranslations("AccessoriesPage");
 
   return (
     <div>
@@ -35,10 +37,10 @@ function WaerablesFilter() {
         />
 
         <div className="p-6 mt-6 bg-[#f8f9fa] dark:bg-black max-sm:hidden">
-          <h1 className="text-2xl mb-4">Filters</h1>
+          <h1 className="text-2xl mb-4">{t("Filter")}</h1>
           <Accordion type="single" collapsible className="w-full">
             <AccordionItem value="item-1">
-              <AccordionTrigger className="text-md">Brand</AccordionTrigger>
+              <AccordionTrigger className="text-md">{t("Brand")}</AccordionTrigger>
               <AccordionContent className="flex flex-col gap-4 text-balance">
                 {watchBrandOptions.map((brand) => (
                   <div key={brand} className="flex gap-3">
@@ -58,7 +60,7 @@ function WaerablesFilter() {
 
           <Accordion type="single" collapsible className="w-full">
             <AccordionItem value="item-1">
-              <AccordionTrigger className="text-md">Price</AccordionTrigger>
+              <AccordionTrigger className="text-md">{t("Price")}</AccordionTrigger>
               <AccordionContent className="flex flex-col gap-4 text-balance">
                 {watchPriceOptions.map((price) => (
                   <div key={price.label} className="flex gap-3">
@@ -79,7 +81,7 @@ function WaerablesFilter() {
           <Accordion type="single" collapsible className="w-full">
             <AccordionItem value="item-1">
               <AccordionTrigger className="text-md">
-                Battery Size
+                {t("Battery Size")}
               </AccordionTrigger>
               <AccordionContent className="flex flex-col gap-4 text-balance">
                 {batteryLifeOptions.map((battery) => (
@@ -103,7 +105,7 @@ function WaerablesFilter() {
           <Accordion type="single" collapsible className="w-full">
             <AccordionItem value="item-1">
               <AccordionTrigger className="text-md">
-                Display Size
+                {t("Display Size")}
               </AccordionTrigger>
               <AccordionContent className="flex flex-col gap-4 text-balance">
                 {displaySizeOptions.map((displaysize) => (

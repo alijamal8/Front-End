@@ -5,7 +5,6 @@ import React from "react";
 
 async function page() {
   const data = await ProductsService.getNewProduct("new");
-  console.log(data);
   return <NewProductPage initialProducts={data} />;
 }
 

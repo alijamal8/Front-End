@@ -3,12 +3,13 @@ import { useProductUI } from "@/stores/colorStore";
 import { Product } from "@/types/homePage";
 import React from "react";
 import { useState } from "react";
+import { useTranslations } from "next-intl";
 
 export default function ProductSelector({ product }: { product: Product }) {
   const [selectedStorage, setSelectedStorage] = useState(0);
   const { selectedColor, setSelectedColor, setSelectedImageIndex } =
     useProductUI();
-
+  const t = useTranslations();
   const handleColorClick = (index: any) => {
     setSelectedColor(index);
 
@@ -21,14 +22,12 @@ export default function ProductSelector({ product }: { product: Product }) {
     <>
       <div className="max-w-lg pt-4">
         <h1 className="text-2xl font-semibold mb-10">
-          Price: {formattedPrice}
+          {t("productDetails.Price")} : {formattedPrice}
         </h1>
-
         <div className="mb-12">
           {product.variants?.length ? (
             <div className="space-y-3">
-              <h2 className="text-2xl font-semibold mb-6">Storage</h2>
-
+              <h2 className="text-2xl font-semibold mb-6">{t("productDetails.Specifications")}</h2>
               {product.variants.map((option, index) => (
                 <button
                   key={index}
@@ -54,7 +53,7 @@ export default function ProductSelector({ product }: { product: Product }) {
 
       {/* Color Section */}
       <div className="pb-6">
-        <h2 className="text-xl font-semibold mb-4">Color</h2>
+        <h2 className="text-xl font-semibold mb-4">{t("productDetails.Color")}</h2>
         <p className="text-base font-medium mb-4">
           {product.images[selectedColor]?.color_name}
         </p>

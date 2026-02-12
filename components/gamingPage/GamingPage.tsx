@@ -1,16 +1,15 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import LeftSide from "./LeftSide";
-import { Product } from "@/types/homePage";
-import SlidFilter from "./SlidFilter";
-import { useProductFilterStore } from "@/stores/filterStore";
 
+import { Product } from "@/types/homePage";
+
+import { useProductFilterStore } from "@/stores/filterStore";
+import LeftSide from "./LeftSide";
 import RightSide from "./RightSide";
 
-function NewProductPage({ initialProducts }: { initialProducts: Product[] }) {
-
+function GamingPage({ initialProducts }: { initialProducts: Product[] }) {
   const filteredProducts = useProductFilterStore(
-    (state) => state.filteredProducts
+    (state) => state.filteredProducts,
   );
   const setProducts = useProductFilterStore((state) => state.setProducts);
 
@@ -25,12 +24,12 @@ function NewProductPage({ initialProducts }: { initialProducts: Product[] }) {
           <LeftSide />
         </div>
         <div id="right">
-          <SlidFilter />
+          {/* <SlidFilter /> */}
           <RightSide filtered={filteredProducts} />
-        </div>  
+        </div>
       </div>
     </>
   );
 }
 
-export default NewProductPage;
+export default GamingPage;

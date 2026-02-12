@@ -3,13 +3,13 @@ import { ProductsService } from "@/services/api/product";
 import React from "react";
 
 async function page() {
-  const data = await ProductsService.getCategoryProduct("Accessories");
+    const data = await ProductsService.getCategoryProduct("Accessories");
   console.log(data);
-  return (
-    <>
+    return (
+      <>
       <AccessoriesPage initialProducts={data} />
-    </>
-  );
-}
+      </>
+    );
+  }
 
 export default page;

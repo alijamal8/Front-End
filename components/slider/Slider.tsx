@@ -131,8 +131,17 @@ async function Slider() {
             </CarouselItem>
           ))}
         </CarouselContent>
-        <CarouselNext className="absolute right-5 top-1/2 -translate-y-1/2 max-sm:hidden z-10" />
-        <CarouselPrevious className="absolute left-5 top-1/2 -translate-y-1/2 max-sm:hidden z-10 " />
+        {dir === "rtl" ? (
+          <>
+            <CarouselNext className="absolute left-5 top-1/2 -translate-y-1/2 max-sm:hidden z-10 rotate-180 right-auto" />
+            <CarouselPrevious className="absolute right-5 top-1/2 -translate-y-1/2 max-sm:hidden z-10 rotate-180 left-auto" />
+          </>
+        ) : (
+          <>
+            <CarouselPrevious className="absolute left-5 top-1/2 -translate-y-1/2 max-sm:hidden z-10" />
+            <CarouselNext className="absolute right-5 top-1/2 -translate-y-1/2 max-sm:hidden z-10" />
+          </>
+        )}
       </Carousel>
     </div>
   );

@@ -8,6 +8,7 @@ import { usePhonesFilters } from "@/stores/usePhoneFilterStore";
 import FilteSide from "./FilteSide";
 import LeftSideFilters from "./LeftSideFilters";
 
+
 function PhonesPage({ initialProducts }: { initialProducts: Product[] }) {
   const setProducts = usePhonesFilters((state) => state.setProducts);
 

@@ -2,7 +2,6 @@
 import { useState } from "react";
 import { Truck, Store, Info } from "lucide-react";
 import { Button } from "../ui/button";
-
 import RightSide from "./RightSide";
 import PickupForm from "./PickupForm";
 import ShipForm from "./ShipForm";
@@ -11,6 +10,7 @@ import { useCartStore } from "@/stores/cartStore";
 import React from "react";
 import { OrderService } from "@/services/api/order";
 import { useTranslations } from "next-intl";
+import { redirect } from "next/navigation";
 
 export default function CheckoutPage() {
   const t = useTranslations("checkout");
@@ -20,7 +20,7 @@ export default function CheckoutPage() {
   const { resetshipinfoInform, shipinfoInform, payment_method } =
     checkoutStore();
   const cart = useCartStore((state) => state.cart);
-
+  const clearCart = useCartStore((state) => state.clearCart);
   function handleCheckout() {
     const items = cart.map(({ id, quantity }) => ({
       product_id: id,
@@ -33,8 +33,10 @@ export default function CheckoutPage() {
       payment_method: payment_method,
     };
 
-    // console.log(payload);
     OrderService.createOrder(payload);
+    resetshipinfoInform();
+    clearCart();
+    redirect("/");
   }
 
   return (

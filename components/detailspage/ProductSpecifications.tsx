@@ -1,14 +1,16 @@
 import { Product } from "@/types/homePage";
 import React from "react";
+import { getTranslations } from "next-intl/server";
 
-export default function ProductSpecifications({
+export default async function ProductSpecifications({
   product,
 }: {
   product: Product;
 }) {
+  const t = await getTranslations();
   return (
     <div className="w-4xl mt-70 mb-50 max-sm:w-sm max-sm:m-5 max-sm:my-15 ">
-      <h2 className="text-2xl font-bold mb-8 ">Technical Specifications</h2>
+      <h2 className="text-2xl font-bold mb-8 ">{t("productDetails.Specifications")}</h2>
       <div className="grid grid-cols-2 gap-4">
         {product.specifications?.map((spec, index) => (
           <div

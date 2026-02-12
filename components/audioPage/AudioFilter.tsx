@@ -16,6 +16,7 @@ import {
 } from "../ui/accordion";
 import { Checkbox } from "../ui/checkbox";
 import { Label } from "../ui/label";
+import { useTranslations } from "next-intl";
 
 export default function AudioFilter() {
   const filters = usePhonesFilters((state) => state.filters);
@@ -23,6 +24,8 @@ export default function AudioFilter() {
   const togglePrice = usePhonesFilters((s) => s.togglePrice);
   const toggleBattery = usePhonesFilters((s) => s.toggleBattery);
   const toggleType = usePhonesFilters((s) => s.toggleType);
+  const t = useTranslations("AccessoriesPage");
+  const ta = useTranslations("audioPage");
 
   return (
     <div>
@@ -38,7 +41,9 @@ export default function AudioFilter() {
           <h1 className="text-2xl mb-4">Filters</h1>
           <Accordion type="single" collapsible className="w-full">
             <AccordionItem value="item-1">
-              <AccordionTrigger className="text-md">Brand</AccordionTrigger>
+              <AccordionTrigger className="text-md">
+                {t("Brand")}
+              </AccordionTrigger>
               <AccordionContent className="flex flex-col gap-4 text-balance">
                 {brandOptions.map((brand) => (
                   <div key={brand} className="flex gap-3">
@@ -57,7 +62,9 @@ export default function AudioFilter() {
           </Accordion>
           <Accordion type="single" collapsible className="w-full">
             <AccordionItem value="item-1">
-              <AccordionTrigger className="text-md">Type</AccordionTrigger>
+              <AccordionTrigger className="text-md">
+                {t("ProductType")}
+              </AccordionTrigger>
               <AccordionContent className="flex flex-col gap-4 text-balance">
                 {typeOptions.map((type) => (
                   <div key={type.value} className="flex gap-3">
@@ -66,11 +73,12 @@ export default function AudioFilter() {
                       checked={filters.type.includes(type.value)}
                       onCheckedChange={() => toggleType(type.value)}
                     />
+
                     <Label
                       htmlFor={`category-${type.value}`}
                       className="text-md"
                     >
-                      {type.label}
+                      {ta(type.label)}
                     </Label>
                   </div>
                 ))}
@@ -80,7 +88,9 @@ export default function AudioFilter() {
 
           <Accordion type="single" collapsible className="w-full">
             <AccordionItem value="item-1">
-              <AccordionTrigger className="text-md">Price</AccordionTrigger>
+              <AccordionTrigger className="text-md">
+                {t("Price")}
+              </AccordionTrigger>
               <AccordionContent className="flex flex-col gap-4 text-balance">
                 {priceOptions.map((price) => (
                   <div key={price.label} className="flex gap-3">
@@ -100,7 +110,9 @@ export default function AudioFilter() {
 
           <Accordion type="single" collapsible className="w-full">
             <AccordionItem value="item-1">
-              <AccordionTrigger className="text-md">Battery</AccordionTrigger>
+              <AccordionTrigger className="text-md">
+                {t("Battery Size")}
+              </AccordionTrigger>
               <AccordionContent className="flex flex-col gap-4 text-balance">
                 {batteryLifeOptions.map((battery) => (
                   <div key={battery.label} className="flex gap-3">
@@ -113,7 +125,7 @@ export default function AudioFilter() {
                       htmlFor={`battery-${battery.label}`}
                       className="text-md"
                     >
-                      {battery.label}
+                      {ta(battery.label)}
                     </Label>
                   </div>
                 ))}
@@ -125,5 +137,3 @@ export default function AudioFilter() {
     </div>
   );
 }
-
-

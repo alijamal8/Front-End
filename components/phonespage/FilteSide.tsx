@@ -1,6 +1,5 @@
 "use client";
 import * as React from "react";
-
 import { Button } from "../ui/button";
 import Drawer from "@mui/material/Drawer";
 import {
@@ -22,6 +21,7 @@ import {
   storageOptions,
 } from "@/filterOptions/mobilsFilter";
 import { usePhonesFilters } from "@/stores/usePhoneFilterStore";
+import { useTranslations } from "next-intl";
 
 function FilteSide() {
   const filters = usePhonesFilters((state) => state.filters);
@@ -32,6 +32,7 @@ function FilteSide() {
   const toggleCamera = usePhonesFilters((s) => s.toggleCamera);
   const toggleBattery = usePhonesFilters((s) => s.toggleBattery);
   const toggleDisplay = usePhonesFilters((s) => s.toggleDisplay);
+  const t = useTranslations("AccessoriesPage");
 
   const [open, setOpen] = React.useState(false);
 
@@ -40,10 +41,10 @@ function FilteSide() {
   };
   const DrawerList = (
     <div className="w-70 h-full p-4 dark:bg-black dark:text-white">
-      <h1 className="text-2xl mb-4">Filters</h1>
+      <h1 className="text-2xl mb-4">{t("Filter")}</h1>
       <Accordion type="single" collapsible className="w-full">
         <AccordionItem value="item-1">
-          <AccordionTrigger className="text-md">Brand</AccordionTrigger>
+          <AccordionTrigger className="text-md">{t("Brand")}</AccordionTrigger>
           <AccordionContent className="flex flex-col gap-4 text-balance">
             {brandOptions.map((brand) => (
               <div key={brand} className="flex gap-3">
@@ -63,7 +64,7 @@ function FilteSide() {
 
       <Accordion type="single" collapsible className="w-full">
         <AccordionItem value="item-1">
-          <AccordionTrigger className="text-md">Price</AccordionTrigger>
+          <AccordionTrigger className="text-md">{t("Price")}</AccordionTrigger>
           <AccordionContent className="flex flex-col gap-4 text-balance">
             {priceOptions.map((price) => (
               <div key={price.label} className="flex gap-3">
@@ -83,7 +84,7 @@ function FilteSide() {
 
       <Accordion type="single" collapsible className="w-full">
         <AccordionItem value="item-1">
-          <AccordionTrigger className="text-md">RAM</AccordionTrigger>
+          <AccordionTrigger className="text-md">{t("RAM")}</AccordionTrigger>
           <AccordionContent className="flex flex-col gap-4 text-balance">
             {ramOptions.map((ram) => (
               <div key={ram} className="flex gap-3">
@@ -103,7 +104,7 @@ function FilteSide() {
 
       <Accordion type="single" collapsible className="w-full">
         <AccordionItem value="item-1">
-          <AccordionTrigger className="text-md">Storage Size</AccordionTrigger>
+          <AccordionTrigger className="text-md">{t("Storage Size")}</AccordionTrigger>
           <AccordionContent className="flex flex-col gap-4 text-balance">
             {storageOptions.map((storage) => (
               <div key={storage} className="flex gap-3">
@@ -123,9 +124,7 @@ function FilteSide() {
 
       <Accordion type="single" collapsible className="w-full">
         <AccordionItem value="item-1">
-          <AccordionTrigger className="text-md">
-            Camera Resolution
-          </AccordionTrigger>
+          <AccordionTrigger className="text-md">{t("Camera Resolution")}</AccordionTrigger>
           <AccordionContent className="flex flex-col gap-4 text-balance">
             {cameraOptions.map((camera) => (
               <div key={camera.label} className="flex gap-3">
@@ -144,7 +143,7 @@ function FilteSide() {
       </Accordion>
       <Accordion type="single" collapsible className="w-full">
         <AccordionItem value="item-1">
-          <AccordionTrigger className="text-md">Battery Size</AccordionTrigger>
+          <AccordionTrigger className="text-md">{t("Battery Size")}</AccordionTrigger>
           <AccordionContent className="flex flex-col gap-4 text-balance">
             {batteryOptions.map((battery) => (
               <div key={battery.label} className="flex gap-3">
@@ -163,7 +162,7 @@ function FilteSide() {
       </Accordion>
       <Accordion type="single" collapsible className="w-full">
         <AccordionItem value="item-1">
-          <AccordionTrigger className="text-md">Display Size</AccordionTrigger>
+          <AccordionTrigger className="text-md">{t("Display Size")}</AccordionTrigger>
           <AccordionContent className="flex flex-col gap-4 text-balance">
             {displaySizeOptions.map((dispaly) => (
               <div key={dispaly.label} className="flex gap-3">

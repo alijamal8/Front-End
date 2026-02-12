@@ -16,7 +16,7 @@ export const ProductsService = {
 
   async getSingleProduct(id: string) {
     const res = await fetch(`${API_URL}/products/${id}`, {
-      cache: "no-store",
+      next: { revalidate: 60 },
     });
 
     if (!res.ok) {
@@ -35,7 +35,6 @@ export const ProductsService = {
     if (!res.ok) {
       throw new Error("Failed to fetch data");
     }
-
     const data = await res.json();
     return data;
   },

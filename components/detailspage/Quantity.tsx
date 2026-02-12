@@ -5,23 +5,26 @@ import {
   SelectContent,
   SelectGroup,
   SelectItem,
-  SelectLabel,
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
 import { Button } from "../ui/button";
 import { useCartStore } from "@/stores/cartStore";
 import { Product } from "@/types/homePage";
+import { useTranslations } from "next-intl";
 
 function Quantity({ product }: { product: Product }) {
   const [quantity, setQuantity] = useState("1");
   const addToCart = useCartStore((state) => state.addToCart);
+  const t = useTranslations();
   return (
     <div>
-      <h2 className="text-xl font-semibold mb-4">Quantity</h2>
+      <h2 className="text-xl font-semibold mb-4">
+        {t("productDetails.Quantity")}
+      </h2>
       <Select value={quantity} onValueChange={setQuantity}>
         <SelectTrigger className="w-[180px]">
-          <SelectValue placeholder="Select quantity" />
+          <SelectValue placeholder={t("productDetails.Quantity")} />
         </SelectTrigger>
         <SelectContent>
           <SelectGroup>
@@ -35,8 +38,13 @@ function Quantity({ product }: { product: Product }) {
       </Select>
 
       <div className="flex justify-between max-w-sm mt-10">
-        <Button onClick={() => addToCart(product , Number(quantity))} className="px-10 text-lg">Add to Card</Button>
-        <Button className="px-13 text-lg">Buy Now</Button>
+        <Button
+          onClick={() => addToCart(product, Number(quantity))}
+          className="px-10 text-lg"
+        >
+          {t("productDetails.Add to Cart")}
+        </Button>
+        <Button className="px-13 text-lg">{t("productDetails.Buy Now")}</Button>
       </div>
     </div>
   );
