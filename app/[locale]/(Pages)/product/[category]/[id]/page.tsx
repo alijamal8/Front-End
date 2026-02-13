@@ -6,7 +6,8 @@ import React from "react";
 
 async function page({ params }: { params: { id: string } }) {
   const product = await ProductsService.getSingleProduct(params.id);
-  console.log(product);
+  
+  
   return (
     <>
       <div className=" mb-30 px-10 grid grid-cols-[40%_60%] mt-10  space-x-10 max-sm:grid-cols-1 max-sm:px-0 max-sm:mt-0">

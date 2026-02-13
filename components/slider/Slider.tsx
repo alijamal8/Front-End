@@ -80,7 +80,7 @@ async function Slider() {
                     <Link href={""}>
                       <Image
                         src={item.image_url}
-                        alt=""
+                        alt={item.title}
                         fill
                         className="object-cover"
                         priority={index === 0}
@@ -108,12 +108,12 @@ async function Slider() {
 
                       <div className="text-sm py-4 ">
                         {item.description.split(",").map((line, index) => (
-                          <span
+                          <p
                             key={index}
                             className={`block text-2xl max-sm:text-sm mb-1 ${item.position === "left" ? "text-left" : "text-right"}`}
                           >
                             {line}
-                          </span>
+                          </p>
                         ))}
                       </div>
 

@@ -13,6 +13,9 @@ import { FaPlus } from "react-icons/fa6";
 import { useTranslations } from "next-intl";
 const a = false;
 
+
+
+
 function Card({ product, from }: CardProps) {
   const addToCart = useCartStore((state) => state.addToCart);
   const cart = useCartStore((state) => state.cart);
@@ -23,13 +26,17 @@ function Card({ product, from }: CardProps) {
   //   price.toLocaleString("ar-IQ") + " د.ع";
   // <p>{formatIQD(product.price)}</p>
 
+
+
+
+
   return (
     <>
       {product?.map((item) => {
         const cartItem = cart.find((c) => c.id === item.id);
         return (
           <div className="cursor-pointer" id="card" key={item.id}>
-            <Link href={`/prodcuts/${from}/${item.id}`}>
+            <Link href={`/product/${from}/${item.id}`}>
               <div className="bg-gray-100 h-[350px] w-[350px] rounded-md p-8 relative group">
                 <Image
                   alt={item.name}
@@ -38,11 +45,7 @@ function Card({ product, from }: CardProps) {
                   quality={100}
                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                   className="w-full h-full object-contain max-h-[290px] transition-all duration-500 ease-in-out group-hover:scale-110 group-hover:opacity-80"
-                  src={
-                    item.images?.[0]?.image_url
-                      ? `http://localhost:8000/storage/${item.images[0].image_url}`
-                      : "/no-image.png"
-                  }
+                  src={`http://localhost:8000/storage/${item.images[0].image_url}`}
                 />
 
                 <div className="absolute right-4 top-4">
@@ -66,10 +69,7 @@ function Card({ product, from }: CardProps) {
             </Link>
 
             <div className="max-w-[400px] flex flex-col gap-4">
-              <p className="text-sm max-w-[350px]">
-                Tecno Camon 40 Premier 5G - Dual SIM - 6.67 Inch - AMOLED 144 Hz
-                - MediaTek Dimensity 8350 Ultimate - 5100 mAh
-              </p>
+              <p className="text-sm max-w-[350px]">{item.description}</p>
               <Rating rate={item.rating} />
 
               {!cartItem ? (

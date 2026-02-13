@@ -15,13 +15,19 @@ import Card from "./Card";
 import { Product } from "@/types/homePage";
 import { useTranslations } from "next-intl";
 
-function SideProducts({ filtered }: { filtered: Product[] }) {
+function SideProducts({
+  title,
+  filtered,
+}: {
+  title: string;
+  filtered: Product[];
+}) {
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 6;
   const totalPages = Math.ceil(filtered.length / itemsPerPage);
   const startIndex = (currentPage - 1) * itemsPerPage;
   const currentProducts = filtered.slice(startIndex, startIndex + itemsPerPage);
-const t = useTranslations("category");
+  const t = useTranslations("category");
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   }, [currentPage]);
@@ -39,17 +45,18 @@ const t = useTranslations("category");
   };
   const link = filtered[0]?.category?.name;
 
-  
   return (
     <div className="mt-11 p-6 bg-[#f8f9fa] dark:bg-black max-sm:mt-0">
       <div className="mb-4">
-        <h1 className="text-4xl font-bold mb-4 max-sm:text-xl">
-          {
-            link ? t(link) : ""
-          }
-        </h1>
-        <p>{filtered.length} {t("products")}</p>
-
+        <h1 className="text-4xl font-bold mb-4 max-sm:text-xl">{title}</h1>
+        <p className="mb-4 font-bold">
+          ({filtered.length}) {t("products")}
+        </p>
+        <p className="mb-4 text-muted-foreground">
+          تصفح اسعار الهواتف في العراق لعام 2026 واكتشف أحدث المبايلات المتوفرة
+          مع أفضل المواصفات. نوفر لك أحدث الموبايلات سامسونج وغيرها من العلامات
+          لتختار الهاتف المناسب بسهولة.
+        </p>
       </div>
 
       <Separator className="mb-8" />

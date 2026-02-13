@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 
 import SideProducts from "../global/SideProducts";
 
@@ -22,7 +22,7 @@ function PhonesPage({ initialProducts }: { initialProducts: Product[] }) {
         <LeftSideFilters />
       </div>
       <div id="right">
-        <SideProducts filtered={filtered} />
+        <SideProducts title="اسعار الهواتف في العراق" filtered={filtered} />
         <FilteSide />
       </div>
     </div>
