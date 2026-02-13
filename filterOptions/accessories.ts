@@ -18,10 +18,10 @@ export const priceOptions = [
 
 
 export const typeProductOptions = [
-  { label: "Mobile Chargers", value: "mobile chargers" },
-  { label: "Mobile Cables", value: "mobile cables" },
-  { label: "Mobile Holder", value: "mobile holder" },
-  { label: "Mobile Cases", value: "mobile cases" },
+  { label: "Mobile Chargers", value: "charger" },
+  { label: "Mobile Cables", value: "cable" },
+  { label: "Mobile Holder", value: "holder" },
+  { label: "Mobile Cases", value: "case" },
   { label: "Power Bank", value: "power bank" },
-  { label: "Digital Pens", value: "digital pens" },
+  { label: "Digital Pens", value: "pen" },
 ];

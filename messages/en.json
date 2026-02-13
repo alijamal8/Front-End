@@ -1,5 +1,4 @@
 {
-  
   "navbar": {
     "mobiles": "Mobiles",
     "tablets": "Tablets",
@@ -18,7 +17,7 @@
   },
   "newProducts": {
     "title": "Explore Top Products By Category",
-    "subtitle": "New arrivals",
+    "subtitle": "New Arrivals",
     "showAll": "Show All Products",
     "featured_products": "Featured Products",
     "gaming_products": "Gaming Products"
