@@ -1,3 +1,4 @@
+"use client"
 import CartPage from '@/components/shoppingcartPage/CartPage'
 import React from 'react'
 

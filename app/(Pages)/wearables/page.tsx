@@ -5,7 +5,6 @@ import React from 'react';
 
 async function page() {
   const data = await ProductsService.getCategoryProduct("Watches");
-   console.log(data)
   return (
     <div>
       <WearablesPage initialProducts={data}/>

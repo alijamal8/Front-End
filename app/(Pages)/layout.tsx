@@ -1,4 +1,6 @@
 import Navbar from "@/components/navbar/Navbar";
+import { NextIntlClientProvider } from "next-intl";
+import arMessages from "@/messages/ar.json";
 
 export default function pagesLayout({
   children,
@@ -7,8 +9,10 @@ export default function pagesLayout({
 }>) {
   return (
     <main>
-      <Navbar />
-      {children}
+      <NextIntlClientProvider locale="ar" messages={arMessages}>
+        <Navbar />
+        {children}
+      </NextIntlClientProvider>
     </main>
   );
 }

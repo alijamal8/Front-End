@@ -4,7 +4,7 @@ import React from 'react';
 
 async function page() {
   const data = await ProductsService.getCategoryProduct("Audio");
-   console.log(data)
+
   return (
     <div>
       <AudioPage initialProducts={data}/>

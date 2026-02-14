@@ -4,6 +4,9 @@ import FilterSide from './FilterSide'
 import SideProducts from '../global/SideProducts'
 import { usePhonesFilters } from '@/stores/usePhoneFilterStore';
 import { Product } from '@/types/homePage';
+import Content from '../global/Content';
+import { Separator } from '../ui/separator';
+import { useTranslations } from 'next-intl';
  
 
 
@@ -14,7 +17,7 @@ function TabletsPage({ initialProducts }: { initialProducts: Product[] }) {
     setProducts(initialProducts);
   }, [initialProducts, setProducts]);
   const filtered = usePhonesFilters((state) => state.filtered);
-
+  const t = useTranslations("category");
      
   return (
     <>
@@ -25,10 +28,19 @@ function TabletsPage({ initialProducts }: { initialProducts: Product[] }) {
         />
       </div>
       <div id="right">
-      <SideProducts 
-      filtered={filtered}
-      />
-      </div>
+          <div className="mt-11 p-6 bg-[#f8f9fa] dark:bg-black max-sm:mt-0">
+            <div className="mb-4">
+              <Content title="tablets" description="tablets" />
+
+              <p className="mb-4 font-bold">
+                ({filtered.length}) {t("products")}
+              </p>
+            </div>
+            <Separator className="mb-8" />
+
+            <SideProducts filtered={filtered} />
+          </div>
+        </div>
     </div>
     </>
   )

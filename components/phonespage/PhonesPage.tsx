@@ -8,9 +8,13 @@ import { usePhonesFilters } from "@/stores/usePhoneFilterStore";
 import FilteSide from "./FilteSide";
 import LeftSideFilters from "./LeftSideFilters";
 
+import { Separator } from "../ui/separator";
+import { useTranslations } from "next-intl";
+import Content from "../global/Content";
 
 function PhonesPage({ initialProducts }: { initialProducts: Product[] }) {
   const setProducts = usePhonesFilters((state) => state.setProducts);
+  const t = useTranslations("category");
 
   useEffect(() => {
     setProducts(initialProducts);
@@ -22,7 +26,21 @@ function PhonesPage({ initialProducts }: { initialProducts: Product[] }) {
         <LeftSideFilters />
       </div>
       <div id="right">
-        <SideProducts title="اسعار الهواتف في العراق" filtered={filtered} />
+        <div className="mt-11 p-6 bg-[#f8f9fa] dark:bg-black max-sm:mt-0">
+          <div className="mb-4">
+            <Content
+              title="اسعار الهواتف في العراق"
+              description="تصفح أحدث اسعار الهواتف في العراق لعام 2026 واكتشف أحدث المبايلات المتوفرة مع أفضل المواصفات. نوفر لك مجموعة واسعة من الهواتف من مختلف العلامات التجارية لتختار الجهاز المناسب بسهولة."
+            />
+
+            <p className="mb-4 font-bold">
+              ({filtered.length}) {t("products")}
+            </p>
+          </div>
+          <Separator className="mb-8" />
+
+          <SideProducts filtered={filtered} />
+        </div>
         <FilteSide />
       </div>
     </div>

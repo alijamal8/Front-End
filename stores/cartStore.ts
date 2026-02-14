@@ -1,7 +1,14 @@
 "use client";
 import { create } from "zustand";
-import { persist } from "zustand/middleware";
+import { persist, createJSONStorage, type StateStorage } from "zustand/middleware";
 import { Product } from "@/types/homePage";
+
+
+const noopStorage: StateStorage = {
+  getItem: (_name) => null,
+  setItem: (_name, _value) => {},
+  removeItem: (_name) => {},
+};
 
 interface CartState {
   cart: Product[];
@@ -21,7 +28,6 @@ export const useCartStore = create<CartState>()(
       addToCart: (product, quantity) => {
         const cart = get().cart;
         const exists = cart.find((item) => item.id === product.id);
-         
 
         if (exists) {
           set({
@@ -39,9 +45,7 @@ export const useCartStore = create<CartState>()(
       },
 
       removeFromCart: (id: number) => {
-        set({
-          cart: get().cart.filter((item) => item.id !== id),
-        });
+        set({ cart: get().cart.filter((item) => item.id !== id) });
       },
 
       decreaseQuantity: (id: number) => {
@@ -56,7 +60,6 @@ export const useCartStore = create<CartState>()(
 
       updateQuantity: (id: number, quantity: number) => {
         if (quantity < 1) return;
-
         set({
           cart: get().cart.map((item) =>
             item.id === id ? { ...item, quantity } : item,
@@ -67,13 +70,13 @@ export const useCartStore = create<CartState>()(
       clearCart: () => set({ cart: [] }),
 
       totalPrice: () =>
-        get().cart.reduce(
-          (total, item) => total + item.price * item.quantity,
-          0,
-        ),
+        get().cart.reduce((total, item) => total + item.price * item.quantity, 0),
     }),
     {
       name: "cart-storage",
+      storage: createJSONStorage(() =>
+        typeof window !== "undefined" ? localStorage : noopStorage
+      ),
     },
   ),
 );
