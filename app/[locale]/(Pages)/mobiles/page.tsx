@@ -10,7 +10,9 @@ type PageProps = {
   params: Promise<{ locale: string }>;
 };
 
-export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+export async function generateMetadata({
+  params,
+}: PageProps): Promise<Metadata> {
   const { locale } = await params;
   const localePath = `/${locale}/mobiles`;
 
@@ -44,8 +46,6 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   };
 }
 
-
-
 async function page({ params }: PageProps) {
   const { locale } = await params;
   const data = await ProductsService.getCategoryProduct("Mobiles");
@@ -53,16 +53,15 @@ async function page({ params }: PageProps) {
   const itemList = {
     "@context": "https://schema.org",
     "@type": "ItemList",
-    name:
-      locale === "ar"
-        ? "اسعار الهواتف في العراق"
-        : "Mobile prices in Iraq",
-    itemListElement: data.slice(0, 10).map((product: Product, index: number) => ({
-      "@type": "ListItem",
-      position: index + 1,
-      name: product.name,
-      url: `${SITE_URL}/product/${(product.category?.name ?? "mobiles").toLowerCase()}/${product.id}`,
-    })),
+    name: locale === "ar" ? "اسعار الهواتف في العراق" : "Mobile prices in Iraq",
+    itemListElement: data
+      .slice(0, 10)
+      .map((product: Product, index: number) => ({
+        "@type": "ListItem",
+        position: index + 1,
+        name: product.name,
+        url: `${SITE_URL}/product/${(product.category?.name ?? "mobiles").toLowerCase()}/${product.id}`,
+      })),
   };
 
   return (

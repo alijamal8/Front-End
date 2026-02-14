@@ -60,13 +60,16 @@ const sliders2 = [
   },
 ];
 
-// ... existing imports
+
 
 async function Slider() {
   const sliders: Sliders[] = await sliserService.getSliders();
   const t = await getTranslations("home");
   const locale = await getLocale();
   const dir = locale === "ar" ? "rtl" : "ltr";
+
+
+ 
 
   return (
     <div>
@@ -79,7 +82,7 @@ async function Slider() {
                   <CardContent className="flex p-0 relative m-0 aspect-square items-center justify-center max-w-[1700px] h-[800px] bg-0 max-sm:max-w-[500px] max-sm:max-h-[500px] xl:max-w-[2200px]">
                     <Link href={""}>
                       <Image
-                        src={item.image_url}
+                        src={`${item.image_url}`}
                         alt={item.title}
                         fill
                         className="object-cover"

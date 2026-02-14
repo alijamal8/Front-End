@@ -15,7 +15,7 @@ import { useTranslations } from "next-intl";
 
 function RightSide({ filtered }: { filtered: Product[] }) {
   const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 6;
+  const itemsPerPage = 16;
 const t = useTranslations("sectionsPages");
   const totalPages = Math.ceil(filtered.length / itemsPerPage);
   const startIndex = (currentPage - 1) * itemsPerPage;
