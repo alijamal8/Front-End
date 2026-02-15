@@ -28,7 +28,11 @@ export default function AudioPage({
         <div id="right">
           <div className="mt-11 p-6 bg-[#f8f9fa] dark:bg-black max-sm:mt-0">
             <div className="mb-4">
-              <Content title="Audio" description="Audio" />
+              <Content
+                title="سماعات بلوتوث"
+                description="تصفح مجموعة سماعات بلوتوث رخيصة واختر السماعة المناسبة حسب الأداء والسعر. نوفر أفضل سماعات رأس رخيصة وسماعات جيمنج بأسعار تناسب مختلف الميزانيات، بالإضافة إلى موديلات من سامسونج وغيرها من العلامات الموثوقة.
+"
+              />
 
               <p className="mb-4 font-bold">
                 ({filtered.length}) {t("products")}

@@ -29,7 +29,7 @@ function PhonesPage({ initialProducts }: { initialProducts: Product[] }) {
         <div className="mt-11 p-6 bg-[#f8f9fa] dark:bg-black max-sm:mt-0">
           <div className="mb-4">
             <Content
-              title="اسعار الهواتف في العراق"
+              title="اسعار الهواتف"
               description="تصفح أحدث اسعار الهواتف في العراق لعام 2026 واكتشف أحدث المبايلات المتوفرة مع أفضل المواصفات. نوفر لك مجموعة واسعة من الهواتف من مختلف العلامات التجارية لتختار الجهاز المناسب بسهولة."
             />
 

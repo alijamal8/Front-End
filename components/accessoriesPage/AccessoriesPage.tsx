@@ -25,7 +25,8 @@ function AccessoriesPage({ initialProducts }: { initialProducts: Product[] }) {
         <div id="right">
           <div className="mt-11 p-6 bg-[#f8f9fa] dark:bg-black max-sm:mt-0">
             <div className="mb-4">
-              <Content title="Accessories" description="Accessories" />
+              <Content title="اكسسوارات الموبايل" description="اكتشف أفضل اكسسوارات موبايل واكسسوارات جوال تشمل شواحن وكيبلات تايب سي وباور بانك شحن سريع، بالإضافة إلى أقلام تابلت بموديلات متعددة تناسب احتياجك اليومي.
+" />
 
               <p className="mb-4 font-bold">
                 ({filtered.length}) {t("products")}

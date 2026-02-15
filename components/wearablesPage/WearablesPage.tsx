@@ -21,11 +21,14 @@ function WearablesPage({ initialProducts }: { initialProducts: Product[] }) {
         <div id="left">
           <WaerablesFilter />
         </div>
-       <div id="right">
+        <div id="right">
           <div className="mt-11 p-6 bg-[#f8f9fa] dark:bg-black max-sm:mt-0">
             <div className="mb-4">
-              <Content title="Wearables" description="Wearables" />
-
+              <Content
+                title="الساعات الذكية"
+                description="تصفح مجموعة ساعات ذكية رخيصة واختر الساعة المناسبة حسب السعر والمواصفات. نوفر أفضل ساعات سمارت من مختلف العلامات التجارية بما فيها سامسونج وهواوي، بالإضافة إلى ساعات ذكية للأطفال بأسعار تناسب جميع الميزانيات.
+"
+              />
 
               <p className="mb-4 font-bold">
                 ({filtered.length}) {t("products")}

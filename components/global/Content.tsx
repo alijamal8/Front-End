@@ -8,7 +8,6 @@ function Content({
   title: string;
   description: string;
 }) {
-  //   const t = useTranslations("");
   return (
     <>
       <h1 className="text-4xl font-bold mb-4 max-sm:text-xl">{title}</h1>

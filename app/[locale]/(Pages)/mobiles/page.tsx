@@ -1,26 +1,39 @@
+import PhonesPage from "@/components/phonespage/PhonesPage";
 import { ProductsService } from "@/services/api/product";
 import { Product } from "@/types/homePage";
-import React from "react";
-import { Metadata } from "next";
-import PhonesPage from "@/components/phonespage/PhonesPage";
+import type { Metadata } from "next";
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
 
 type PageProps = {
-  params: Promise<{ locale: string }>;
+  params: { locale: "ar" | "en" };
 };
 
 export async function generateMetadata({
   params,
 }: PageProps): Promise<Metadata> {
-  const { locale } = await params;
+  const { locale } = params;
+
+  const isAr = locale === "ar";
   const localePath = `/${locale}/mobiles`;
+
+  const title = isAr
+    ? "اسعار الهواتف في العراق | أحدث الموبايلات وأفضل العروض"
+    : "Phone Prices in Iraq | Latest Mobiles & Best Deals";
+
+  const description = isAr
+    ? "تصفح اسعار الهواتف في العراق واكتشف أحدث الموبايلات مع أفضل العروض والمواصفات. قارن بين الأجهزة واختر الهاتف المناسب لك."
+    : "Browse phone prices in Iraq and discover the latest mobiles with the best deals and specifications. Compare devices and choose the right phone for you.";
+
+  const ogDescription = isAr
+    ? "تصفح اسعار الهواتف في العراق واكتشف أحدث الموبايلات مع أفضل العروض والمواصفات."
+    : "Browse phone prices in Iraq and discover the latest mobiles with the best deals and specs.";
 
   return {
     metadataBase: new URL(SITE_URL),
-    title: "اسعار الهواتف في العراق | أحدث الموبايلات وأفضل العروض",
-    description:
-      "تصفح اسعار الهواتف في العراق واكتشف أحدث الموبايلات مع أفضل العروض والمواصفات. قارن بين الأجهزة واختر الهاتف المناسب لك.",
+    title,
+    description,
+
     alternates: {
       canonical: localePath,
       languages: {
@@ -29,25 +42,25 @@ export async function generateMetadata({
         "x-default": "/ar/mobiles",
       },
     },
+
     openGraph: {
-      title: "اسعار الهواتف في العراق | أحدث الموبايلات وأفضل العروض",
-      description:
-        "تصفح اسعار الهواتف في العراق واكتشف أحدث الموبايلات مع أفضل العروض والمواصفات.",
+      title,
+      description: ogDescription,
       url: localePath,
       type: "website",
-      locale,
+      locale: isAr ? "ar" : "en_US",
     },
+
     twitter: {
       card: "summary_large_image",
-      title: "اسعار الهواتف في العراق | أحدث الموبايلات وأفضل العروض",
-      description:
-        "تصفح اسعار الهواتف في العراق واكتشف أحدث الموبايلات مع أفضل العروض والمواصفات.",
+      title,
+      description: ogDescription,
     },
   };
 }
 
-async function page({ params }: PageProps) {
-  const { locale } = await params;
+async function page({ params }: { params: { locale: "ar" | "en" } }) {
+  const { locale } = params;
   const data = await ProductsService.getCategoryProduct("Mobiles");
 
   const itemList = {
@@ -60,7 +73,7 @@ async function page({ params }: PageProps) {
         "@type": "ListItem",
         position: index + 1,
         name: product.name,
-        url: `${SITE_URL}/product/${(product.category?.name ?? "mobiles").toLowerCase()}/${product.id}`,
+        url: `${SITE_URL}/${locale}/product/${(product.category?.name ?? "mobiles").toLowerCase()}/${product.id}`,
       })),
   };
 

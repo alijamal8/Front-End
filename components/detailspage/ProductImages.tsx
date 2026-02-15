@@ -13,11 +13,17 @@ import { Card, CardContent } from "../ui/card";
 import Image from "next/image";
 import { Product } from "@/types/homePage";
 import { useProductUI } from "@/stores/colorStore";
+import { useLocale } from "next-intl";
+
 
 function ProductImages({ product }: { product: Product }) {
   const { selectedImageIndex } = useProductUI();
   const [api, setApi] = useState<CarouselApi | null>(null);
+  
+  const locale = useLocale();
+  const dir = locale === "ar" ? "rtl" : "ltr";
 
+  
   useEffect(() => {
     if (api) api.scrollTo(selectedImageIndex);
   }, [selectedImageIndex, api]);
@@ -33,7 +39,7 @@ function ProductImages({ product }: { product: Product }) {
         />
       </div>
       <div>
-        <Carousel className="max-w-2xl mt-5" setApi={setApi}>
+        <Carousel opts={{ direction: dir }} className="max-w-2xl mt-5" setApi={setApi}>
           <CarouselContent>
             {product.images.map((item, index) => (
               <CarouselItem key={`${selectedImageIndex}-${index}`}>
@@ -55,8 +61,17 @@ function ProductImages({ product }: { product: Product }) {
               </CarouselItem>
             ))}
           </CarouselContent>
-          <CarouselPrevious className="left-3 max-sm:hidden" />
-          <CarouselNext className="right-3 max-sm:hidden" />
+         {dir === "rtl" ? (
+               <>
+                 <CarouselNext className="absolute left-5 top-1/2 -translate-y-1/2 max-sm:hidden z-10 rotate-180 right-auto" />
+                 <CarouselPrevious className="absolute right-5 top-1/2 -translate-y-1/2 max-sm:hidden z-10 rotate-180 left-auto" />
+               </>
+             ) : (
+               <>
+                 <CarouselPrevious className="absolute left-5 top-1/2 -translate-y-1/2 max-sm:hidden z-10" />
+                 <CarouselNext className="absolute right-5 top-1/2 -translate-y-1/2 max-sm:hidden z-10" />
+               </>
+             )}
         </Carousel>
       </div>
     </>
