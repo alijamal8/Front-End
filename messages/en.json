@@ -92,6 +92,40 @@
     "Description": "Description",
     "Specifications": "Specifications"
   },
+  "pageContent": {
+    "phones": {
+      "title": "Mobile Prices",
+      "description": "Browse the latest mobile prices in Iraq for 2026 and discover the newest phones available with top specs. We offer a wide range of devices from trusted brands so you can choose the right phone easily."
+    },
+    "tablets": {
+      "title": "Best Tablets",
+      "description": "Browse our list of the best tablets for study and choose the right device for your educational needs. We provide top options for university use, including stylus-ready models at prices that fit different budgets."
+    },
+    "wearables": {
+      "title": "Smartwatches",
+      "description": "Browse affordable smartwatches and pick the one that matches your budget and features. We offer top smartwatch models from brands like Samsung and Huawei, plus kid-friendly watches at suitable prices."
+    },
+    "audio": {
+      "title": "Bluetooth Earbuds",
+      "description": "Browse affordable Bluetooth earbuds and choose the right model by performance and price. We offer budget-friendly headphones and gaming headsets, along with options from Samsung and other trusted brands."
+    },
+    "accessories": {
+      "title": "Mobile Accessories",
+      "description": "Discover top mobile accessories including chargers, Type-C cables, fast-charging power banks, and tablet pens in multiple models to match your daily needs."
+    },
+    "newProducts": {
+      "title": "New Products in the Market",
+      "description": "Explore the latest arrivals and discover newly added devices and modern tech in the store, including mobiles, earbuds, smartwatches, and accessories."
+    },
+    "featuredProducts": {
+      "title": "Best Sellers",
+      "description": "Explore the best sellers section and discover featured products picked by customers, including trusted and recommended devices and tech accessories."
+    },
+    "gamingProducts": {
+      "title": "Best Gaming Phones",
+      "description": "Browse our best gaming phone picks and choose the device that fits your performance needs and budget. We offer strong mid-range gaming phones and powerful low-price options for different usage styles in 2026."
+    }
+  },
   "audioPage": {
     "AirPods": "AirPods",
     "Wired Headphones": "Wired Headphones",

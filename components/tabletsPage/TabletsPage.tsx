@@ -15,6 +15,7 @@ function TabletsPage({ initialProducts }: { initialProducts: Product[] }) {
   }, [initialProducts, setProducts]);
   const filtered = usePhonesFilters((state) => state.filtered);
   const t = useTranslations("category");
+  const pageT = useTranslations("pageContent");
 
   return (
     <>
@@ -26,9 +27,8 @@ function TabletsPage({ initialProducts }: { initialProducts: Product[] }) {
           <div className="mt-11 p-6 bg-[#f8f9fa] dark:bg-black max-sm:mt-0">
             <div className="mb-4">
               <Content
-                title="افضل التابلتات"
-                description="تصفح قائمة افضل تابلت للدراسة واختر الجهاز المناسب حسب احتياجاتك التعليمية. نوفر أفضل تابلت للدراسة الجامعية بالإضافة إلى أجهزة مع قلم وبأسعار مناسبة تناسب مختلف الميزانيات.
-"
+                title={pageT("tablets.title")}
+                description={pageT("tablets.description")}
               />
 
               <p className="mb-4 font-bold">

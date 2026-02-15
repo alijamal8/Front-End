@@ -1,10 +1,17 @@
-import CheckoutPage from '@/components/checkoutPage/CheckoutPage'
-import React from 'react'
+import type { Metadata } from "next";
+import CheckoutPage from "@/components/checkoutPage/CheckoutPage";
+
+export const metadata: Metadata = {
+  robots: {
+    index: false,
+    follow: true,
+  },
+};
 
 function page() {
   return (
     <CheckoutPage />
-  )
+  );
 }
 
-export default page
+export default page;

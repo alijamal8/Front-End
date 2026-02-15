@@ -25,7 +25,7 @@ export async function generateMetadata({
     ? "تصفح منتجات جديدة في السوق واكتشف أحدث الأجهزة الإلكترونية التي وصلت حديثًا إلى المتجر، من الموبايلات والساعات والسماعات والإكسسوارات لعام 2026."
     : "Browse new products in the market and discover the latest electronic devices recently added to the store including phones, watches, audio, and accessories in 2026.";
 
-  const path = `/${locale}/newproducts`;
+  const path = `/${locale}/newproduct`;
 
   return {
     metadataBase: new URL(SITE_URL),
@@ -35,9 +35,9 @@ export async function generateMetadata({
     alternates: {
       canonical: path,
       languages: {
-        ar: "/ar/newproducts",
-        en: "/en/newproducts",
-        "x-default": "/ar/newproducts",
+        ar: "/ar/newproduct",
+        en: "/en/newproduct",
+        "x-default": "/ar/newproduct",
       },
     },
 
@@ -73,7 +73,7 @@ export default async function Page({ params }: PageProps) {
         "@type": "ListItem",
         position: index + 1,
         name: product.name,
-        url: `${SITE_URL}/${locale}/product/${(product.category?.name ?? "products").toLowerCase()}/${product.id}`,
+        url: `${SITE_URL}/${locale}/product/${(product.category?.name ?? "newproduct").toLowerCase()}/${product.id}`,
       })),
   };
 

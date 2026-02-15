@@ -22,6 +22,7 @@ function NewProductPage({ initialProducts }: { initialProducts: Product[] }) {
     setProducts(initialProducts);
   }, [initialProducts, setProducts]);
 const t = useTranslations("category");
+  const pageT = useTranslations("pageContent");
   return (
     <>
       <div className="px-10 grid grid-cols-[22%_78%] mt-10 space-x-10 max-sm:grid-cols-1 max-sm:px-0 max-sm:mt-0">
@@ -32,9 +33,8 @@ const t = useTranslations("category");
           <div className="mt-11 p-6 bg-[#f8f9fa] dark:bg-black max-sm:mt-0">
             <div className="mb-4">
               <Content
-                title="الأكثر مبيعاً"
-                description="استكشف قسم الأكثر مبيعاً وتعرف على منتجات مميزة ومختارة من قبل المستخدمين، تشمل أجهزة ومستلزمات تقنية موثوقة ومقترحة للشراء.
-"
+                title={pageT("featuredProducts.title")}
+                description={pageT("featuredProducts.description")}
               />
               <p className="mb-4 font-bold">
                 ({filteredProducts.length}) {t("products")}

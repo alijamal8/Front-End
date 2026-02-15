@@ -18,6 +18,7 @@ function NewProductPage({ initialProducts }: { initialProducts: Product[] }) {
     setProducts(initialProducts);
   }, [initialProducts, setProducts]);
   const t = useTranslations("category");
+  const pageT = useTranslations("pageContent");
   return (
     <>
       <div className="px-10 grid grid-cols-[22%_78%] mt-10 space-x-10 max-sm:grid-cols-1 max-sm:px-0 max-sm:mt-0">
@@ -28,9 +29,8 @@ function NewProductPage({ initialProducts }: { initialProducts: Product[] }) {
           <div className="mt-11 p-6 bg-[#f8f9fa] dark:bg-black max-sm:mt-0">
             <div className="mb-4">
               <Content
-                title="منتجات جديدة في السوق"
-                description="استكشف قسم وصل حديثًا وتعرف على أحدث الأجهزة والتقنيات الحديثة التي تمت إضافتها إلى المتجر، بما يشمل الموبايلات والسماعات والساعات والإكسسوارات الجديدة.
-"
+                title={pageT("newProducts.title")}
+                description={pageT("newProducts.description")}
               />
               <p className="mb-4 font-bold">
                 ({filteredProducts.length}) {t("products")}
