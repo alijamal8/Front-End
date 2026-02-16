@@ -8,13 +8,13 @@ import GamingSection from "@/components/gamingSection/GamingSection";
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
 
 type PageProps = {
-  params: { locale: "ar" | "en" };
+  params: Promise<{ locale: "ar" | "en" }>;
 };
 
 export async function generateMetadata({
   params,
 }: PageProps): Promise<Metadata> {
-  const { locale } = params;
+  const { locale } = await params;
   const isAr = locale === "ar";
 
   const title = isAr
@@ -55,7 +55,8 @@ export async function generateMetadata({
 }
 
 export default async function HomePage({ params }: PageProps) {
-  const isAr = params.locale === "ar";
+  const { locale } = await params;
+  const isAr = locale === "ar";
 
   return (
     <>

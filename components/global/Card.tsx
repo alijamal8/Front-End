@@ -39,7 +39,7 @@ function Card({ product, from }: CardProps) {
 
   return (
     <>
-      {product?.map((item) => {
+      {product?.map((item, index) => {
         const cartItem = cart.find((c) => c.id === item.id);
         const imagePath = item.images?.[0]?.image_url ?? "";
         const normalizedImagePath = imagePath.startsWith("/")
@@ -57,7 +57,8 @@ function Card({ product, from }: CardProps) {
                   alt={item.name}
                   width={350}
                   height={350}
-                  quality={100}
+                  quality={80}
+                  priority={index < 2}
                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                   className="w-full h-full object-contain max-h-[290px] transition-all duration-500 ease-in-out group-hover:scale-110 group-hover:opacity-80"
                   src={imageSrc}

@@ -81,7 +81,7 @@ async function Slider() {
                 <Card className="p-0 border-0">
                   <CardContent className="flex p-0 relative m-0 aspect-square items-center justify-center max-w-[1700px] h-[800px] bg-0 max-sm:max-w-[500px] max-sm:max-h-[500px] xl:max-w-[2200px]">
                     <Link href={""}>
-                      <Image
+                      <Image 
                         src={`${item.image_url}`}
                         alt={item.title}
                         fill

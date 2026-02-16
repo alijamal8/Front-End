@@ -10,6 +10,7 @@ import { getTranslations } from "next-intl/server";
 
 async function ProductSection() {
   const data = await ProductsService.getNewProduct("featured");
+ 
   const product = data.slice(0, 12);
   const t = await getTranslations("newProducts");
 

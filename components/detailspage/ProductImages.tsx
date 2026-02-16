@@ -15,6 +15,12 @@ import { Product } from "@/types/homePage";
 import { useProductUI } from "@/stores/colorStore";
 import { useLocale } from "next-intl";
 
+const API_BASE_URL =
+  process.env.NEXT_PUBLIC_API_BASE_URL ?? "http://localhost:8000";
+const NORMALIZED_API_BASE_URL = API_BASE_URL.endsWith("/")
+  ? API_BASE_URL.slice(0, -1)
+  : API_BASE_URL;
+
 
 function ProductImages({ product }: { product: Product }) {
   const { selectedImageIndex } = useProductUI();
@@ -47,9 +53,10 @@ function ProductImages({ product }: { product: Product }) {
                   <Card>
                     <CardContent className="relative flex aspect-square items-center justify-center p-6 ">
                       <Image
-                        src={`http://localhost:8000/storage/${item.image_url}`}
+                        src={`${NORMALIZED_API_BASE_URL}/storage/${item.image_url.replace(/^\/+/, "")}`}
                         alt={product.name}
                         fill
+                        unoptimized
                         sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                         className="w-full h-full object-contain"
                         quality={100}
