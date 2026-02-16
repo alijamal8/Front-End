@@ -38,7 +38,7 @@ function LeftSideFilters() {
         <Road
           items={[
             { label: "Home", href: "/" },
-            { label: "Mobiles", href: "/Mobiles" },
+            { label: "Mobiles", href: "/mobiles" },
           ]}
         />
         <div className="p-6 mt-6 bg-[#f8f9fa] dark:bg-black max-sm:hidden">

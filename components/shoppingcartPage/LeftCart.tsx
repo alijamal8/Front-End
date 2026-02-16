@@ -8,6 +8,12 @@ import { Button } from "../ui/button";
 
 import { useTranslations } from "next-intl";
 
+const API_BASE_URL =
+  process.env.NEXT_PUBLIC_API_BASE_URL ?? "http://localhost:8000";
+const NORMALIZED_API_BASE_URL = API_BASE_URL.endsWith("/")
+  ? API_BASE_URL.slice(0, -1)
+  : API_BASE_URL;
+
 export default function LeftCart({ from }: { from: string }) {
   const t = useTranslations("cart");
   const cart = useCartStore((state) => state.cart);
@@ -39,10 +45,11 @@ export default function LeftCart({ from }: { from: string }) {
 
                   <div className="h-32 w-32 flex-shrink-0 overflow-hidden rounded-lg bg-gray-50">
                     <Image
-                      src={`http://localhost:8000/storage/${item.images[0].image_url.replace(/^\/+/, "")}`}
+                      src={`${NORMALIZED_API_BASE_URL}/storage/${item.images[0].image_url.replace(/^\/+/, "")}`}
                       alt={item.name}
                       width={128}
                       height={128}
+                      unoptimized
                       className="h-full w-full object-contain"
                     />
                   </div>

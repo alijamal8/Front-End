@@ -13,11 +13,23 @@ import { Card, CardContent } from "../ui/card";
 import Image from "next/image";
 import { Product } from "@/types/homePage";
 import { useProductUI } from "@/stores/colorStore";
+import { useLocale } from "next-intl";
+
+const API_BASE_URL =
+  process.env.NEXT_PUBLIC_API_BASE_URL ?? "http://localhost:8000";
+const NORMALIZED_API_BASE_URL = API_BASE_URL.endsWith("/")
+  ? API_BASE_URL.slice(0, -1)
+  : API_BASE_URL;
+
 
 function ProductImages({ product }: { product: Product }) {
   const { selectedImageIndex } = useProductUI();
   const [api, setApi] = useState<CarouselApi | null>(null);
+  
+  const locale = useLocale();
+  const dir = locale === "ar" ? "rtl" : "ltr";
 
+  
   useEffect(() => {
     if (api) api.scrollTo(selectedImageIndex);
   }, [selectedImageIndex, api]);
@@ -28,12 +40,12 @@ function ProductImages({ product }: { product: Product }) {
         <Road
           items={[
             { label: "Home", href: "/" },
-            { label: "Product", href: `/products/${product.id}` },
+            { label: "Product", href: `/prodcut/${product.id}` },
           ]}
         />
       </div>
       <div>
-        <Carousel className="max-w-2xl mt-5" setApi={setApi}>
+        <Carousel opts={{ direction: dir }} className="max-w-2xl mt-5" setApi={setApi}>
           <CarouselContent>
             {product.images.map((item, index) => (
               <CarouselItem key={`${selectedImageIndex}-${index}`}>
@@ -41,9 +53,10 @@ function ProductImages({ product }: { product: Product }) {
                   <Card>
                     <CardContent className="relative flex aspect-square items-center justify-center p-6 ">
                       <Image
-                        src={`http://localhost:8000/storage/${item.image_url}`}
-                        alt=""
+                        src={`${NORMALIZED_API_BASE_URL}/storage/${item.image_url.replace(/^\/+/, "")}`}
+                        alt={product.name}
                         fill
+                        unoptimized
                         sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                         className="w-full h-full object-contain"
                         quality={100}
@@ -55,8 +68,17 @@ function ProductImages({ product }: { product: Product }) {
               </CarouselItem>
             ))}
           </CarouselContent>
-          <CarouselPrevious className="left-3 max-sm:hidden" />
-          <CarouselNext className="right-3 max-sm:hidden" />
+         {dir === "rtl" ? (
+               <>
+                 <CarouselNext className="absolute left-5 top-1/2 -translate-y-1/2 max-sm:hidden z-10 rotate-180 right-auto" />
+                 <CarouselPrevious className="absolute right-5 top-1/2 -translate-y-1/2 max-sm:hidden z-10 rotate-180 left-auto" />
+               </>
+             ) : (
+               <>
+                 <CarouselPrevious className="absolute left-5 top-1/2 -translate-y-1/2 max-sm:hidden z-10" />
+                 <CarouselNext className="absolute right-5 top-1/2 -translate-y-1/2 max-sm:hidden z-10" />
+               </>
+             )}
         </Carousel>
       </div>
     </>

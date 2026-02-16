@@ -4,6 +4,9 @@ import { Product } from "@/types/homePage";
 import { useEffect } from "react";
 import AccessoriesFilter from "./AccessoriesFilter";
 import SideProducts from "../global/SideProducts";
+import Content from "../global/Content";
+import { useTranslations } from "next-intl";
+import { Separator } from "../ui/separator";
 
 function AccessoriesPage({ initialProducts }: { initialProducts: Product[] }) {
   const setProducts = usePhonesFilters((state) => state.setProducts);
@@ -11,6 +14,9 @@ function AccessoriesPage({ initialProducts }: { initialProducts: Product[] }) {
     setProducts(initialProducts);
   }, [initialProducts, setProducts]);
   const filtered = usePhonesFilters((state) => state.filtered);
+  const t = useTranslations("category");
+  const pageT = useTranslations("pageContent");
+
   return (
     <>
       <div className="px-10 grid grid-cols-[22%_78%] mt-10 space-x-10 max-sm:grid-cols-1 max-sm:px-0 max-sm:mt-0">
@@ -18,7 +24,21 @@ function AccessoriesPage({ initialProducts }: { initialProducts: Product[] }) {
           <AccessoriesFilter />
         </div>
         <div id="right">
-          <SideProducts filtered={filtered} />
+          <div className="mt-11 p-6 bg-[#f8f9fa] dark:bg-black max-sm:mt-0">
+            <div className="mb-4">
+              <Content
+                title={pageT("accessories.title")}
+                description={pageT("accessories.description")}
+              />
+
+              <p className="mb-4 font-bold">
+                ({filtered.length}) {t("products")}
+              </p>
+            </div>
+            <Separator className="mb-8" />
+
+            <SideProducts filtered={filtered} />
+          </div>
         </div>
       </div>
     </>

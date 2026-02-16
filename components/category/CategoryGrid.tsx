@@ -81,7 +81,7 @@ function CategoryGrid() {
                   data-aos-duration="3000"
                   className="bg-white rounded-3xl overflow-hidden shadow-sm group cursor-pointer"
                 >
-                  <div className="relative w-[500px] h-[677px] overflow-hidden">
+                  <div className="relative w-[500px] h-[630px] overflow-hidden">
                     <Image
                       src={category2[0].image_url}
                       fill
@@ -120,6 +120,7 @@ function CategoryGrid() {
                           src={card.image_url}
                           alt={card.title}
                           fill
+                          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                           className="w-full h-full object-cover transition-all duration-500 ease-in-out group-hover:scale-110 group-hover:opacity-70"
                         />
                         <div className="text-white absolute bottom-[-30] left-4 group-hover:bottom-2 transition-all duration-500 max-sm:bottom-2">

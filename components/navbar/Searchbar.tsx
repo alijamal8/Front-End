@@ -1,3 +1,4 @@
+"use client";
 import { Input } from "@/components/ui/input";
 import Searchicon from "./Searchicon";
 import { IoCloseOutline } from "react-icons/io5";

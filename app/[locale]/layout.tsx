@@ -17,6 +17,7 @@ const inter = Inter({
 // Configure Cairo
 const cairo = Cairo({
   subsets: ["arabic"],
+    display: "swap", 
 });
 
 export const metadata: Metadata = {

@@ -60,13 +60,16 @@ const sliders2 = [
   },
 ];
 
-// ... existing imports
+
 
 async function Slider() {
   const sliders: Sliders[] = await sliserService.getSliders();
   const t = await getTranslations("home");
   const locale = await getLocale();
   const dir = locale === "ar" ? "rtl" : "ltr";
+
+
+ 
 
   return (
     <div>
@@ -78,9 +81,9 @@ async function Slider() {
                 <Card className="p-0 border-0">
                   <CardContent className="flex p-0 relative m-0 aspect-square items-center justify-center max-w-[1700px] h-[800px] bg-0 max-sm:max-w-[500px] max-sm:max-h-[500px] xl:max-w-[2200px]">
                     <Link href={""}>
-                      <Image
-                        src={item.image_url}
-                        alt=""
+                      <Image 
+                        src={`${item.image_url}`}
+                        alt={item.title}
                         fill
                         className="object-cover"
                         priority={index === 0}
@@ -108,12 +111,12 @@ async function Slider() {
 
                       <div className="text-sm py-4 ">
                         {item.description.split(",").map((line, index) => (
-                          <span
+                          <p
                             key={index}
                             className={`block text-2xl max-sm:text-sm mb-1 ${item.position === "left" ? "text-left" : "text-right"}`}
                           >
                             {line}
-                          </span>
+                          </p>
                         ))}
                       </div>
 

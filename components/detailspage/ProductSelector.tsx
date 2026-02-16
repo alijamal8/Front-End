@@ -16,13 +16,17 @@ export default function ProductSelector({ product }: { product: Product }) {
     setSelectedImageIndex(index);
   };
 
+    const formatIQD = (price: number) => {
+    return price.toLocaleString("en-US") + " IQD";
+  };
+
   const formattedPrice =
     product?.variants?.[selectedStorage]?.price ?? product?.price;
   return (
     <>
       <div className="max-w-lg pt-4">
         <h1 className="text-2xl font-semibold mb-10">
-          {t("productDetails.Price")} : {formattedPrice}
+          {t("productDetails.Price")} : {formatIQD(formattedPrice)}
         </h1>
         <div className="mb-12">
           {product.variants?.length ? (
@@ -41,7 +45,7 @@ export default function ProductSelector({ product }: { product: Product }) {
                   <span className="text-lg font-semibold">
                     {option.storage}GB
                   </span>
-                  <span className="text-lg font-semibold">{option.price} IQD</span>
+                  <span className="text-lg font-semibold">{formatIQD(option.price)}</span>
                 </button>
               ))}
             </div>

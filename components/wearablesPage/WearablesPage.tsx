@@ -4,9 +4,14 @@ import WaerablesFilter from "./WaerablesFilter";
 import { Product } from "@/types/homePage";
 import { usePhonesFilters } from "@/stores/usePhoneFilterStore";
 import SideProducts from "../global/SideProducts";
+import Content from "../global/Content";
+import { Separator } from "../ui/separator";
+import { useTranslations } from "next-intl";
 
 function WearablesPage({ initialProducts }: { initialProducts: Product[] }) {
   const setProducts = usePhonesFilters((state) => state.setProducts);
+  const t = useTranslations("category");
+  const pageT = useTranslations("pageContent");
   useEffect(() => {
     setProducts(initialProducts);
   }, [initialProducts, setProducts]);
@@ -18,7 +23,21 @@ function WearablesPage({ initialProducts }: { initialProducts: Product[] }) {
           <WaerablesFilter />
         </div>
         <div id="right">
-          <SideProducts filtered={filtered} />
+          <div className="mt-11 p-6 bg-[#f8f9fa] dark:bg-black max-sm:mt-0">
+            <div className="mb-4">
+              <Content
+                title={pageT("wearables.title")}
+                description={pageT("wearables.description")}
+              />
+
+              <p className="mb-4 font-bold">
+                ({filtered.length}) {t("products")}
+              </p>
+            </div>
+            <Separator className="mb-8" />
+
+            <SideProducts filtered={filtered} />
+          </div>
         </div>
       </div>
     </>
