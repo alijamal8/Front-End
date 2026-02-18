@@ -10,7 +10,20 @@
     "register": "إنشاء حساب",
     "search": "ادخل كلمة البحث",
     "orders": "طلباتي",
-    "logout": "تسجيل الخروج"
+    "logout": "تسجيل الخروج",
+    "accountDialog": {
+      "title": "معلومات الحساب",
+      "subtitle": "بيانات الحساب الأساسية",
+      "nameLabel": "اسم المستخدم",
+      "nameValue": "علي جمال",
+      "accountTypeLabel": "نوع الحساب",
+      "accountTypeValue": "شخصي",
+      "phoneLabel": "رقم الهاتف",
+      "phoneValue": "0770 000 0000",
+      "emailLabel": "البريد الإلكتروني",
+      "emailValue": "ali.jamal@example.com",
+      "close": "إغلاق"
+    }
   },
   "home": {
     "title": "تصفح افضل المنتجات حسب الفئة",

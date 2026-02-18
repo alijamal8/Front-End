@@ -2,6 +2,7 @@
 
 import React, { useEffect, useState } from "react";
 import { User } from "lucide-react";
+import AccountInfoDialog from "@/components/navbar/AccountInfoDialog";
 import {
   Menubar,
   MenubarContent,
@@ -16,6 +17,7 @@ import { useTranslations } from "next-intl";
 function Account() {
   const t = useTranslations("navbar");
   const [isAuth, setIsAuth] = useState(false);
+  const [isAccountDialogOpen, setIsAccountDialogOpen] = useState(false);
 
   useEffect(() => {
     const token = localStorage.getItem("token");
@@ -28,37 +30,46 @@ function Account() {
   };
 
   return (
-    <Menubar>
-      <MenubarMenu>
-        <MenubarTrigger>
-          <User className="hover:cursor-pointer border-0" />
-        </MenubarTrigger>
+    <>
+      <Menubar>
+        <MenubarMenu>
+          <MenubarTrigger>
+            <User className="hover:cursor-pointer border-0" />
+          </MenubarTrigger>
 
-        <MenubarContent className="mr-20 max-sm:mr-10">
-          {isAuth ? (
-            <>
-              <MenubarItem>{t("account")}</MenubarItem>
+          <MenubarContent className="mr-20 max-sm:mr-10">
+            {isAuth ? (
+              <>
+                <MenubarItem onSelect={() => setIsAccountDialogOpen(true)}>
+                  {t("account")}
+                </MenubarItem>
 
-              <Link href="/orders">
-                <MenubarItem>{t("orders")}</MenubarItem>
-              </Link>
+                <Link href="/orders">
+                  <MenubarItem>{t("orders")}</MenubarItem>
+                </Link>
 
-              <MenubarSeparator />
-              <MenubarItem onClick={logout}>{t("logout")}</MenubarItem>
-            </>
-          ) : (
-            <>
-              <Link href="/login">
-                <MenubarItem>{t("login")}</MenubarItem>
-              </Link>
-              <Link href="/register">
-                <MenubarItem>{t("register")}</MenubarItem>
-              </Link>
-            </>
-          )}
-        </MenubarContent>
-      </MenubarMenu>
-    </Menubar>
+                <MenubarSeparator />
+                <MenubarItem onClick={logout}>{t("logout")}</MenubarItem>
+              </>
+            ) : (
+              <>
+                <Link href="/login">
+                  <MenubarItem>{t("login")}</MenubarItem>
+                </Link>
+                <Link href="/register">
+                  <MenubarItem>{t("register")}</MenubarItem>
+                </Link>
+              </>
+            )}
+          </MenubarContent>
+        </MenubarMenu>
+      </Menubar>
+
+      <AccountInfoDialog
+        open={isAccountDialogOpen}
+        onOpenChange={setIsAccountDialogOpen}
+      />
+    </>
   );
 }
 

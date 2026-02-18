@@ -10,7 +10,20 @@
     "register": "Register",
     "search": "Enter your search keyword",
     "orders": "Orders",
-    "logout": "Logout"
+    "logout": "Logout",
+    "accountDialog": {
+      "title": "Account Information",
+      "subtitle": "Your basic account details",
+      "nameLabel": "User Name",
+      "nameValue": "Ali Jamal",
+      "accountTypeLabel": "Account Type",
+      "accountTypeValue": "Personal",
+      "phoneLabel": "Phone Number",
+      "phoneValue": "0770 000 0000",
+      "emailLabel": "Email",
+      "emailValue": "ali.jamal@example.com",
+      "close": "Close"
+    }
   },
 
   "home": {
