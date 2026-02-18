@@ -14,7 +14,13 @@ export default function page() {
     (async () => {
       try {
         const data = await OrderService.getOrders();
-        setOrders(data.message);
+        const parsedOrders = Array.isArray(data.data)
+          ? data.data
+          : Array.isArray(data)
+            ? data
+            : [];
+
+        setOrders(parsedOrders);
       } catch (error) {
         console.error(error);
         setError(true);
@@ -23,6 +29,7 @@ export default function page() {
       }
     })();
   }, []);
+  console.log(orders);
 
   return <OrdersPage orders={orders} isLoading={loading} isError={error} />;
 }

@@ -145,6 +145,32 @@
     "Power Bank": "Power Bank",
     "Digital Pens": "Digital Pens"
   },
+  "orders": {
+    "title": "My Orders",
+    "empty": "No orders yet",
+    "loadError": "An error occurred while loading orders",
+    "retry": "Retry",
+    "orderNumber": "Order",
+    "orderDate": "Order date",
+    "paymentMethod": "Payment method",
+    "paymentStatus": "Payment status",
+    "orderDetails": "Order details",
+    "totalPrice": "Total price",
+    "paymentMethods": {
+      "cash": "Cash",
+      "card": "Card"
+    },
+    "paymentStatuses": {
+      "unpaid": "Unpaid",
+      "paid": "Paid"
+    },
+    "statuses": {
+      "pending": "Pending",
+      "processing": "Processing",
+      "delivered": "Delivered",
+      "cancelled": "Cancelled"
+    }
+  },
   "sectionsPages": {
     "New Arrivals": "New Arrivals",
     "Featured Products": "Featured Products",

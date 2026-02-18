@@ -3,10 +3,10 @@ import OrderCard from "@/components/ordersPage/OrderCard";
 import { Order } from "@/types/order";
 
 type OrdersListProps = {
-  orders: any[];
+  orders?: Order[];
 };
 
-export default function OrdersList({ orders }: OrdersListProps) {
+export default function OrdersList({ orders = [] }: OrdersListProps) {
   if (orders.length === 0) {
     return <EmptyOrders />;
   }
@@ -14,13 +14,7 @@ export default function OrdersList({ orders }: OrdersListProps) {
   return (
     <div className="space-y-4">
       {orders.map((order) => (
-        <OrderCard
-          key={order.id}
-          id={order.id}
-          total_price={order.total_price}
-          order_status={order.order_status}
-          created_at={order.created_at}
-        />
+        <OrderCard key={order.id} {...order} />
       ))}
     </div>
   );

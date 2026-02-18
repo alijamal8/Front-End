@@ -1,12 +1,7 @@
+import { useTranslations } from "next-intl";
+
 type StatusBadgeProps = {
   status: string;
-};
-
-const statusLabelMap: Record<string, string> = {
-  pending: "قيد الانتظار",
-  processing: "قيد المعالجة",
-  delivered: "تم التسليم",
-  cancelled: "ملغي",
 };
 
 const statusClassMap: Record<string, string> = {
@@ -21,8 +16,9 @@ const statusClassMap: Record<string, string> = {
 };
 
 export default function StatusBadge({ status }: StatusBadgeProps) {
+  const t = useTranslations("orders.statuses");
   const key = status.trim().toLowerCase();
-  const label = statusLabelMap[key] ?? status;
+  const label = t.has(key) ? t(key) : status;
   const tone =
     statusClassMap[key] ??
     "bg-muted text-muted-foreground ring-border dark:bg-muted dark:text-muted-foreground";

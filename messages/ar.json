@@ -144,6 +144,32 @@
     "Power Bank": "باور بانك",
     "Digital Pens": "أقلام رقمية"
   },
+  "orders": {
+    "title": "طلباتي",
+    "empty": "لا توجد طلبات بعد",
+    "loadError": "حدث خطأ أثناء تحميل الطلبات",
+    "retry": "إعادة محاولة",
+    "orderNumber": "طلب",
+    "orderDate": "تاريخ الطلب",
+    "paymentMethod": "طريقة الدفع",
+    "paymentStatus": "حالة الدفع",
+    "orderDetails": "تفاصيل الطلب",
+    "totalPrice": "السعر الكلي",
+    "paymentMethods": {
+      "cash": "كاش",
+      "card": "بطاقة"
+    },
+    "paymentStatuses": {
+      "unpaid": "غير مدفوع",
+      "paid": "مدفوع"
+    },
+    "statuses": {
+      "pending": "قيد الانتظار",
+      "processing": "قيد المعالجة",
+      "delivered": "تم التسليم",
+      "cancelled": "ملغي"
+    }
+  },
   "sectionsPages": {
     "New Arrivals": "المنتجات الجديدة",
     "Featured Products": "المنتجات المميزة",
