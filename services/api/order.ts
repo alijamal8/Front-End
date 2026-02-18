@@ -24,4 +24,41 @@ export const OrderService = {
     toast.success("تم إنشاء الطلب بنجاح");
     return await res.json();
   },
+
+
+
+
+
+
+
+
+async getOrders() {
+  const token =
+    typeof window !== "undefined" ? localStorage.getItem("token") : null;
+
+  const res = await fetch(`${API_URL}/orders`, {
+    method: "GET",
+    headers: {
+      Accept: "application/json",
+      ...(token ? { Authorization: `Bearer ${token}` } : {}),
+    },
+    cache: "no-store",
+  });
+
+  if (!res.ok) {
+    let errorMsg = "Failed to fetch orders";
+    try {
+      const error = await res.json();
+      errorMsg = error?.message ?? errorMsg;
+    } catch {}
+    toast.error(errorMsg);
+    throw new Error(errorMsg);
+  }
+
+  return res.json();
+}
+
+
+
+  
 };
