@@ -22,6 +22,12 @@ export default function LeftCart({ from }: { from: string }) {
   const addToCart = useCartStore((state) => state.addToCart);
   const removeFromCart = useCartStore((state) => state.removeFromCart);
   const clearCart = useCartStore((state) => state.clearCart);
+  const priceFormatter = new Intl.NumberFormat("en-US", {
+    style: "currency",
+    currency: "IQD",
+    minimumFractionDigits: 0,
+    maximumFractionDigits: 0,
+  });
   return (
     <div className="min-h-screen dark:bg-black bg-[#f8f9fa] md:p-12">
       <div className="mx-auto max-w-7xl">
@@ -64,7 +70,7 @@ export default function LeftCart({ from }: { from: string }) {
                       144 Hz - MediaTek Dimensity 8350 Ultimate - 5100 mAh
                     </p>
                     <p className="text-xl font-semibold dark:text-[#f8f9fa] text-black ">
-                      {item.price} IQD
+                      {priceFormatter.format(item.price)}
                     </p>
                   </div>
 
@@ -87,7 +93,7 @@ export default function LeftCart({ from }: { from: string }) {
                   </div>
 
                   <div className="w-36 text-right text-lg font-semibold mt-14 dark:text-[#f8f9fa] text-black ">
-                    {item.price * item.quantity} IQD
+                    {priceFormatter.format(item.price * item.quantity)}
                   </div>
                 </div>
               </Link>

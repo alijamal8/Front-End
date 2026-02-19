@@ -10,24 +10,36 @@ function RightSide({ deliveryMethod }: { deliveryMethod: "ship" | "pickup" }) {
     () => cart.reduce((total, item) => total + item.price * item.quantity, 0),
     [cart],
   );
+  const priceFormatter = new Intl.NumberFormat("en-US", {
+    style: "currency",
+    currency: "IQD",
+    minimumFractionDigits: 0,
+    maximumFractionDigits: 0,
+  });
   return (
     <div className="min-h-screen dark:bg-black bg-[#f8f9fa] md:p-12">
       <div className=" space-y-8 ">
         <div className="flex justify-between">
           <p className="text-black text-xl dark:text-white">{t("subtotal")}</p>
-          <p className="text-black text-xl dark:text-white">{totalPrice} IQD</p>
+          <p className="text-black text-xl dark:text-white">
+            {priceFormatter.format(totalPrice)}
+          </p>
         </div>
         <div className="flex justify-between">
           <p className="text-black text-xl dark:text-white">{t("shipping")}</p>
           <p className="text-black text-xl dark:text-white">
-            {deliveryMethod === "ship" ? "5,000 IQD" : "0 IQD"}
+            {deliveryMethod === "ship"
+              ? priceFormatter.format(5000)
+              : priceFormatter.format(0)}
           </p>
         </div>
         <Separator />
         <div className="flex justify-between">
           <p className="text-black text-xl dark:text-white">{t("total")}</p>
           <p className="text-black text-xl dark:text-white">
-            {deliveryMethod === "ship" ? totalPrice + 5000 : totalPrice} IQD
+            {deliveryMethod === "ship"
+              ? priceFormatter.format(totalPrice + 5000)
+              : priceFormatter.format(totalPrice)}
           </p>
         </div>
       </div>

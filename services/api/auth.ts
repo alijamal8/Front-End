@@ -61,4 +61,22 @@ export const authService = {
       toast.error(message);
     }
   },
+
+  async getCurrentUser() {
+    try {
+      const res = await axios.get("http://127.0.0.1:8000/api/user", {
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+      });
+      return res.data;
+    } catch (error: any) {
+      const message =
+        error.response?.data?.message || "Failed to get current user";
+      toast.error(message);
+    }
+  },
+  
 };
