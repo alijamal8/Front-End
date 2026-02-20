@@ -31,12 +31,12 @@ export default function OrderCard({
 }: OrderCardProps) {
   const t = useTranslations("orders");
   const locale = useLocale();
-  const paymentMethodLabel = t.has(`paymentMethods.${payment.payment_method}`)
-    ? t(`paymentMethods.${payment.payment_method}`)
-    : payment.payment_method;
-  const paymentStatusLabel = t.has(`paymentStatuses.${payment.payment_status}`)
-    ? t(`paymentStatuses.${payment.payment_status}`)
-    : payment.payment_status;
+  const paymentMethodLabel = t.has(`paymentMethods.${payment?.payment_method}`)
+    ? t(`paymentMethods.${payment?.payment_method}`)
+    : payment?.payment_method;
+  const paymentStatusLabel = t.has(`paymentStatuses.${payment?.payment_status}`)
+    ? t(`paymentStatuses.${payment?.payment_status}`)
+    : payment?.payment_status;
 
   return (
     <article className="rounded-2xl border border-border bg-card p-4 text-card-foreground shadow-sm sm:p-5">
@@ -51,7 +51,6 @@ export default function OrderCard({
         </div>
         <StatusBadge status={order_status} />
       </div>
-
       <div className="mt-4 grid gap-2 text-sm text-muted-foreground sm:grid-cols-2">
         <p>
           {t("paymentMethod")}: {paymentMethodLabel}
@@ -60,7 +59,6 @@ export default function OrderCard({
           {t("paymentStatus")}: {paymentStatusLabel}
         </p>
       </div>
-
       <div className="mt-4 border-t border-border pt-4">
         <p className="mb-3 text-sm font-semibold text-foreground">
           {t("orderDetails")}
@@ -79,7 +77,6 @@ export default function OrderCard({
           ))}
         </div>
       </div>
-
       <div className="mt-4 border-t border-border pt-4">
         <p className="text-sm font-semibold">
           {t("totalPrice")}: {formatPrice(total_price)}

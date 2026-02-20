@@ -31,12 +31,12 @@ export default function CheckoutPage() {
       items,
       shipping: shipinfoInform,
       payment_method: payment_method,
+      payment_status: payment_method === "card" ? "paid" : "pending",
     };
-
     OrderService.createOrder(payload);
     resetshipinfoInform();
     clearCart();
-    redirect("/");
+    redirect("/orders");
   }
 
   return (
@@ -82,7 +82,7 @@ export default function CheckoutPage() {
               {deliveryMethod === "pickup" ? <PickupForm /> : <ShipForm />}
 
               <Button
-              type="button"
+                type="button"
                 onClick={handleCheckout}
                 className="mt-5 w-full p-6 text-xl"
               >
