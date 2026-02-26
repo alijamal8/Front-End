@@ -1,6 +1,6 @@
 "use client";
 import { useState } from "react";
-import { Truck, Store, Info } from "lucide-react";
+import { Truck, Store } from "lucide-react";
 import { Button } from "../ui/button";
 import RightSide from "./RightSide";
 import PickupForm from "./PickupForm";
@@ -10,18 +10,69 @@ import { useCartStore } from "@/stores/cartStore";
 import React from "react";
 import { OrderService } from "@/services/api/order";
 import { useTranslations } from "next-intl";
-import { redirect } from "next/navigation";
+import { useRouter } from "next/navigation";
+import { toast } from "sonner";
+import {
+  checkoutSchema,
+  getCheckoutValidationErrors,
+} from "@/validations/checkout";
+
+type CheckoutErrors = Partial<
+  Record<
+    | "first_name"
+    | "last_name"
+    | "phone_number"
+    | "address"
+    | "city"
+    | "payment_method"
+    | "card_number"
+    | "card_cvv"
+    | "card_expiration_date",
+    string
+  >
+>;
 
 export default function CheckoutPage() {
   const t = useTranslations("checkout");
+  const router = useRouter();
   const [deliveryMethod, setDeliveryMethod] = useState<"ship" | "pickup">(
     "ship",
   );
+  const [errors, setErrors] = useState<CheckoutErrors>({});
   const { resetshipinfoInform, shipinfoInform, payment_method } =
     checkoutStore();
   const cart = useCartStore((state) => state.cart);
   const clearCart = useCartStore((state) => state.clearCart);
-  function handleCheckout() {
+
+  async function handleCheckout() {
+    if (!cart.length) {
+      toast.error(t("validation.cart_empty"));
+      return;
+    }
+
+    const validationResult = checkoutSchema.safeParse({
+      delivery_method: deliveryMethod,
+      payment_method,
+      ...shipinfoInform,
+    });
+
+    if (!validationResult.success) {
+      const fieldErrors = getCheckoutValidationErrors(validationResult.error);
+      const translatedErrors: CheckoutErrors = {};
+
+      for (const [key, value] of Object.entries(fieldErrors)) {
+        translatedErrors[key as keyof CheckoutErrors] = value
+          ? t(value as any)
+          : "";
+      }
+
+      setErrors(translatedErrors);
+      toast.error(t("validation.fix_errors"));
+      return;
+    }
+
+    setErrors({});
+
     const items = cart.map(({ id, quantity }) => ({
       product_id: id,
       quantity,
@@ -33,10 +84,15 @@ export default function CheckoutPage() {
       payment_method: payment_method,
       payment_status: payment_method === "card" ? "paid" : "pending",
     };
-    OrderService.createOrder(payload);
-    resetshipinfoInform();
-    clearCart();
-    redirect("/orders");
+
+    try {
+      await OrderService.createOrder(payload);
+      resetshipinfoInform();
+      clearCart();
+      router.push("/orders");
+    } catch {
+      return;
+    }
   }
 
   return (
@@ -79,7 +135,11 @@ export default function CheckoutPage() {
                 <option>{t("country_iraq")}</option>
               </select>
 
-              {deliveryMethod === "pickup" ? <PickupForm /> : <ShipForm />}
+              {deliveryMethod === "pickup" ? (
+                <PickupForm errors={errors} />
+              ) : (
+                <ShipForm errors={errors} />
+              )}
 
               <Button
                 type="button"

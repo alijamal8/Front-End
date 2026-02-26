@@ -96,7 +96,24 @@
     "cvv": "CVV",
     "expiry_date": "Expiry Date",
     "place_order": "Check Out",
-    "country_iraq": "Iraq"
+    "country_iraq": "Iraq",
+    "validation": {
+      "fix_errors": "Please fix the highlighted fields before checkout.",
+      "cart_empty": "Your cart is empty.",
+      "first_name_required": "First name is required.",
+      "last_name_required": "Last name is required.",
+      "phone_required": "Phone number is required.",
+      "phone_invalid": "Enter a valid phone number.",
+      "address_required": "Address is required.",
+      "city_required": "City is required.",
+      "payment_method_required": "Please select a payment method.",
+      "card_number_required": "Card number is required.",
+      "card_number_invalid": "Enter a valid card number.",
+      "card_cvv_required": "CVV is required.",
+      "card_cvv_invalid": "Enter a valid CVV.",
+      "card_expiration_required": "Expiration date is required.",
+      "card_expiration_invalid": "Card expiration date must be in the future."
+    }
   },
   "productDetails": {
     "Add to Cart": "Add to Cart",
