@@ -2,10 +2,11 @@
 import OrdersPage from "@/components/ordersPage/OrdersPage";
 import { OrderService } from "@/services/api/order";
 import { Order } from "@/types/order";
+import ProtectedRoute from "@/components/auth/ProtectedRoute";
 
 import { useEffect, useState } from "react";
 
-export default function page() {
+function OrdersContent() {
   const [orders, setOrders] = useState<Order[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
@@ -29,7 +30,14 @@ export default function page() {
       }
     })();
   }, []);
-  console.log(orders);
 
   return <OrdersPage orders={orders} isLoading={loading} isError={error} />;
+}
+
+export default function page() {
+  return (
+    <ProtectedRoute>
+      <OrdersContent />
+    </ProtectedRoute>
+  );
 }

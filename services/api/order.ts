@@ -1,16 +1,16 @@
 import { toast } from "sonner";
+import { apiFetch } from "@/services/api/apiFetch";
 
 
 const API_URL = "http://localhost:8000/api";
 
 export const OrderService = {
   async createOrder(payload: any) {
-    const res = await fetch(`${API_URL}/checkout`, {
+    const res = await apiFetch(`${API_URL}/checkout`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
         Accept: "application/json",
-        Authorization: `Bearer ${localStorage.getItem("token")}`,
       },
       body: JSON.stringify(payload),
     });
@@ -33,14 +33,10 @@ export const OrderService = {
 
 
 async getOrders() {
-  const token =
-    typeof window !== "undefined" ? localStorage.getItem("token") : null;
-
-  const res = await fetch(`${API_URL}/orders`, {
+  const res = await apiFetch(`${API_URL}/orders`, {
     method: "GET",
     headers: {
       Accept: "application/json",
-      ...(token ? { Authorization: `Bearer ${token}` } : {}),
     },
     cache: "no-store",
   });

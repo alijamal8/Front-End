@@ -183,6 +183,31 @@
       "cancelled": "ملغي"
     }
   },
+  "auth": {
+    "login": {
+      "title": "اهلا بعودتك",
+      "description": "ادخل البريد الالكتروني وكلمة المرور للوصول الى حسابك.",
+      "email": "البريد الالكتروني",
+      "password": "كلمة المرور",
+      "submit": "تسجيل الدخول",
+      "noAccount": "ليس لديك حساب؟",
+      "goRegister": "انشاء حساب"
+    },
+    "register": {
+      "title": "انشاء حساب",
+      "description": "ادخل بياناتك لانشاء حسابك والبدء.",
+      "name": "الاسم",
+      "namePlaceholder": "ادخل اسمك",
+      "phone": "رقم الهاتف",
+      "phonePlaceholder": "ادخل رقم هاتفك",
+      "email": "البريد الالكتروني",
+      "password": "كلمة المرور",
+      "submit": "انشاء حساب",
+      "continueWithGoogle": "المتابعة عبر جوجل",
+      "hasAccount": "لديك حساب بالفعل؟",
+      "goLogin": "تسجيل الدخول"
+    }
+  },
   "sectionsPages": {
     "New Arrivals": "المنتجات الجديدة",
     "Featured Products": "المنتجات المميزة",

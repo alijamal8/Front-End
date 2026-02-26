@@ -184,6 +184,31 @@
       "cancelled": "Cancelled"
     }
   },
+  "auth": {
+    "login": {
+      "title": "Welcome Back!",
+      "description": "Enter your email and password to access your account.",
+      "email": "Email",
+      "password": "Password",
+      "submit": "Login",
+      "noAccount": "Don't have an account?",
+      "goRegister": "Sign up"
+    },
+    "register": {
+      "title": "Sign up",
+      "description": "Enter your details to create your account and get started.",
+      "name": "Name",
+      "namePlaceholder": "Enter your name",
+      "phone": "Phone Number",
+      "phonePlaceholder": "Enter your phone number",
+      "email": "Email",
+      "password": "Password",
+      "submit": "Sign up",
+      "continueWithGoogle": "Continue with Google",
+      "hasAccount": "Already have an account?",
+      "goLogin": "Login"
+    }
+  },
   "sectionsPages": {
     "New Arrivals": "New Arrivals",
     "Featured Products": "Featured Products",

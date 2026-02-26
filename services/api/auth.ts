@@ -1,16 +1,21 @@
 import { LoginForm, RegisterForm } from "@/types/auth";
-import axios from "axios";
-
 import { toast } from "sonner";
+import { clearToken, getToken, setToken } from "@/lib/auth/token";
+import { apiClient } from "@/services/api/apiClient";
 export const authService = {
   async register(form: RegisterForm) {
     try {
-      const res = await axios.post("http://127.0.0.1:8000/api/register", form, {
-        headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json",
-        },
-      });
+      await apiClient.post(
+        "http://127.0.0.1:8000/api/register",
+        form,
+        {
+          headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json",
+          },
+          skipAuthLogout: true,
+        } as any,
+      );
       window.location.href = "/login";
 
       toast.success("Register Successfull ");
@@ -21,22 +26,23 @@ export const authService = {
         toast.error(error.response.data.errors.email[0]);
       } else {
         toast.error(
-          "An error occurred while registering the user. Please try again"
+          "An error occurred while registering the user. Please try again",
         );
       }
     }
   },
   async login(form: LoginForm) {
     try {
-      const res = await axios.post("http://127.0.0.1:8000/api/login", form, {
+      const res = await apiClient.post("http://127.0.0.1:8000/api/login", form, {
         headers: {
           "Content-Type": "application/json",
           Accept: "application/json",
         },
-      });
+        skipAuthLogout: true,
+      } as any);
       toast.success("Login successful ");
       const token = res.data.Token;
-      localStorage.setItem("token", token);
+      setToken(token);
       window.location.href = "/";
     } catch (error: any) {
       const message =
@@ -46,14 +52,15 @@ export const authService = {
   },
   async logout() {
     try {
-      const res = await axios.post("http://127.0.0.1:8000/api/logout", {
+      await apiClient.post("http://127.0.0.1:8000/api/logout", undefined, {
         headers: {
           "Content-Type": "application/json",
           Accept: "application/json",
         },
-      });
+        skipAuthLogout: true,
+      } as any);
       toast.success("Logout successful ");
-      localStorage.removeItem("token");
+      clearToken();
       window.location.href = "/login";
     } catch (error: any) {
       const message =
@@ -63,20 +70,34 @@ export const authService = {
   },
 
   async getCurrentUser() {
+    const token = getToken();
+
+    if (!token) {
+      const missingTokenError = new Error("Missing authentication token");
+      (missingTokenError as Error & { status?: number }).status = 401;
+      throw missingTokenError;
+    }
+
     try {
-      const res = await axios.get("http://127.0.0.1:8000/api/user", {
+      const res = await apiClient.get("http://127.0.0.1:8000/api/user", {
         headers: {
           "Content-Type": "application/json",
           Accept: "application/json",
-          Authorization: `Bearer ${localStorage.getItem("token")}`,
+          Authorization: `Bearer ${token}`,
         },
       });
       return res.data;
     } catch (error: any) {
+      if (error.response?.status === 401) {
+        const unauthorizedError = new Error("Unauthorized");
+        (unauthorizedError as Error & { status?: number }).status = 401;
+        throw unauthorizedError;
+      }
+
       const message =
         error.response?.data?.message || "Failed to get current user";
       toast.error(message);
+      throw error;
     }
   },
-  
 };

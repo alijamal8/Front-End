@@ -15,13 +15,20 @@ import {
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Separator } from "@/components/ui/separator";
-import {useAuthStore } from "@/stores/authStore";
+import { useAuthStore } from "@/stores/authStore";
 import { RegisterSchema } from "@/validations/auth";
 import { useState } from "react";
 import VaildationError from "@/components/auth/validationError";
 import { authService } from "@/services/api/auth";
+import GuestOnlyRoute from "@/components/auth/GuestOnlyRoute";
+import { useParams } from "next/navigation";
+import { useTranslations } from "next-intl";
+import Link from "next/link";
 
 export default function RegisterPage() {
+  const t = useTranslations("auth.register");
+  const params = useParams();
+  const locale = typeof params?.locale === "string" ? params.locale : "ar";
   const { registerForm, setRegisterForm, resetRegisterForm } = useAuthStore();
   const [clientError, setClientError] = useState("");
 
@@ -40,14 +47,14 @@ export default function RegisterPage() {
   }
 
   return (
-    <>
+    <GuestOnlyRoute>
       <Card className="w-full max-w-lg mx-auto mt-8 max-sm:max-w-sm max-sm:my-25 max-lg:mt-35 2xl:mt-25">
         <CardHeader>
           <CardTitle className="text-4xl font-bold max-sm:text-3xl">
-            Sing up
+            {t("title")}
           </CardTitle>
           <CardDescription className="text-sm text-black my-2 dark:text-white max-sm:text-xs">
-            Enter your details to create your account and get started
+            {t("description")}
           </CardDescription>
           <CardAction>
             <ModeToggle />
@@ -57,11 +64,11 @@ export default function RegisterPage() {
           <form autoComplete="off">
             <div className="flex flex-col gap-6">
               <div className="grid gap-2">
-                <Label htmlFor="name">Name</Label>
+                <Label htmlFor="name">{t("name")}</Label>
                 <Input
                   id="name"
                   type="name"
-                  placeholder="Enter Your Name"
+                  placeholder={t("namePlaceholder")}
                   required
                   value={registerForm.name}
                   onChange={(e) => setRegisterForm("name", e.target.value)}
@@ -69,11 +76,11 @@ export default function RegisterPage() {
               </div>
 
               <div className="grid gap-2">
-                <Label htmlFor="name">Phone Number</Label>
+                <Label htmlFor="name">{t("phone")}</Label>
                 <Input
                   id="phone number"
                   type="phone number"
-                  placeholder="Enter Your Phone Number"
+                  placeholder={t("phonePlaceholder")}
                   required
                   value={registerForm.phone}
                   onChange={(e) => setRegisterForm("phone", e.target.value)}
@@ -81,7 +88,7 @@ export default function RegisterPage() {
               </div>
 
               <div className="grid gap-2">
-                <Label htmlFor="email">Email</Label>
+                <Label htmlFor="email">{t("email")}</Label>
                 <Input
                   id="new-email"
                   name="new-email"
@@ -95,7 +102,7 @@ export default function RegisterPage() {
               </div>
               <div className="grid gap-2">
                 <div className="flex items-center">
-                  <Label htmlFor="password">Password</Label>
+                  <Label htmlFor="password">{t("password")}</Label>
                 </div>
                 <Input
                   id="new-password"
@@ -120,25 +127,22 @@ export default function RegisterPage() {
             type="submit"
             className="w-full bg-purple-800 dark:text-white hover:bg-purple-600"
           >
-            Sing up
-          </Button>
-          <Button variant="outline" className="w-full">
-            Continue with Google <FaGoogle />
+            {t("submit")}
           </Button>
 
           <CardDescription className="text-sm text-black my-2 dark:text-white">
-            Already have an account?{" "}
-            <a
-              href="login"
+            {t("hasAccount")}{" "}
+            <Link
+              href={`/${locale}/login`}
               className="ml-auto inline-block text-sm underline-offset-4 hover:underline text-purple-800 font-bold"
             >
-              Login
-            </a>
+              {t("goLogin")}
+            </Link>
           </CardDescription>
         </CardFooter>
       </Card>
       <Separator className="mt-5 max-w-7xl mx-auto max-sm:max-w-sm max-lg:max-w-xl" />
       <Footer />
-    </>
+    </GuestOnlyRoute>
   );
 }

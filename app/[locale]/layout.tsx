@@ -6,6 +6,7 @@ import { ThemeProvider } from "@/components/global/theme-provider";
 import { Toaster } from "@/components/ui/sonner";
 import { Inter, Cairo } from "next/font/google"; 
 import { ReactQueryProvider } from "../providers/ReactQueryProvider";
+import { AuthBootstrap } from "../providers/AuthBootstrap";
 import { notFound } from "next/navigation";
 import { routing } from "../i18n/routing";
 
@@ -57,7 +58,10 @@ export default async function RootLayout({
           disableTransitionOnChange
         >
           <NextIntlClientProvider messages={messages}>
-            <ReactQueryProvider>{children}</ReactQueryProvider>
+            <ReactQueryProvider>
+              <AuthBootstrap />
+              {children}
+            </ReactQueryProvider>
           </NextIntlClientProvider>
           <Toaster />
         </ThemeProvider>

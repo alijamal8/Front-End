@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import CheckoutPage from "@/components/checkoutPage/CheckoutPage";
+import ProtectedRoute from "@/components/auth/ProtectedRoute";
 
 export const metadata: Metadata = {
   robots: {
@@ -10,7 +11,9 @@ export const metadata: Metadata = {
 
 function page() {
   return (
-    <CheckoutPage />
+    <ProtectedRoute>
+      <CheckoutPage />
+    </ProtectedRoute>
   );
 }
 

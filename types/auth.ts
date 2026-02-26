@@ -20,3 +20,12 @@ export interface LoginForm {
   email: string;
   password: string;
 }
+
+export interface AuthUser {
+  id?: number | string;
+  name?: string;
+  email?: string;
+  phone?: string;
+  role?: string;
+  [key: string]: unknown;
+}

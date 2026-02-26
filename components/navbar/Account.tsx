@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { User } from "lucide-react";
 import AccountInfoDialog from "@/components/navbar/AccountInfoDialog";
 import {
@@ -13,21 +13,16 @@ import {
 } from "@/components/ui/menubar";
 import Link from "next/link";
 import { useTranslations } from "next-intl";
+import { useParams } from "next/navigation";
+import { useAuthStore } from "@/stores/authStore";
 
 function Account() {
   const t = useTranslations("navbar");
-  const [isAuth, setIsAuth] = useState(false);
+  const params = useParams();
+  const locale = typeof params?.locale === "string" ? params.locale : "ar";
+  const isAuthenticated = useAuthStore((state) => state.isAuthenticated);
+  const logout = useAuthStore((state) => state.logout);
   const [isAccountDialogOpen, setIsAccountDialogOpen] = useState(false);
-
-  useEffect(() => {
-    const token = localStorage.getItem("token");
-    setIsAuth(token ? true : false);
-  }, []);
-
-  const logout = () => {
-    localStorage.removeItem("token");
-    setIsAuth(false);
-  };
 
   return (
     <>
@@ -38,13 +33,13 @@ function Account() {
           </MenubarTrigger>
 
           <MenubarContent className="mr-20 max-sm:mr-10">
-            {isAuth ? (
+            {isAuthenticated ? (
               <>
                 <MenubarItem onSelect={() => setIsAccountDialogOpen(true)}>
                   {t("account")}
                 </MenubarItem>
 
-                <Link href="/orders">
+                <Link href={`/${locale}/orders`}>
                   <MenubarItem>{t("orders")}</MenubarItem>
                 </Link>
 
@@ -53,10 +48,10 @@ function Account() {
               </>
             ) : (
               <>
-                <Link href="/login">
+                <Link href={`/${locale}/login`}>
                   <MenubarItem>{t("login")}</MenubarItem>
                 </Link>
-                <Link href="/register">
+                <Link href={`/${locale}/register`}>
                   <MenubarItem>{t("register")}</MenubarItem>
                 </Link>
               </>
