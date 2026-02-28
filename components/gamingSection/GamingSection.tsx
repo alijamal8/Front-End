@@ -26,7 +26,7 @@ async function ProductSection() {
 
         <div
           id="cards"
-          className="flex flex-wrap p-4 pl-25 mt-24 gap-7 rtl:pl-0 rtl:pr-25"
+          className="flex flex-wrap justify-center p-4 mt-12 mb-12 gap-7"
         >
           {/* cards div  */}
           <Card product={product} from="gaming_products" />

@@ -29,76 +29,95 @@ export default function LeftCart({ from }: { from: string }) {
     maximumFractionDigits: 0,
   });
   return (
-    <div className="min-h-screen dark:bg-black bg-[#f8f9fa] md:p-12">
-      <div className="mx-auto max-w-7xl">
-        <h1 className="mb-8 text-4xl font-bold text-black dark:text-white">
-          {t("title_filled")} ({totalItems})
-          <Button className="float-right text-lg rtl:float-left" onClick={() => clearCart()}>
+    <div className="dark:bg-black bg-white md:bg-[#f8f9fa] sm:p-6 md:p-8 rounded-2xl md:shadow-sm border-0 md:border md:border-gray-100 dark:border-gray-900 w-full mb-10">
+      <div className="mx-auto w-full">
+        <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-8 gap-4 px-2 sm:px-0">
+          <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-black dark:text-white">
+            {t("title_filled")} ({totalItems})
+          </h1>
+          <Button variant="destructive" className="text-sm sm:text-lg" onClick={() => clearCart()}>
             {t("clear_cart")}
           </Button>
-        </h1>
-        <div className="grid gap-8 lg:grid-cols-[1fr,400px]">
-          <div className="space-y-8">
-            {cart.map((item) => (
-              <Link key={item.id} href={`/prodcuts/${from}/${item.id}`}>
-                <div className="flex items-start gap-6 pb-6">
-                  <button
-                    onClick={() => removeFromCart(item.id)}
-                    className="mt-12 text-gray-400 cursor-pointer hover:text-red-500 transition-transform duration-300 hover:rotate-90"
-                  >
-                    <X size={25} className="font-bold" />
-                  </button>
-
-                  <div className="h-32 w-32 flex-shrink-0 overflow-hidden rounded-lg bg-gray-50">
+        </div>
+        
+        <div className="space-y-6">
+          {cart.map((item) => (
+            <Link key={item.id} href={`/prodcuts/${from}/${item.id}`} className="block">
+              <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 pb-6 border-b border-gray-200 dark:border-gray-800 relative bg-white dark:bg-black p-4 sm:p-0 rounded-xl sm:rounded-none shadow-sm sm:shadow-none">
+                
+                {/* Mobile Top Part: Image + Details + Remove button */}
+                <div className="flex gap-4 items-start w-full sm:w-auto">
+                  <div className="h-24 w-24 sm:h-32 sm:w-32 flex-shrink-0 overflow-hidden rounded-lg bg-gray-50 border dark:border-gray-800">
                     <Image
                       src={`${NORMALIZED_API_BASE_URL}/storage/${item.images[0].image_url.replace(/^\/+/, "")}`}
                       alt={item.name}
                       width={128}
                       height={128}
                       unoptimized
-                      className="h-full w-full object-contain"
+                      className="h-full w-full object-contain p-2"
                     />
                   </div>
-
-                  <div className="flex flex-1 flex-col gap-2">
-                    <h3 className="text-xl font-semibold leading-snug dark:text-[#f8f9fa] text-black ">
-                      {item.name}
-                    </h3>
-
-                    <p className="text-xl font-semibold dark:text-[#f8f9fa] text-black ">
-                      Tecno Camon 40 Premier 5G - Dual SIM - 6.67 Inch - AMOLED
-                      144 Hz - MediaTek Dimensity 8350 Ultimate - 5100 mAh
+                  
+                  <div className="flex flex-1 flex-col gap-1 sm:gap-2">
+                    <div className="flex justify-between items-start gap-4">
+                      <h3 className="text-base sm:text-xl font-semibold leading-snug dark:text-[#f8f9fa] text-black line-clamp-2">
+                        {item.name}
+                      </h3>
+                      <button
+                        onClick={(e) => { e.preventDefault(); removeFromCart(item.id); }}
+                        className="sm:hidden text-gray-400 hover:text-red-500 transition-colors p-1 flex-shrink-0"
+                        title="Remove Item"
+                      >
+                        <X size={20} className="font-bold" />
+                      </button>
+                    </div>
+                    
+                    <p className="text-xs sm:text-sm text-gray-500 dark:text-gray-400 line-clamp-2">
+                      Tecno Camon 40 Premier 5G - Dual SIM - 6.67 Inch - AMOLED 144 Hz - MediaTek Dimensity 8350 Ultimate - 5100 mAh
                     </p>
-                    <p className="text-xl font-semibold dark:text-[#f8f9fa] text-black ">
+                    
+                    <p className="text-base sm:text-xl font-bold text-green-600 dark:text-green-500 mt-1 sm:mt-0">
                       {priceFormatter.format(item.price)}
                     </p>
                   </div>
+                </div>
 
-                  <div className="flex items-center mt-12 gap-3">
+                {/* Desktop controls & Price */}
+                <div className="flex items-center justify-between sm:flex-col sm:items-end sm:justify-start w-full sm:w-auto mt-2 sm:mt-0 gap-4 sm:ml-auto">
+                  
+                  <button
+                    onClick={(e) => { e.preventDefault(); removeFromCart(item.id); }}
+                    className="hidden sm:block text-gray-400 cursor-pointer hover:text-red-500 transition-transform duration-300 hover:rotate-90"
+                    title="Remove Item"
+                  >
+                    <X size={24} className="font-bold" />
+                  </button>
+
+                  <div className="flex items-center gap-2 sm:gap-3 sm:mt-4">
                     <button
-                      onClick={() => decreasQuantity(item.id)}
-                      className="flex h-10 w-10 items-center justify-center rounded border  transition-colors hover:text-red-500 cursor-pointer "
+                      onClick={(e) => { e.preventDefault(); decreasQuantity(item.id); }}
+                      className="flex h-8 w-8 sm:h-10 sm:w-10 items-center justify-center rounded-md border border-gray-300 dark:border-gray-700 bg-white dark:bg-black transition-colors hover:text-red-500 hover:border-red-500 cursor-pointer text-black dark:text-white shadow-sm"
                     >
                       <Minus size={16} />
                     </button>
-                    <span className="w-10 text-center text-base font-medium">
+                    <span className="w-8 sm:w-10 text-center text-sm sm:text-base font-semibold text-black dark:text-white">
                       {item.quantity}
                     </span>
                     <button
-                      onClick={() => addToCart(item, 1)}
-                      className="flex h-10 w-10 items-center justify-center rounded border transition-colors cursor-pointer hover:text-green-500"
+                      onClick={(e) => { e.preventDefault(); addToCart(item, 1); }}
+                      className="flex h-8 w-8 sm:h-10 sm:w-10 items-center justify-center rounded-md border border-gray-300 dark:border-gray-700 bg-white dark:bg-black transition-colors cursor-pointer hover:text-green-500 hover:border-green-500 text-black dark:text-white shadow-sm"
                     >
                       <Plus size={16} />
                     </button>
                   </div>
 
-                  <div className="w-36 text-right text-lg font-semibold mt-14 dark:text-[#f8f9fa] text-black ">
+                  <div className="text-base sm:text-lg font-bold dark:text-[#f8f9fa] text-black sm:mt-8">
                     {priceFormatter.format(item.price * item.quantity)}
                   </div>
                 </div>
-              </Link>
-            ))}
-          </div>
+              </div>
+            </Link>
+          ))}
         </div>
       </div>
     </div>

@@ -13,12 +13,12 @@ function CartPage() {
   return totalItems === 0 ? (
     <EmptyCart />
   ) : (
-    <div className="px-10 grid grid-cols-[70%_30%] mt-10 space-x-10 max-sm:grid-cols-1 max-sm:px-0 max-sm:mt-0">
-      <div className="bg-black" id="left">
+    <div className="px-4 lg:px-10 flex flex-col lg:flex-row gap-8 lg:gap-10 mt-6 lg:mt-10 max-w-[1600px] mx-auto">
+      <div className="flex-1 w-full" id="left">
         <LeftCart from="cart" />
       </div>
 
-      <div className="bg-black" id="right">
+      <div className="w-full lg:w-[350px] xl:w-[400px]" id="right">
         <RightCart />
       </div>
     </div>

@@ -24,7 +24,7 @@ async function ProductSection() {
           <Separator className="max-w-[50px] mx-auto mt-5 cursor-pointer transition-all duration-500 bg-purple-600 group-hover:max-w-[120px]" />
         </div>
 
-        <div id="cards" className="flex flex-wrap p-4 pl-25 mt-24 gap-7 rtl:pl-0 rtl:pr-25">
+        <div id="cards" className="flex flex-wrap justify-center p-4 mt-12 mb-12 gap-7">
           {/* cards div  */}
           <Card product={product} from="new-products" />
         </div>

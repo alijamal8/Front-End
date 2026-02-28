@@ -79,9 +79,9 @@ function CategoryGrid() {
                 <div
                   data-aos="fade-down"
                   data-aos-duration="3000"
-                  className="bg-white rounded-3xl overflow-hidden shadow-sm group cursor-pointer"
+                  className="bg-white rounded-3xl overflow-hidden shadow-sm group cursor-pointer h-full"
                 >
-                  <div className="relative w-[500px] h-[630px] overflow-hidden">
+                  <div className="relative w-full h-[400px] sm:h-[500px] md:h-[680px] overflow-hidden">
                     <Image
                       src={category2[0].image_url}
                       fill

@@ -78,9 +78,9 @@ async function Slider() {
           {sliders2.map((item, index) => (
             <CarouselItem key={index}>
               <div>
-                <Card className="p-0 border-0">
-                  <CardContent className="flex p-0 relative m-0 aspect-square items-center justify-center max-w-[1700px] h-[800px] bg-0 max-sm:max-w-[500px] max-sm:max-h-[500px] xl:max-w-[2200px]">
-                    <Link href={""}>
+                <Card className="p-0 border-0 w-full overflow-hidden">
+                  <CardContent className="flex p-0 relative m-0 w-full h-[50vh] sm:h-[60vh] lg:h-[800px] bg-none items-center justify-center">
+                    <Link href={""} className="w-full h-full block">
                       <Image 
                         src={`${item.image_url}`}
                         alt={item.title}

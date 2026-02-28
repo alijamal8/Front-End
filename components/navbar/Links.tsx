@@ -14,7 +14,7 @@ export default function Links() {
     
   return (
     <>
-      <div className="flex gap-8 max-sm:hidden max-lg:gap-4">
+      <div className="flex gap-8 max-lg:hidden">
         {categories.map((category) => (
           <Link key={category.name} href={`${category.link}`}>
             <h1 className="font-semibold">{t(category.name)}</h1>
