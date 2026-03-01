@@ -60,8 +60,7 @@ function SideProducts({ filtered }: { filtered: Product[] }) {
     if (currentPage > 1) setCurrentPage((prev) => prev - 1);
   };
   const segments = pathname.split("/").filter(Boolean);
-  const pageSegments =
-    segments[0] === locale ? segments.slice(1) : segments;
+  const pageSegments = segments[0] === locale ? segments.slice(1) : segments;
 
   const currentPageSlug = pageSegments[0];
   const fallbackCategorySlug = filtered[0]?.category?.name
