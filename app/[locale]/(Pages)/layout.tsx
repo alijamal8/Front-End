@@ -1,4 +1,5 @@
 import Navbar from "@/components/navbar/Navbar";
+import SiteFooter from "@/components/global/SiteFooter";
 
 export default function pagesLayout({
   children,
@@ -6,9 +7,10 @@ export default function pagesLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <main>
+    <main className="min-h-screen flex flex-col">
       <Navbar />
-      {children}
+      <div className="flex-1">{children}</div>
+      <SiteFooter />
     </main>
   );
 }
