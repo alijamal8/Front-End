@@ -12,6 +12,7 @@ import { Button } from "../ui/button";
 import { useCartStore } from "@/stores/cartStore";
 import { Product } from "@/types/homePage";
 import { useTranslations } from "next-intl";
+import Link from "next/link";
 
 function Quantity({ product }: { product: Product }) {
   const [quantity, setQuantity] = useState("1");
@@ -44,7 +45,12 @@ function Quantity({ product }: { product: Product }) {
         >
           {t("productDetails.Add to Cart")}
         </Button>
-        <Button className="px-13 text-lg">{t("productDetails.Buy Now")}</Button>
+        <Link href="/checkout">
+          <Button onClick={() => addToCart(product, Number(quantity))} className="px-13 text-lg">
+            {t("productDetails.Buy Now")}
+          </Button>
+
+        </Link>
       </div>
     </div>
   );

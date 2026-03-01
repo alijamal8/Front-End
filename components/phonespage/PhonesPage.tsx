@@ -5,7 +5,6 @@ import SideProducts from "../global/SideProducts";
 
 import { Product } from "@/types/homePage";
 import { usePhonesFilters } from "@/stores/usePhoneFilterStore";
-import FilteSide from "./FilteSide";
 import LeftSideFilters from "./LeftSideFilters";
 
 import { Separator } from "../ui/separator";
@@ -22,12 +21,12 @@ function PhonesPage({ initialProducts }: { initialProducts: Product[] }) {
   }, [initialProducts, setProducts]);
   const filtered = usePhonesFilters((state) => state.filtered);
   return (
-    <div className="px-10 grid grid-cols-[22%_78%] mt-10 space-x-10 max-sm:grid-cols-1 max-sm:px-0 max-sm:mt-0">
+    <div className="px-10 grid grid-cols-[22%_78%] mt-10 space-x-10 max-lg:grid-cols-1 max-lg:px-0 max-lg:mt-0">
       <div id="left">
         <LeftSideFilters />
       </div>
       <div id="right">
-        <div className="mt-11 p-6 bg-[#f8f9fa] dark:bg-black max-sm:mt-0">
+        <div className="mt-11 p-6 bg-[#f8f9fa] dark:bg-black max-lg:mt-0">
           <div className="mb-4">
             <Content
               title={pageT("phones.title")}
@@ -42,7 +41,6 @@ function PhonesPage({ initialProducts }: { initialProducts: Product[] }) {
 
           <SideProducts filtered={filtered} />
         </div>
-        <FilteSide />
       </div>
     </div>
   );

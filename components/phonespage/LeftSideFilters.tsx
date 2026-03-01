@@ -20,6 +20,7 @@ import {
 } from "@/filterOptions/mobilsFilter";
 import { usePhonesFilters } from "@/stores/usePhoneFilterStore";
 import { useTranslations } from "next-intl";
+import MobileFilterSheet from "../global/MobileFilterSheet";
 
 function LeftSideFilters() {
   const filters = usePhonesFilters((state) => state.filters);
@@ -32,177 +33,165 @@ function LeftSideFilters() {
   const toggleDisplay = usePhonesFilters((s) => s.toggleDisplay);
   const t = useTranslations("AccessoriesPage");
 
+  const filterContent = (
+    <>
+      <Accordion type="single" collapsible className="w-full">
+        <AccordionItem value="item-1">
+          <AccordionTrigger className="text-md">{t("Brand")}</AccordionTrigger>
+          <AccordionContent className="flex flex-col gap-4 text-balance">
+            {brandOptions.map((brand) => (
+              <div key={brand} className="flex gap-3">
+                <Checkbox
+                  id={`category-${brand}`}
+                  checked={filters.brand.includes(brand)}
+                  onCheckedChange={() => toggleBrand(brand)}
+                />
+                <Label htmlFor={`category-${brand}`} className="text-md">
+                  {brand}
+                </Label>
+              </div>
+            ))}
+          </AccordionContent>
+        </AccordionItem>
+      </Accordion>
+
+      <Accordion type="single" collapsible className="w-full">
+        <AccordionItem value="item-1">
+          <AccordionTrigger className="text-md">{t("Price")}</AccordionTrigger>
+          <AccordionContent className="flex flex-col gap-4 text-balance">
+            {priceOptions.map((price) => (
+              <div key={price.label} className="flex gap-3">
+                <Checkbox
+                  id={`price-${price.label}`}
+                  checked={filters.price.includes(price)}
+                  onCheckedChange={() => togglePrice(price)}
+                />
+                <Label htmlFor={`price-${price.label}`} className="text-md">
+                  {price.label}
+                </Label>
+              </div>
+            ))}
+          </AccordionContent>
+        </AccordionItem>
+      </Accordion>
+
+      <Accordion type="single" collapsible className="w-full">
+        <AccordionItem value="item-1">
+          <AccordionTrigger className="text-md">{t("RAM")}</AccordionTrigger>
+          <AccordionContent className="flex flex-col gap-4 text-balance">
+            {ramOptions.map((ram) => (
+              <div key={ram} className="flex gap-3">
+                <Checkbox
+                  id={`ram-${ram}`}
+                  checked={filters.ram.includes(ram)}
+                  onCheckedChange={() => toggleRam(ram)}
+                />
+                <Label htmlFor={`ram-${ram}`} className="text-md">
+                  {ram}GB
+                </Label>
+              </div>
+            ))}
+          </AccordionContent>
+        </AccordionItem>
+      </Accordion>
+
+      <Accordion type="single" collapsible className="w-full">
+        <AccordionItem value="item-1">
+          <AccordionTrigger className="text-md">{t("Storage Size")}</AccordionTrigger>
+          <AccordionContent className="flex flex-col gap-4 text-balance">
+            {storageOptions.map((storage) => (
+              <div key={storage} className="flex gap-3">
+                <Checkbox
+                  id={`storage-${storage}`}
+                  checked={filters.storage.includes(storage)}
+                  onCheckedChange={() => toggleStorage(storage)}
+                />
+                <Label htmlFor={`storage-${storage}`} className="text-md">
+                  {storage}GB
+                </Label>
+              </div>
+            ))}
+          </AccordionContent>
+        </AccordionItem>
+      </Accordion>
+
+      <Accordion type="single" collapsible className="w-full">
+        <AccordionItem value="item-1">
+          <AccordionTrigger className="text-md">
+            {t("Camera Resolution")}
+          </AccordionTrigger>
+          <AccordionContent className="flex flex-col gap-4 text-balance">
+            {cameraOptions.map((camera) => (
+              <div key={camera.label} className="flex gap-3">
+                <Checkbox
+                  id={`camera-${camera.label}`}
+                  checked={filters.camera.includes(camera)}
+                  onCheckedChange={() => toggleCamera(camera)}
+                />
+                <Label htmlFor={`camera-${camera.label}`} className="text-md">
+                  {camera.label}
+                </Label>
+              </div>
+            ))}
+          </AccordionContent>
+        </AccordionItem>
+      </Accordion>
+      <Accordion type="single" collapsible className="w-full">
+        <AccordionItem value="item-1">
+          <AccordionTrigger className="text-md">{t("Battery Size")}</AccordionTrigger>
+          <AccordionContent className="flex flex-col gap-4 text-balance">
+            {batteryOptions.map((battery) => (
+              <div key={battery.label} className="flex gap-3">
+                <Checkbox
+                  id={`battery-${battery.label}`}
+                  checked={filters.battery.includes(battery)}
+                  onCheckedChange={() => toggleBattery(battery)}
+                />
+                <Label htmlFor={`battery-${battery.label}`} className="text-md">
+                  {battery.label}
+                </Label>
+              </div>
+            ))}
+          </AccordionContent>
+        </AccordionItem>
+      </Accordion>
+      <Accordion type="single" collapsible className="w-full">
+        <AccordionItem value="item-1">
+          <AccordionTrigger className="text-md">{t("Display Size")}</AccordionTrigger>
+          <AccordionContent className="flex flex-col gap-4 text-balance">
+            {displaySizeOptions.map((dispaly) => (
+              <div key={dispaly.label} className="flex gap-3">
+                <Checkbox
+                  id={`dispaly-${dispaly.label}`}
+                  checked={filters.displaySize.includes(dispaly)}
+                  onCheckedChange={() => toggleDisplay(dispaly)}
+                />
+                <Label htmlFor={`dispaly-${dispaly.label}`} className="text-md">
+                  {dispaly.label}
+                </Label>
+              </div>
+            ))}
+          </AccordionContent>
+        </AccordionItem>
+      </Accordion>
+    </>
+  );
+
   return (
     <div>
-      <div className="max-sm:p-4">
+      <div className="max-lg:p-4">
         <Road
           items={[
             { label: "Home", href: "/" },
             { label: "Mobiles", href: "/mobiles" },
           ]}
         />
-        <div className="p-6 mt-6 bg-[#f8f9fa] dark:bg-black max-sm:hidden">
+        <div className="mt-4 lg:hidden">
+          <MobileFilterSheet title={t("Filter")}>{filterContent}</MobileFilterSheet>
+        </div>
+        <div className="hidden lg:block p-6 mt-6 bg-[#f8f9fa] dark:bg-black">
           <h1 className="text-2xl mb-4">{t("Filter")}</h1>
-          <Accordion type="single" collapsible className="w-full">
-            <AccordionItem value="item-1">
-              <AccordionTrigger className="text-md">
-                {t("Brand")}
-              </AccordionTrigger>
-              <AccordionContent className="flex flex-col gap-4 text-balance">
-                {brandOptions.map((brand) => (
-                  <div key={brand} className="flex gap-3">
-                    <Checkbox
-                      id={`category-${brand}`}
-                      checked={filters.brand.includes(brand)}
-                      onCheckedChange={() => toggleBrand(brand)}
-                    />
-                    <Label htmlFor={`category-${brand}`} className="text-md">
-                      {brand}
-                    </Label>
-                  </div>
-                ))}
-              </AccordionContent>
-            </AccordionItem>
-          </Accordion>
-
-          <Accordion type="single" collapsible className="w-full">
-            <AccordionItem value="item-1">
-              <AccordionTrigger className="text-md">
-                {t("Price")}
-              </AccordionTrigger>
-              <AccordionContent className="flex flex-col gap-4 text-balance">
-                {priceOptions.map((price) => (
-                  <div key={price.label} className="flex gap-3">
-                    <Checkbox
-                      id={`price-${price.label}`}
-                      checked={filters.price.includes(price)}
-                      onCheckedChange={() => togglePrice(price)}
-                    />
-                    <Label htmlFor={`price-${price.label}`} className="text-md">
-                      {price.label}
-                    </Label>
-                  </div>
-                ))}
-              </AccordionContent>
-            </AccordionItem>
-          </Accordion>
-
-          <Accordion type="single" collapsible className="w-full">
-            <AccordionItem value="item-1">
-              <AccordionTrigger className="text-md">
-                {t("RAM")}
-              </AccordionTrigger>
-              <AccordionContent className="flex flex-col gap-4 text-balance">
-                {ramOptions.map((ram) => (
-                  <div key={ram} className="flex gap-3">
-                    <Checkbox
-                      id={`ram-${ram}`}
-                      checked={filters.ram.includes(ram)}
-                      onCheckedChange={() => toggleRam(ram)}
-                    />
-                    <Label htmlFor={`ram-${ram}`} className="text-md">
-                      {ram}GB
-                    </Label>
-                  </div>
-                ))}
-              </AccordionContent>
-            </AccordionItem>
-          </Accordion>
-
-          <Accordion type="single" collapsible className="w-full">
-            <AccordionItem value="item-1">
-              <AccordionTrigger className="text-md">
-                {t("Storage Size")}
-              </AccordionTrigger>
-              <AccordionContent className="flex flex-col gap-4 text-balance">
-                {storageOptions.map((storage) => (
-                  <div key={storage} className="flex gap-3">
-                    <Checkbox
-                      id={`storage-${storage}`}
-                      checked={filters.storage.includes(storage)}
-                      onCheckedChange={() => toggleStorage(storage)}
-                    />
-                    <Label htmlFor={`storage-${storage}`} className="text-md">
-                      {storage}GB
-                    </Label>
-                  </div>
-                ))}
-              </AccordionContent>
-            </AccordionItem>
-          </Accordion>
-
-          <Accordion type="single" collapsible className="w-full">
-            <AccordionItem value="item-1">
-              <AccordionTrigger className="text-md">
-                {t("Camera Resolution")}
-              </AccordionTrigger>
-              <AccordionContent className="flex flex-col gap-4 text-balance">
-                {cameraOptions.map((camera) => (
-                  <div key={camera.label} className="flex gap-3">
-                    <Checkbox
-                      id={`camera-${camera.label}`}
-                      checked={filters.camera.includes(camera)}
-                      onCheckedChange={() => toggleCamera(camera)}
-                    />
-                    <Label
-                      htmlFor={`camera-${camera.label}`}
-                      className="text-md"
-                    >
-                      {camera.label}
-                    </Label>
-                  </div>
-                ))}
-              </AccordionContent>
-            </AccordionItem>
-          </Accordion>
-          <Accordion type="single" collapsible className="w-full">
-            <AccordionItem value="item-1">
-              <AccordionTrigger className="text-md">
-                {t("Battery Size")}
-              </AccordionTrigger>
-              <AccordionContent className="flex flex-col gap-4 text-balance">
-                {batteryOptions.map((battery) => (
-                  <div key={battery.label} className="flex gap-3">
-                    <Checkbox
-                      id={`battery-${battery.label}`}
-                      checked={filters.battery.includes(battery)}
-                      onCheckedChange={() => toggleBattery(battery)}
-                    />
-                    <Label
-                      htmlFor={`battery-${battery.label}`}
-                      className="text-md"
-                    >
-                      {battery.label}
-                    </Label>
-                  </div>
-                ))}
-              </AccordionContent>
-            </AccordionItem>
-          </Accordion>
-          <Accordion type="single" collapsible className="w-full">
-            <AccordionItem value="item-1">
-              <AccordionTrigger className="text-md">
-                {t("Display Size")}
-              </AccordionTrigger>
-              <AccordionContent className="flex flex-col gap-4 text-balance">
-                {displaySizeOptions.map((dispaly) => (
-                  <div key={dispaly.label} className="flex gap-3">
-                    <Checkbox
-                      id={`dispaly-${dispaly.label}`}
-                      checked={filters.displaySize.includes(dispaly)}
-                      onCheckedChange={() => toggleDisplay(dispaly)}
-                    />
-                    <Label
-                      htmlFor={`dispaly-${dispaly.label}`}
-                      className="text-md"
-                    >
-                      {dispaly.label}
-                    </Label>
-                  </div>
-                ))}
-              </AccordionContent>
-            </AccordionItem>
-          </Accordion>
+          {filterContent}
         </div>
       </div>
     </div>
