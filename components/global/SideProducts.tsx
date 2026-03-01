@@ -14,10 +14,13 @@ import NoResult from "./NoResult";
 import Card from "./Card";
 import { Product } from "@/types/homePage";
 import { useTranslations } from "next-intl";
-import { useSearchParams } from "next/navigation";
+import { useLocale } from "next-intl";
+import { usePathname, useSearchParams } from "next/navigation";
 
 function SideProducts({ filtered }: { filtered: Product[] }) {
   const searchParams = useSearchParams();
+  const pathname = usePathname();
+  const locale = useLocale();
   const initialPageParam = Number(searchParams.get("page") ?? "1");
   const initialPage =
     Number.isFinite(initialPageParam) && initialPageParam > 0
@@ -56,7 +59,15 @@ function SideProducts({ filtered }: { filtered: Product[] }) {
   const handlePrevious = () => {
     if (currentPage > 1) setCurrentPage((prev) => prev - 1);
   };
-  const link = filtered[0]?.category?.name;
+  const segments = pathname.split("/").filter(Boolean);
+  const pageSegments =
+    segments[0] === locale ? segments.slice(1) : segments;
+
+  const currentPageSlug = pageSegments[0];
+  const fallbackCategorySlug = filtered[0]?.category?.name
+    ?.toLowerCase()
+    .replace(/\s+/g, "");
+  const link = currentPageSlug || fallbackCategorySlug || "mobiles";
 
   const buildPageHref = (page: number) => {
     const params = new URLSearchParams(searchParams.toString());

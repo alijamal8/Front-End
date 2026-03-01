@@ -21,15 +21,69 @@ const NORMALIZED_API_BASE_URL = API_BASE_URL.endsWith("/")
   ? API_BASE_URL.slice(0, -1)
   : API_BASE_URL;
 
+const categoryMap = {
+  newproduct: {
+    href: "/newproduct",
+    en: "New Products",
+    ar: "المنتجات الجديدة",
+  },
+  featuredproducts: {
+    href: "/featuredproducts",
+    en: "Featured Products",
+    ar: "المنتجات المميزة",
+  },
+  mobiles: { href: "/mobiles", en: "Mobiles", ar: "الموبايلات" },
+  tablets: { href: "/tablets", en: "Tablets", ar: "التابلت" },
+  wearables: {
+    href: "/wearables",
+    en: "Wearables",
+    ar: "الأجهزة القابلة للارتداء",
+  },
+  audio: { href: "/audio", en: "Audio", ar: "الصوتيات" },
+  accessories: {
+    href: "/accessories",
+    en: "Accessories",
+    ar: "الإكسسوارات",
+  },
+  gamingproducts: {
+    href: "/gamingProducts",
+    en: "Gaming Products",
+    ar: "منتجات الألعاب",
+  },
+} as const;
 
-function ProductImages({ product }: { product: Product }) {
+function formatCategoryLabel(category: string) {
+  return category
+    .replace(/([a-z])([A-Z])/g, "$1 $2")
+    .replace(/[-_]/g, " ")
+    .replace(/\b\w/g, (char) => char.toUpperCase());
+}
+
+function ProductImages({
+  product,
+  category,
+}: {
+  product: Product;
+  category: string;
+}) {
   const { selectedImageIndex } = useProductUI();
   const [api, setApi] = useState<CarouselApi | null>(null);
-  
+
   const locale = useLocale();
   const dir = locale === "ar" ? "rtl" : "ltr";
+  const normalizedCategory = category.toLowerCase();
+  const categoryData =
+    categoryMap[normalizedCategory as keyof typeof categoryMap] ?? null;
 
-  
+  const homeLabel = locale === "ar" ? "الرئيسية" : "Home";
+  const productLabel = locale === "ar" ? "المنتج" : "Product";
+  const categoryLabel = categoryData
+    ? locale === "ar"
+      ? categoryData.ar
+      : categoryData.en
+    : formatCategoryLabel(category);
+  const categoryHref = categoryData?.href ?? `/${category}`;
+
   useEffect(() => {
     if (api) api.scrollTo(selectedImageIndex);
   }, [selectedImageIndex, api]);
@@ -39,8 +93,9 @@ function ProductImages({ product }: { product: Product }) {
       <div className="max-sm:p-4">
         <Road
           items={[
-            { label: "Home", href: "/" },
-            { label: "Product", href: `/prodcut/${product.id}` },
+            { label: homeLabel, href: "/" },
+            { label: categoryLabel, href: categoryHref },
+            { label: productLabel },
           ]}
         />
       </div>

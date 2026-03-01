@@ -116,7 +116,7 @@ function WaerablesFilter() {
         <Road
           items={[
             { label: "Home", href: "/" },
-            { label: "Waerables", href: "/waerables" },
+            { label: "Wearables", href: "/wearables" },
           ]}
         />
 
