@@ -85,7 +85,9 @@ function Card({ product, from }: CardProps) {
             </Link>
 
             <div className="max-w-[400px] flex flex-col gap-4">
-              <p className="text-sm max-w-[350px]">{item.description}</p>
+              <p className="text-sm max-w-[350px] min-h-[60px] overflow-hidden [display:-webkit-box] [-webkit-box-orient:vertical] [-webkit-line-clamp:3]">
+                {item.description}
+              </p>
               <Rating rate={item.rating} />
 
               {!cartItem ? (

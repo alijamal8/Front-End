@@ -73,7 +73,7 @@ export default async function Page({ params }: PageProps) {
         "@type": "ListItem",
         position: index + 1,
         name: product.name,
-        url: `${SITE_URL}/${locale}/product/${(product.category?.name ?? "newproduct").toLowerCase()}/${product.id}`,
+        url: `${SITE_URL}/${locale}/product/${(product.category?.name ?? "new-products").toLowerCase()}/${product.id}`,
       })),
   };
 

@@ -10,13 +10,7 @@ function ProductDetails({ product }: { product: Product }) {
       <div className="mt-10 space-y-4">
         <h1 className="text-4xl font-semibold">{product.name}</h1>
         <Rating rate={product.rating} />
-        <p className="text-lg text-muted-foreground">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil,
-          dolorum. Corrupti reprehenderit eligendi quasi corporis? Blanditiis
-          facilis nostrum rerum molestias dolorem excepturi eaque velit quam,
-          minima, voluptatibus vitae itaque voluptas.
-          {/* {product.description} */}
-        </p>
+        <p className="text-lg text-muted-foreground">{product.description}</p>
 
         <ProductSelector product={product} />
         <Quantity product={product} />

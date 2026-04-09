@@ -75,10 +75,12 @@ async function Slider() {
     <div>
       <Carousel opts={{ direction: dir }} className="w-full">
         <CarouselContent>
-          {sliders2.map((item, index) => (
-            <CarouselItem key={index}>
-              <div>
-                <Card className="p-0 border-0 w-full overflow-hidden">
+          {sliders2.map((item, index) => {
+          
+            return (
+              <CarouselItem key={index}>
+                <div>
+                  <Card className="p-0 border-0 w-full overflow-hidden">
                   <CardContent className="flex p-0 relative m-0 w-full h-[50vh] sm:h-[60vh] lg:h-[800px] bg-none items-center justify-center">
                     <Link href={""} className="w-full h-full block">
                       <Image 
@@ -132,7 +134,7 @@ async function Slider() {
                 </Card>
               </div>
             </CarouselItem>
-          ))}
+          )})}
         </CarouselContent>
         {dir === "rtl" ? (
           <>
