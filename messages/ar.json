@@ -10,6 +10,7 @@
     "register": "إنشاء حساب",
     "search": "ادخل كلمة البحث",
     "orders": "طلباتي",
+    "admin": "ادمن",
     "logout": "تسجيل الخروج",
     "accountDialog": {
       "title": "معلومات الحساب",

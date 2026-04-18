@@ -7,12 +7,7 @@ import { Minus, Plus, X } from "lucide-react";
 import { Button } from "../ui/button";
 
 import { useTranslations } from "next-intl";
-
-const API_BASE_URL =
-  process.env.NEXT_PUBLIC_API_BASE_URL ?? "http://localhost:8000";
-const NORMALIZED_API_BASE_URL = API_BASE_URL.endsWith("/")
-  ? API_BASE_URL.slice(0, -1)
-  : API_BASE_URL;
+import { resolveProductImageUrl } from "@/lib/utils";
 
 export default function LeftCart({ from }: { from: string }) {
   const t = useTranslations("cart");
@@ -49,7 +44,7 @@ export default function LeftCart({ from }: { from: string }) {
                 <div className="flex gap-4 items-start w-full sm:w-auto">
                   <div className="h-24 w-24 sm:h-32 sm:w-32 flex-shrink-0 overflow-hidden rounded-lg bg-gray-50 border dark:border-gray-800">
                     <Image
-                      src={`${NORMALIZED_API_BASE_URL}/storage/${item.images[0].image_url.replace(/^\/+/, "")}`}
+                      src={resolveProductImageUrl(item.images[0]?.image_url)}
                       alt={item.name}
                       width={128}
                       height={128}

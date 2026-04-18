@@ -7,12 +7,10 @@ export const watchBrandOptions = [
 ];
 
 export const watchPriceOptions = [
-  { label: "Under $50", min: 0, max: 50 },
-  { label: "$50 - $100", min: 50, max: 100 },
-  { label: "$100 - $150", min: 100, max: 150 },
-  { label: "$150 - $250", min: 150, max: 250 },
-  { label: "$250 - $400", min: 250, max: 400 },
-  { label: "Over $400", min: 400, max: Infinity },
+  { label: "Under 250,000 IQD", min: 0, max: 250000 },
+  { label: "250,000 - 500,000 IQD", min: 250000, max: 500000 },
+  { label: "500,000 - 750,000 IQD", min: 500000, max: 750000 },
+  { label: "Over 750,000 IQD", min: 750000, max: Infinity },
 ];
 
 

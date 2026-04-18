@@ -12,9 +12,11 @@ import {
 import { LanguageSwitcher } from "../global/LanguageSwitcher";
 import { ModeToggle } from "../global/ModeToggle";
 import Logo from "./Logo";
+import { useAuthStore } from "@/stores/authStore";
 
 export default function MobileMenu() {
   const t = useTranslations("navbar");
+  const user = useAuthStore((state) => state.user);
   const categories = [
     { name: "mobiles", link: "/mobiles" },
     { name: "tablets", link: "/tablets" },
@@ -46,6 +48,15 @@ export default function MobileMenu() {
                 </Link>
               </SheetTrigger>
             ))}
+            {user?.role === "admin" && (
+              <SheetTrigger asChild>
+                <Link href="http://127.0.0.1:8000/admin">
+                  <div className="font-medium text-lg border-b pb-2 hover:text-gray-500 transition-colors">
+                    {t("admin")}
+                  </div>
+                </Link>
+              </SheetTrigger>
+            )}
           </div>
         </div>
         <div className="flex flex-col gap-4 mt-auto pt-4 border-t">

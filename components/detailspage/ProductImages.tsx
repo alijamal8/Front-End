@@ -14,12 +14,7 @@ import Image from "next/image";
 import { Product } from "@/types/homePage";
 import { useProductUI } from "@/stores/colorStore";
 import { useLocale } from "next-intl";
-
-const API_BASE_URL =
-  process.env.NEXT_PUBLIC_API_BASE_URL ?? "http://localhost:8000";
-const NORMALIZED_API_BASE_URL = API_BASE_URL.endsWith("/")
-  ? API_BASE_URL.slice(0, -1)
-  : API_BASE_URL;
+import { resolveProductImageUrl } from "@/lib/utils";
 
 const categoryMap = {
   newproduct: {
@@ -106,14 +101,14 @@ function ProductImages({
               <CarouselItem key={`${selectedImageIndex}-${index}`}>
                 <div className="p-1">
                   <Card>
-                    <CardContent className="relative flex aspect-square items-center justify-center p-6 ">
+                    <CardContent className="relative flex h-[520px] items-center justify-center p-2 max-sm:h-[360px]">
                       <Image
-                        src={`${NORMALIZED_API_BASE_URL}/storage/${item.image_url.replace(/^\/+/, "")}`}
+                        src={resolveProductImageUrl(item.image_url)}
                         alt={product.name}
                         fill
                         unoptimized
                         sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                        className="w-full h-full object-contain"
+                        className="object-contain object-center"
                         quality={100}
                       />
                       {/* item.image_url */}

@@ -4,6 +4,7 @@ import ProductSpecifications from "@/components/detailspage/ProductSpecification
 import { ProductsService } from "@/services/api/product";
 import type { Metadata } from "next";
 import React from "react";
+import { resolveProductImageUrl } from "@/lib/utils";
 
 const SITE_URL =
   process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
@@ -15,8 +16,8 @@ type PageProps = {
 function toAbsoluteUrl(url?: string) {
   if (!url) return `${SITE_URL}/logo.png`;
   if (url.startsWith("http://") || url.startsWith("https://")) return url;
-  if (url.startsWith("/")) return `${SITE_URL}${url}`;
-  return `${SITE_URL}/${url}`;
+
+  return resolveProductImageUrl(url);
 }
 
 export async function generateMetadata({
@@ -116,7 +117,7 @@ export default async function Page({ params }: PageProps) {
       "@type": "Offer",
       url: productUrl,
       price: product.price,
-      priceCurrency: "USD",
+      priceCurrency: "IQD",
       availability:
         product.stock > 0
           ? "https://schema.org/InStock"

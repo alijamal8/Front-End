@@ -15,9 +15,10 @@ import Card from "./Card";
 import { Product } from "@/types/homePage";
 import { useTranslations } from "next-intl";
 import { useLocale } from "next-intl";
-import { usePathname, useSearchParams } from "next/navigation";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 
 function SideProducts({ filtered }: { filtered: Product[] }) {
+  const router = useRouter();
   const searchParams = useSearchParams();
   const pathname = usePathname();
   const locale = useLocale();
@@ -48,16 +49,35 @@ function SideProducts({ filtered }: { filtered: Product[] }) {
     }
   }, [currentPage, totalPages]);
 
-  const handlePageClick = (page: any) => {
-    setCurrentPage(page);
+  const goToPage = (page: number) => {
+    const safePage = Math.min(Math.max(page, 1), totalPages);
+    const params = new URLSearchParams(searchParams.toString());
+
+    if (safePage === 1) {
+      params.delete("page");
+    } else {
+      params.set("page", String(safePage));
+    }
+
+    const query = params.toString();
+    router.replace(query ? `${pathname}?${query}` : pathname, { scroll: false });
+    setCurrentPage(safePage);
+  };
+
+  const handlePageClick = (page: number) => {
+    goToPage(page);
   };
 
   const handleNext = () => {
-    if (currentPage < totalPages) setCurrentPage((prev) => prev + 1);
+    if (currentPage < totalPages) {
+      goToPage(currentPage + 1);
+    }
   };
 
   const handlePrevious = () => {
-    if (currentPage > 1) setCurrentPage((prev) => prev - 1);
+    if (currentPage > 1) {
+      goToPage(currentPage - 1);
+    }
   };
   const segments = pathname.split("/").filter(Boolean);
   const pageSegments = segments[0] === locale ? segments.slice(1) : segments;
@@ -91,7 +111,10 @@ function SideProducts({ filtered }: { filtered: Product[] }) {
             <PaginationPrevious
               className="cursor-pointer text-md"
               href={buildPageHref(prevPage)}
-              onClick={handlePrevious}
+              onClick={(event) => {
+                event.preventDefault();
+                handlePrevious();
+              }}
             />
           </PaginationItem>
 
@@ -100,7 +123,10 @@ function SideProducts({ filtered }: { filtered: Product[] }) {
               <PaginationLink
                 isActive={currentPage === index + 1}
                 href={buildPageHref(index + 1)}
-                onClick={() => handlePageClick(index + 1)}
+                onClick={(event) => {
+                  event.preventDefault();
+                  handlePageClick(index + 1);
+                }}
               >
                 {index + 1}
               </PaginationLink>
@@ -111,7 +137,10 @@ function SideProducts({ filtered }: { filtered: Product[] }) {
             <PaginationNext
               className="cursor-pointer text-md"
               href={buildPageHref(nextPage)}
-              onClick={handleNext}
+              onClick={(event) => {
+                event.preventDefault();
+                handleNext();
+              }}
             />
           </PaginationItem>
         </PaginationContent>

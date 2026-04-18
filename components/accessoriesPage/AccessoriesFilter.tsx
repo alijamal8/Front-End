@@ -1,7 +1,6 @@
 import { usePhonesFilters } from "@/stores/usePhoneFilterStore";
 import React from "react";
-import { brandOptions, priceOptions } from "@/filterOptions/audioFilter";
-import { typeProductOptions } from "@/filterOptions/accessories";
+import { brandOptions, priceOptions, typeProductOptions } from "@/filterOptions/accessories";
 import { Road } from "../global/Road";
 import {
   Accordion,

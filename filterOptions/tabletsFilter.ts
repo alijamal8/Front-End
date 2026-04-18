@@ -1,14 +1,12 @@
 export const brandOptions = ["Apple", "Samsung", "Huawei", "Honor", "Xiaomi"];
 
-// Price ranges (دولار)
+// Price ranges (IQD)
 export const priceOptions = [
-  { label: "Under 200", min: 0, max: 100 },
-  { label: "$200 - $300", min: 100, max: 200 },
-  { label: "$300 - $400", min: 200, max: 300 },
-  { label: "$400 - $500", min: 300, max: 500 },
-  { label: "$500 - $600", min: 500, max: 800 },
-  { label: "$800 - $1000", min: 800, max: 1000 },
-  { label: "Over $1000", min: 1000, max: Infinity },
+  { label: "Under 250,000 IQD", min: 0, max: 250000 },
+  { label: "250,000 - 500,000 IQD", min: 250000, max: 500000 },
+  { label: "500,000 - 750,000 IQD", min: 500000, max: 750000 },
+  { label: "750,000 - 1,000,000 IQD", min: 750000, max: 1000000 },
+  { label: "Over 1,000,000 IQD", min: 1000000, max: Infinity },
 ];
 
 // RAM in GB

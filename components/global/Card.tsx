@@ -11,13 +11,8 @@ import Rating from "./Rating";
 import { useCartStore } from "@/stores/cartStore";
 import { FaPlus } from "react-icons/fa6";
 import { useTranslations } from "next-intl";
+import { resolveProductImageUrl } from "@/lib/utils";
 const a = false;
-
-const API_BASE_URL =
-  process.env.NEXT_PUBLIC_API_BASE_URL ?? "http://localhost:8000";
-const NORMALIZED_API_BASE_URL = API_BASE_URL.endsWith("/")
-  ? API_BASE_URL.slice(0, -1)
-  : API_BASE_URL;
 
 
 
@@ -41,12 +36,9 @@ function Card({ product, from }: CardProps) {
     <>
       {product?.map((item, index) => {
         const cartItem = cart.find((c) => c.id === item.id);
-        const imagePath = item.images?.[0]?.image_url ?? "";
-        const normalizedImagePath = imagePath.startsWith("/")
-          ? imagePath.slice(1)
-          : imagePath;
+        const imagePath = item.images?.[0]?.image_url;
         const imageSrc = imagePath
-          ? `${NORMALIZED_API_BASE_URL}/storage/${normalizedImagePath}`
+          ? resolveProductImageUrl(imagePath)
           : "/114eaa3c703c5b5cd9ae491b74204914.webp";
 
         return (
@@ -78,9 +70,13 @@ function Card({ product, from }: CardProps) {
                 </div>
               </div>
 
-              <div className="flex justify-between pt-4 pb-2">
-                <h1 className="font-bold text-xl">{item.name}</h1>
-                <p className="font-bold text-xl">{formatIQD(item.price)}</p>
+              <div className="flex items-start justify-between gap-4 pt-4 pb-2 max-sm:flex-col max-sm:gap-2">
+                <h1 className="font-bold text-xl leading-snug max-sm:text-lg">
+                  {item.name}
+                </h1>
+                <p className="shrink-0 font-bold text-xl whitespace-nowrap max-sm:text-lg">
+                  {formatIQD(item.price)}
+                </p>
               </div>
             </Link>
 

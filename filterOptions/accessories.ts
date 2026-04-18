@@ -9,11 +9,11 @@ export const brandOptions = [
   "Mcdodo",
 ];
 export const priceOptions = [
-  { label: "Under $30", min: 0, max: 30 },
-  { label: "$30 - $60", min: 30, max: 60 },
-  { label: "$60 - $100", min: 60, max: 100 },
-  { label: "$100 - $150", min: 100, max: 150 },
-  { label: "Over $150", min: 150, max: Infinity },
+  { label: "Under 25,000 IQD", min: 0, max: 25000 },
+  { label: "25,000 - 50,000 IQD", min: 25000, max: 50000 },
+  { label: "50,000 - 75,000 IQD", min: 50000, max: 75000 },
+  { label: "75,000 - 100,000 IQD", min: 75000, max: 100000 },
+  { label: "Over 100,000 IQD", min: 100000, max: Infinity },
 ];
 
 
