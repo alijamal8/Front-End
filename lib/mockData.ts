@@ -9,15 +9,39 @@ export const mockCategories: Category[] = [
 export const mockSliders: Sliders[] = [
   {
     id: 1,
-    title: "Summer Sale",
+    title: "Xiaomi 15T Pro",
     product_id: "1",
-    description: "Get the best deals this summer on all electronics.",
+    description: "",
     position: "center",
     text_color: "#ffffff",
-    image_url: "https://images.unsplash.com/photo-1550009158-9ebf6d17368e?q=80&w=2001&auto=format&fit=crop",
-    button_label: "Shop Now",
+    image_url: "/slider/xiaomi-15t-pro.webp",
+    button_label: "",
     is_active: true,
     display_order: 1
+  },
+  {
+    id: 2,
+    title: "Honor Magic V5",
+    product_id: "2",
+    description: "The ultimate foldable experience.",
+    position: "left",
+    text_color: "#ffffff",
+    image_url: "/slider/honor-magic-v5-pc.avif",
+    button_label: "Discover",
+    is_active: true,
+    display_order: 2
+  },
+  {
+    id: 3,
+    title: "Smart Watch 8",
+    product_id: "3",
+    description: "Classic Lifestyle.",
+    position: "right",
+    text_color: "#ffffff",
+    image_url: "/slider/SCOMB7Q7-376_Watch8-Classic-Lifestyle-PCD-KV-DT-1440x640.webp",
+    button_label: "Buy Now",
+    is_active: true,
+    display_order: 3
   }
 ];
 
