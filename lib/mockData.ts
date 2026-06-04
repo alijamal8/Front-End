@@ -11,11 +11,11 @@ export const mockSliders: Sliders[] = [
     id: 1,
     title: "Xiaomi 15T Pro",
     product_id: "1",
-    description: "",
+    description: "Experience the new Xiaomi 15T Pro.",
     position: "center",
     text_color: "#ffffff",
     image_url: "/slider/xiaomi-15t-pro.webp",
-    button_label: "",
+    button_label: "Shop Now",
     is_active: true,
     display_order: 1
   },

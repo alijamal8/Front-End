@@ -5,7 +5,15 @@ import ProductSection from "@/components/NewProductsSection/NewProducts";
 import FeaturedSection from "@/components/featuredSection/FeaturedSection";
 import GamingSection from "@/components/gamingSection/GamingSection";
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
+const getSiteUrl = () => {
+  if (process.env.NEXT_PUBLIC_SITE_URL) return process.env.NEXT_PUBLIC_SITE_URL;
+  if (process.env.VERCEL_PROJECT_PRODUCTION_URL) return `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`;
+  if (process.env.VERCEL_URL) return `https://${process.env.VERCEL_URL}`;
+  if (process.env.NODE_ENV === "development") return "http://localhost:3000";
+  return "https://front-end-psi-rouge.vercel.app";
+};
+
+const SITE_URL = getSiteUrl();
 
 type PageProps = {
   params: Promise<{ locale: "ar" | "en" }>;
