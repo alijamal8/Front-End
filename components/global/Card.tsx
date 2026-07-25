@@ -13,12 +13,6 @@ import { FaPlus } from "react-icons/fa6";
 import { useTranslations } from "next-intl";
 const a = false;
 
-const API_BASE_URL =
-  process.env.NEXT_PUBLIC_API_BASE_URL ?? "http://localhost:8000";
-const NORMALIZED_API_BASE_URL = API_BASE_URL.endsWith("/")
-  ? API_BASE_URL.slice(0, -1)
-  : API_BASE_URL;
-
 
 
 
@@ -41,13 +35,11 @@ function Card({ product, from }: CardProps) {
     <>
       {product?.map((item, index) => {
         const cartItem = cart.find((c) => c.id === item.id);
-        const imagePath = item.images?.[0]?.image_url ?? "";
-        const normalizedImagePath = imagePath.startsWith("/")
-          ? imagePath.slice(1)
-          : imagePath;
-        const imageSrc = imagePath
-          ? `${NORMALIZED_API_BASE_URL}/storage/${normalizedImagePath}`
-          : "/114eaa3c703c5b5cd9ae491b74204914.webp";
+        // Laravel's ProductImage model has a getImageUrlAttribute accessor
+        // that already returns a full URL like: http://localhost:8000/storage/products/image.jpg
+        // So we use image_url directly without any prefix manipulation.
+        const imageSrc =
+          item.images?.[0]?.image_url || "/114eaa3c703c5b5cd9ae491b74204914.webp";
 
         return (
           <div className="cursor-pointer" id="card" key={item.id}>

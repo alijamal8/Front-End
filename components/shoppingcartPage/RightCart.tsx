@@ -30,7 +30,7 @@ function RightCart() {
         </h1>
         <div className="flex justify-between items-center bg-transparent">
           <p className="text-black text-lg sm:text-xl dark:text-white">{t("subtotal")}</p>
-          <p className="text-black text-lg sm:text-xl font-semibold dark:text-white">{priceFormatter.format(totalPrice + 5000)}</p>
+          <p className="text-black text-lg sm:text-xl font-semibold dark:text-white">{priceFormatter.format(totalPrice)}</p>
         </div>
         <div className="flex justify-between items-center">
           <p className="text-black text-lg sm:text-xl dark:text-white">{t("shipping")}</p>
@@ -43,7 +43,7 @@ function RightCart() {
         <Separator className="my-4" />
         <div className="flex justify-between items-center">
           <p className="text-black text-xl font-bold dark:text-white">{t("total")}</p>
-          <p className="text-black text-xl font-bold dark:text-white">{priceFormatter.format(totalPrice + 5000)}</p>
+          <p className="text-black text-xl font-bold dark:text-white">{priceFormatter.format(totalPrice+5000)}</p>
         </div>
         <Button asChild className="text-white text-lg w-full mt-8 h-12 dark:text-black hover:opacity-90 transition-opacity">
           <Link href="/checkout">{t("checkout")}</Link>

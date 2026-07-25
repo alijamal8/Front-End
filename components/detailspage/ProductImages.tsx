@@ -108,7 +108,7 @@ function ProductImages({
                   <Card>
                     <CardContent className="relative flex aspect-square items-center justify-center p-6 ">
                       <Image
-                        src={`${NORMALIZED_API_BASE_URL}/storage/${item.image_url.replace(/^\/+/, "")}`}
+                        src={item.image_url}
                         alt={product.name}
                         fill
                         unoptimized
