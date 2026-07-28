@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { Separator } from "../ui/separator";
 import {
   Pagination,
@@ -21,15 +21,16 @@ function SideProducts({ filtered }: { filtered: Product[] }) {
   const searchParams = useSearchParams();
   const pathname = usePathname();
   const locale = useLocale();
-  const initialPageParam = Number(searchParams.get("page") ?? "1");
-  const initialPage =
-    Number.isFinite(initialPageParam) && initialPageParam > 0
-      ? initialPageParam
-      : 1;
 
-  const [currentPage, setCurrentPage] = useState(initialPage);
+  // Derive currentPage directly from the URL — no useState needed,
+  // so filter changes never accidentally reset the page.
+  const pageParam = Number(searchParams.get("page") ?? "1");
   const itemsPerPage = 6;
   const totalPages = Math.max(1, Math.ceil(filtered.length / itemsPerPage));
+  const currentPage = Number.isFinite(pageParam) && pageParam > 0
+    ? Math.min(pageParam, totalPages)
+    : 1;
+
   const startIndex = (currentPage - 1) * itemsPerPage;
   const currentProducts = filtered.slice(startIndex, startIndex + itemsPerPage);
   const t = useTranslations("category");
@@ -38,27 +39,6 @@ function SideProducts({ filtered }: { filtered: Product[] }) {
     window.scrollTo({ top: 0, behavior: "smooth" });
   }, [currentPage]);
 
-  useEffect(() => {
-    setCurrentPage(initialPage);
-  }, [initialPage]);
-
-  useEffect(() => {
-    if (currentPage > totalPages) {
-      setCurrentPage(totalPages);
-    }
-  }, [currentPage, totalPages]);
-
-  const handlePageClick = (page: any) => {
-    setCurrentPage(page);
-  };
-
-  const handleNext = () => {
-    if (currentPage < totalPages) setCurrentPage((prev) => prev + 1);
-  };
-
-  const handlePrevious = () => {
-    if (currentPage > 1) setCurrentPage((prev) => prev - 1);
-  };
   const segments = pathname.split("/").filter(Boolean);
   const pageSegments = segments[0] === locale ? segments.slice(1) : segments;
 
@@ -91,7 +71,6 @@ function SideProducts({ filtered }: { filtered: Product[] }) {
             <PaginationPrevious
               className="cursor-pointer text-md"
               href={buildPageHref(prevPage)}
-              onClick={handlePrevious}
             />
           </PaginationItem>
 
@@ -100,7 +79,6 @@ function SideProducts({ filtered }: { filtered: Product[] }) {
               <PaginationLink
                 isActive={currentPage === index + 1}
                 href={buildPageHref(index + 1)}
-                onClick={() => handlePageClick(index + 1)}
               >
                 {index + 1}
               </PaginationLink>
@@ -111,7 +89,6 @@ function SideProducts({ filtered }: { filtered: Product[] }) {
             <PaginationNext
               className="cursor-pointer text-md"
               href={buildPageHref(nextPage)}
-              onClick={handleNext}
             />
           </PaginationItem>
         </PaginationContent>
